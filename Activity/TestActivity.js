@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
+/*
+ * Exemple de 2ème activité
+ */
 export default class TestActivity extends React.Component {
 
   constructor(props){
@@ -30,7 +33,7 @@ export default class TestActivity extends React.Component {
               title = "Click !"
               backgroundColor = 'blue'
             />
-            <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur une autre activité de lapplication</Text>
+            <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur une autre activité de l'application</Text>
           </View>
         </View>
       </View>
