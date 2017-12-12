@@ -3,10 +3,18 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
+import CVAActivity from './Activity/CVAActivity';
+import PartenariatsActivity from './Activity/PartenariatsActivity';
+import GeolocalisationActivity from './Activity/GeolocalisationActivity';
+import BilletterieActivity from './Activity/BilletterieActivity';
 
 const App = StackNavigator({
     MainActivity: {screen: MainActivity},
-		TestActivity: {screen: TestActivity}
+		TestActivity: {screen: TestActivity},
+    CVAActivity: {screen:CVAActivity},
+    PartenariatsActivity: {screen:PartenariatsActivity},
+    GeolocalisationActivity: {screen:GeolocalisationActivity},
+    BilletterieActivity: {screen:BilletterieActivity}
 },
 {
     initialRouteName: 'MainActivity',

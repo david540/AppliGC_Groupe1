@@ -39,7 +39,7 @@ export default class MainActivity extends React.Component {
           <View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
               <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green'}}>
                 <Button
-                      onPress={() => { resetToScreen(navigation, "TestActivity")}}
+                      onPress={() => { resetToScreen(navigation, "CVAActivity")}}
                       title = "Afficher la CVA"
                       color = "green"
                   />
@@ -47,7 +47,7 @@ export default class MainActivity extends React.Component {
               </View>
               <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036'}}>
                 <Button
-                      onPress={() => { resetToScreen(navigation, "TestActivity")}}
+                      onPress={() => { resetToScreen(navigation, "PartenariatsActivity")}}
                       title = "Partenariats"
                       color = "#FFD036"
                   />
@@ -57,7 +57,7 @@ export default class MainActivity extends React.Component {
        		<View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
               <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
            			<Button
-              				onPress={() => { resetToScreen(navigation, "TestActivity")}}
+              				onPress={() => { resetToScreen(navigation, "GeolocalisationActivity")}}
               				title = "Géolocalisation"
                       color = "blue"
             			/>
@@ -65,7 +65,7 @@ export default class MainActivity extends React.Component {
           		</View>
               <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
            			<Button
-              				onPress={() => { resetToScreen(navigation, "TestActivity")}}
+              				onPress={() => { resetToScreen(navigation, "BilletterieActivity")}}
               				title = "Billetterie"
                       color = "red"
             			/>
