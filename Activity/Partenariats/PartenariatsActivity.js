@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-
+import { getPartenariats } from './DataLoader'
+import { PartenariatObject } from './PartenariatObject'
 /*
  * Exemple de 2ème activité
  */
@@ -30,6 +31,10 @@ export default class PartenariatsActivity extends React.Component {
           color = "#FFD036"
         />
             <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l'activité des partenariats</Text>
+            <Text style={[{color:'white'}, styles.centered_text]}>
+            Exemple, {getPartenariats().name}:{"\n"}
+            Catégorie->{PartenariatObject.CATEGORIES_NAME[getPartenariats().category]}{"\n"}
+            Description->{getPartenariats().description}</Text>
       </View>
     );
 	}

@@ -4,9 +4,9 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
 import CVAActivity from './Activity/CVAActivity';
-import PartenariatsActivity from './Activity/PartenariatsActivity';
+import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/GeolocalisationActivity';
-import BilletterieActivity from './Activity/BilletterieActivity';
+import BilletterieActivity from './Activity/Billetterie/BilletterieActivity';
 
 const App = StackNavigator({
     MainActivity: {screen: MainActivity},
