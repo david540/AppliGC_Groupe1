@@ -18,13 +18,13 @@ export default class MainActivity extends React.Component {
   	}
 
 	/*
-	 * Fonction appelé lorsque l'on clique sur le bouton 
+	 * Fonction appelé lorsque l'on clique sur le bouton
 	 */
 	_onPressLearnMore(){
 		Alert.alert('TODO')
 	}
 	/*
-	 * C'est le retour de cette fonction qui gere l'affichage 
+	 * C'est le retour de cette fonction qui gere l'affichage
 	 * C'est une syntaxe de XML
 	 */
 	render() {
@@ -33,26 +33,43 @@ export default class MainActivity extends React.Component {
     	var _height = Dimensions.get('window').height; //full screen height
 	  	return (
      	<View style={{width:_width,height:_height}}>
-		<View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
-			<Text style={{color:'white'}}>Page d'accueil</Text>
-		</View>
-        	<View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
-        		<View style={{width:_width/2,height:_height*4/9, backgroundColor: 'green'}} />
-        		<View style={{width:_width/2,height:_height*4/9, backgroundColor: 'yellow'}} />
-        		<View style={{width:_width/2,height:_height*4/9, position:'absolute', justifyContent: 'center'}}>
-         			<Text style={[{color:'white'}, styles.centered_text]}>Le style du texte est blanc et centré</Text>
-          		</View>
-       		</View>
+    		<View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
+    			<Text style={{color:'white'}}>Page d'accueil</Text>
+      		</View>
+          <View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
+              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green'}}>
+                <Button
+                      onPress={() => { resetToScreen(navigation, "TestActivity")}}
+                      title = "Afficher la CVA"
+                      color = "green"
+                  />
+                  <Text style={[{color:'white'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
+              </View>
+              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036'}}>
+                <Button
+                      onPress={() => { resetToScreen(navigation, "TestActivity")}}
+                      title = "Partenariats"
+                      color = "#FFD036"
+                  />
+                  <Text style={[{color:'white'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
+              </View>
+          </View>
        		<View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
-          		<View style={{width:_width/2,height:_height*4/9, backgroundColor: 'blue'}} />
-          		<View style={{width:_width/2,height:_height*4/9, backgroundColor: 'red'}} />
-          		<View style={{width:_width/2,height:_height*4/9, position:'absolute', justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
            			<Button
               				onPress={() => { resetToScreen(navigation, "TestActivity")}}
-              				title = "Click !"
-              				backgroundColor = 'blue'
+              				title = "Géolocalisation"
+                      color = "blue"
             			/>
-            			<Text style={[{color:'white'}, styles.centered_text]}>Accès à l'autre activité</Text>
+            			<Text style={[{color:'white'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+          		</View>
+              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
+           			<Button
+              				onPress={() => { resetToScreen(navigation, "TestActivity")}}
+              				title = "Billetterie"
+                      color = "red"
+            			/>
+            			<Text style={[{color:'white'}, styles.centered_text]}>Achetez vos places pour un évènement ou tout autre chose</Text>
           		</View>
         	</View>
       	</View>
