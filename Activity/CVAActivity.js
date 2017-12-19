@@ -29,7 +29,7 @@ export default class CVAActivity extends React.Component {
           title = "Retour"
           color = "green"
         />
-            <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l'activité de la CVA</Text>
+            <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l activité de la CVA</Text>
       </View>
     );
 	}
