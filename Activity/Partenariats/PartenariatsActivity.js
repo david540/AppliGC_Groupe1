@@ -33,22 +33,26 @@ export default class PartenariatsActivity extends React.Component {
     )
     return (
       <View style={{width:_width,height:_height, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036'}}>
-        <View style={{width:_width, height:_height*0.2, justifyContent: 'center', alignItems: 'center'}}>
-          <Button
-            onPress={() => { resetToScreen(navigation, "MainActivity")}}
-            title = "Retour"
-            color = "#FFD036"
-          />
-          <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l activité des partenariats</Text>
+        <View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white'}}>Partenariats</Text>
+          <View style = {{marginLeft: 20}}>
+            <Button
+              onPress={() => { resetToScreen(navigation, "MainActivity")}}
+              title = "Retour"
+              color = "#FFD036"
+            />
+          </View>
         </View>
         <View style={{width:_width, height:_height*0.8, justifyContent: 'center', alignItems: 'center'}}>
           <FlatList
             data={partenaires}
-            renderItem={({item}) => <Text style={styles.item}>
+            renderItem={({item}) => <View backgroundColor = "#A0A0A0A0" style= {styles.container}>
+              <Text style={[styles.item, {color: 'white'}]}>
                 Nom -> {item.name}:{"\n"}
                 Catégorie -> {PartenariatObject.CATEGORIES_NAME[item.category]}{"\n"}
                 Description -> {item.description}
               </Text>
+              </View>
             }
             keyExtractor= {(item) => item}
           />
@@ -59,12 +63,11 @@ export default class PartenariatsActivity extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+  container: {
+    borderRadius: 4,
+    borderWidth: 4,
+    borderColor: '#d6d7da',
+  },
 	centered_text: {
 		alignSelf: 'stretch',
 		textAlign: 'center',

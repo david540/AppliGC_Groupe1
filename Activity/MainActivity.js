@@ -34,10 +34,10 @@ export default class MainActivity extends React.Component {
 	  	return (
      	<View style={{width:_width,height:_height}}>
     		<View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
-    			<Text style={{color:'white'}}>Page d'accueil</Text>
+    			<Text style={{color:'white'}}>Page d accueil</Text>
       		</View>
           <View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
-              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green'}}>
+              <View style={[styles.container, {width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 2, borderLeftWidth: 4}]}>
                 <Button
                       onPress={() => { resetToScreen(navigation, "CVAActivity")}}
                       title = "Afficher la CVA"
@@ -45,7 +45,7 @@ export default class MainActivity extends React.Component {
                   />
                   <Text style={[{color:'white'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
               </View>
-              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036'}}>
+              <View style={[styles.container, {width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 4, borderLeftWidth: 2}]}>
                 <Button
                       onPress={() => { resetToScreen(navigation, "PartenariatsActivity")}}
                       title = "Partenariats"
@@ -55,7 +55,7 @@ export default class MainActivity extends React.Component {
               </View>
           </View>
        		<View style={{width:_width,height:_height*4/9, flexDirection: 'row'}}>
-              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue'}}>
+              <View style={[styles.container, {width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue', borderBottomWidth: 4, borderTopWidth: 2, borderRightWidth: 2, borderLeftWidth: 4}]}>
            			<Button
               				onPress={() => { resetToScreen(navigation, "GeolocalisationActivity")}}
               				title = "Géolocalisation"
@@ -63,7 +63,7 @@ export default class MainActivity extends React.Component {
             			/>
             			<Text style={[{color:'white'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
           		</View>
-              <View style={{width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
+              <View style={[styles.container, {width:_width/2,height:_height*4/9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red', borderBottomWidth: 4, borderTopWidth: 2, borderRightWidth: 4, borderLeftWidth: 2}]}>
            			<Button
               				onPress={() => { resetToScreen(navigation, "BilletterieActivity")}}
               				title = "Billetterie"
@@ -81,12 +81,9 @@ export default class MainActivity extends React.Component {
  * On peut définir ici tout les styles que l'on utilise, pour plus de lisibilité
  */
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+  container: {
+    borderColor: '#d6d7da',
+  },
 	centered_text: {
 		alignSelf: 'stretch',
 		textAlign: 'center',
