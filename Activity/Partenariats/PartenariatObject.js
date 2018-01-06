@@ -1,13 +1,14 @@
 export class PartenariatObject {
 
-  static BAR = 0;
-  static BOITE = 1;
-  static FASTFOOD = 2;
-  static CAFE = 3;
-  static RESTAURANT = 4;
-  static MAGASIN = 5;
+  static ALL = 0;
+  static BAR = 1;
+  static BOITE = 2;
+  static FASTFOOD = 3;
+  static CAFE = 4;
+  static RESTAURANT = 5;
+  static MAGASIN = 6;
 
-  static CATEGORIES_NAME = ["Bar", "Boite de nuit", "Fast-Food", "Café", "Restaurant", "Magasin"];
+  static CATEGORIES_NAME = ["Tous", "Bar", "Boite de nuit", "Fast-Food", "Café", "Restaurant", "Magasin"];
 
   constructor(name, category, description) {
     this.name = name;
