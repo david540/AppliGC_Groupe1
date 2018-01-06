@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, FlatList} from 'react-native';
+import { List, ListItem } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
-import { getPartenariats } from './DataLoader'
-import { PartenariatObject } from './PartenariatObject'
+import { getPartenariats } from './DataLoader';
+import { Constants } from 'expo';
+import { PartenariatObject } from './PartenariatObject';
 /*
  * Exemple de 2ème activité
  */
@@ -22,17 +24,33 @@ export default class PartenariatsActivity extends React.Component {
 	render() {
 		//_MainActivity()
     navigation = this.state.navigation;
+    FlatListItemSeparator = () => {
+      return (
+        <View
+          style={{
+            height: 1,
+            width: "100%",
+            backgroundColor: "#607D8B",
+          }}
+        />
+      );
+    }
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
     var partenaires = getPartenariats();
-    _renderPartenaire = (({partenaire}) => <Text style={[{color:'white'}, styles.centered_text]}>
-        Exemple, {partenaire}:{"\n"}
-        Catégorie->{PartenariatObject.CATEGORIES_NAME[0]}{"\n"}
-        Description->{partenaire}
-      </Text>
-    )
+  /*  const partenaires = [
+        {
+        name: 'Amy',
+        subtitle: 'Fille'
+      },
+        {
+        name: 'Sam',
+        subtitle: 'Gars'
+        }
+
+    ];*/
     return (
-      <View style={{width:_width,height:_height, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFD036'}}>
+      <View style={styles.container}>
         <View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{color:'white'}}>Partenariats</Text>
           <View style = {{marginLeft: 20}}>
@@ -43,20 +61,20 @@ export default class PartenariatsActivity extends React.Component {
             />
           </View>
         </View>
-        <View style={{width:_width, height:_height*0.8, justifyContent: 'center', alignItems: 'center'}}>
-          <FlatList
+          <List>
+            <FlatList
             data={partenaires}
-            renderItem={({item}) => <View backgroundColor = "#A0A0A0A0" style= {styles.container}>
-              <Text style={[styles.item, {color: 'white'}]}>
-                Nom -> {item.name}:{"\n"}
-                Catégorie -> {PartenariatObject.CATEGORIES_NAME[item.category]}{"\n"}
-                Description -> {item.description}
-              </Text>
-              </View>
-            }
-            keyExtractor= {(item) => item}
-          />
-        </View>
+            renderItem={({item}) => (
+              <ListItem
+                roundAvatar
+                avatar={require('./photo.png')}
+                title={item.name}
+                subtitle={item.description}
+              />
+            )}
+            keyExtractor= {item => item.name}
+            />
+          </List>
       </View>
     );
 	}
@@ -64,9 +82,9 @@ export default class PartenariatsActivity extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 4,
-    borderWidth: 4,
-    borderColor: '#d6d7da',
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1'
   },
 	centered_text: {
 		alignSelf: 'stretch',

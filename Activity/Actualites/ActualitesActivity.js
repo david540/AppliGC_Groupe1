@@ -5,7 +5,7 @@ import { NavigationActions } from 'react-navigation';
 /*
  * Exemple de 2ème activité
  */
-export default class BilletterieActivity extends React.Component {
+export default class ActualitesActivity extends React.Component {
 
   constructor(props){
     super(props);
@@ -23,13 +23,13 @@ export default class BilletterieActivity extends React.Component {
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
     return (
-      <View style={{width:_width,height:_height, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
+      <View style={{width:_width,height:_height, justifyContent: 'center', alignItems: 'center', backgroundColor: '#C6FFC6'}}>
         <Button
           onPress={() => { resetToScreen(navigation, "MainActivity")}}
           title = "Retour"
-          color = "red"
+          color = "#C6FFC6"
         />
-        <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l activité de billetterie</Text>
+        <Text style={[{color:'white'}, styles.centered_text]}>Vous voilà arrivé sur l activité des actualités</Text>
       </View>
     );
 	}
