@@ -5,7 +5,7 @@ import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
 import CVAActivity from './Activity/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
-import GeolocalisationActivity from './Activity/GeolocalisationActivity';
+import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
 import BilletterieActivity from './Activity/Billetterie/BilletterieActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import { getPartenariats } from './Partenariats/DataLoader';
 import { Constants } from 'expo';
 
 /*
@@ -13,6 +14,7 @@ export default class MainActivity extends React.Component {
  	  */
   	constructor(props){
     		super(props);
+        getPartenariats();
     		this.state = {
     		    navigation: props.navigation
     		}
@@ -40,7 +42,7 @@ export default class MainActivity extends React.Component {
         <View style={{width:_width,height:_height*4/10, flexDirection: 'row'}}>
           <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: "#13E500", borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 2, borderLeftWidth: 4}]}>
             <Button
-              onPress={() => { resetToScreen(navigation, "ActualitesActivity")}}
+              onPress={() => { goToScreen(navigation, "ActualitesActivity")}}
               title = "Actualités"
               color = "#13E500"
             />
@@ -48,7 +50,7 @@ export default class MainActivity extends React.Component {
           </View>
           <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF004', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 2, borderLeftWidth: 4}]}>
             <Button
-              onPress={() => { resetToScreen(navigation, "CVAActivity")}}
+              onPress={() => { goToScreen(navigation, "CVAActivity")}}
               title = "Accéder à votre CVA"
               color = "#FFF004"
             />
@@ -58,7 +60,7 @@ export default class MainActivity extends React.Component {
      		<View style={{width:_width,height:_height*4/10, flexDirection: 'row'}}>
           <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4848ee', borderBottomWidth: 2, borderTopWidth: 2, borderRightWidth: 2, borderLeftWidth: 4}]}>
          	  <Button
-      				onPress={() => { resetToScreen(navigation, "GeolocalisationActivity")}}
+      				onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}
       				title = "Maps"
               color = "#4848ee"
       			/>
@@ -66,7 +68,7 @@ export default class MainActivity extends React.Component {
         	</View>
           <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FF2020', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 4, borderLeftWidth: 2}]}>
             <Button
-              onPress={() => { resetToScreen(navigation, "PartenariatsActivity")}}
+              onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}
               title = "Partenaires"
               color = "#FF2020"
             />
@@ -128,4 +130,14 @@ function resetToScreen(navigation,screen,params=null){
 	});
 
 	navigation.dispatch(resetAction);
+}
+function goToScreen(navigation,screen,params=null){
+	var options = { routeName: screen };
+
+	if (params){
+		options['params'] = params;
+	}
+	const action = NavigationActions.navigate(options);
+
+	navigation.dispatch(action);
 }
