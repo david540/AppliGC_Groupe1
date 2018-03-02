@@ -10,8 +10,24 @@ export default class BilletterieActivity extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        navigation: props.navigation
+        navigation: props.navigation,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
+  }
+  ori_change = () => {
+      this.setState({
+        width: Dimensions.get('window').width, height: Dimensions.get('window').height
+      });
+  }
+
+  componentWillMount() {
+    Dimensions.addEventListener("change", this.ori_change);
+  }
+
+  componentWillUnmount() {
+    // Important to stop updating state after unmount
+    Dimensions.removeEventListener("change", this.ori_change);
   }
 
 	_onPressLearnMore(){

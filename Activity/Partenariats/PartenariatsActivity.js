@@ -21,8 +21,25 @@ export default class PartenariatsActivity extends React.Component {
         titleModal: '404 not found',
         descriptionModal: '404 not found',
         reductionsModal: '404 not found',
+        itemModal: null,
         urlImageModal: 'https://blog.sqlauthority.com/i/a/errorstop.png',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
+  }
+  ori_change = () => {
+      this.setState({
+        width: Dimensions.get('window').width, height: Dimensions.get('window').height
+      });
+  }
+
+  componentWillMount() {
+    Dimensions.addEventListener("change", this.ori_change);
+  }
+
+  componentWillUnmount() {
+    // Important to stop updating state after unmount
+    Dimensions.removeEventListener("change", this.ori_change);
   }
 
   refreshData(categoryid) {
@@ -32,7 +49,7 @@ export default class PartenariatsActivity extends React.Component {
   }
 
   openModal(item){
-    this.setState({descriptionModal: item.description_longue, reductionsModal: item.reductions, urlImageModal: item.photo, titleModal: item.name, modalVisible: true});
+    this.setState({itemModal: item, descriptionModal: item.description_longue, reductionsModal: item.reductions, urlImageModal: item.photo, titleModal: item.name, modalVisible: true});
   }
   closeModal(){
     this.setState({modalVisible: false});
@@ -56,8 +73,6 @@ export default class PartenariatsActivity extends React.Component {
         />
       );
     }
-    var _width = Dimensions.get('window').width; //full width
-    var _height = Dimensions.get('window').height; //full height
   /*  const partenaires = [
         {
         name: 'Amy',
@@ -77,7 +92,7 @@ export default class PartenariatsActivity extends React.Component {
       {text: 'OK', onPress: () => console.log('OK Pressed')}])*/
     return (
       <View style={styles.container}>
-        <View style = {{width: _width, height: _height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{color:'white'}}>Partenariats</Text>
           <View style = {{marginLeft: 20}}>
             <Button
@@ -123,11 +138,11 @@ export default class PartenariatsActivity extends React.Component {
             transparent={true}
         >
           <View style={styles.modalContainer}>
-            <View style= {{backgroundColor:'white', height: _height*6/7, width: _width*6/7, alignItems: 'center'}}>
+            <View style= {{backgroundColor:'white', height: this.state.height*6/7, width: this.state.width*6/7, alignItems: 'center'}}>
               <ScrollView contentContainerStyle={{alignItems: 'center', marginLeft: 20, marginRight: 20 }}>
                 <Text style={{fontSize:24, fontWeight: 'bold', color:'red', textDecorationLine: 'underline'}}>{this.state.titleModal}</Text>
                 <Image source={{uri: this.state.urlImageModal}}
-                 style={{width: _width < _height ? _width*5/7 : _height*5/7, height: _width < _height ? _width*5/7 : _height*5/7,
+                 style={{width: this.state.width*5/7, height: this.state.height*2/7,
                  resizeMode: Image.resizeMode.contain }} />
                 <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Description</Text>
                 <Text style= {{textAlign: 'justify'}}>{this.state.descriptionModal}</Text>
@@ -135,10 +150,17 @@ export default class PartenariatsActivity extends React.Component {
                 <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Réductions</Text>
                 <Text style= {{textAlign: 'justify'}}>{this.state.reductionsModal}</Text>
                 <Text></Text>
-                <Button
-                    onPress={() => this.closeModal()}
-                    title="Retour"
-                />
+                <View style = {{flex: 1, flexDirection: 'row'}}>
+                  <Button
+                      onPress={() => this.closeModal()}
+                      title="Retour"
+                  />
+                  <Text>    </Text>
+                  <Button
+                      onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}
+                      title="Map"
+                  />
+                </View>
                 <Text></Text>
               </ScrollView>
             </View>

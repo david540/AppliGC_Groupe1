@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, Modal, ScrollView, Image} from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { Constants } from 'expo';
 import MapView from 'react-native-maps';
@@ -18,18 +18,28 @@ export default class GeolocalisationActivity extends React.Component {
         idPartenaireChoisi: navParams === undefined ? -1:navParams.id,
         latitude: navParams === undefined ? 45.1878009:navParams.getLatitude(),
         longitude: navParams === undefined ? 5.7473533:navParams.getLongitude(),
+        partenaire_act: navParams === undefined ? partenaires[0]: navParams,
         myLatitude: 0,
         myLongitude: 0,
         latitudeDelta: navParams === undefined ? 0.1: 0.007,
         longitudeDelta: navParams === undefined ? 0.1: 0.007,
+        modalVisible: false,
         marker_act: null,
         error: null,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
   }
 
-	_onPressLearnMore(){
-		Alert.alert('TODO')
-	}
+  ori_change = () => {
+      this.setState({
+        width: Dimensions.get('window').width, height: Dimensions.get('window').height
+      });
+  }
+
+  componentWillMount() {
+    Dimensions.addEventListener("change", this.ori_change);
+  }
 
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(
@@ -47,12 +57,20 @@ export default class GeolocalisationActivity extends React.Component {
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
+    Dimensions.removeEventListener("change", this.ori_change);
   }
 
   componentDidUpdate() {
-      if(this.state.marker_act){
+      if(this.state.marker_act != undefined){
         this.state.marker_act.showCallout();
       }
+  }
+
+  openModal(partenaire){
+    this.setState({partenaire_act: partenaire, modalVisible: true});
+  }
+  closeModal(){
+    this.setState({modalVisible: false});
   }
 
 	render() {
@@ -72,7 +90,6 @@ export default class GeolocalisationActivity extends React.Component {
         >
         {this.state.partenaires.map(partenaire => {
           if(partenaire.id == this.state.idPartenaireChoisi){
-            console.log("Partenaire trouvé");
             return (
               <MapView.Marker
                 key={partenaire.id}
@@ -81,14 +98,10 @@ export default class GeolocalisationActivity extends React.Component {
                 title={partenaire.name}
                 description={partenaire.description}
           	    onCalloutPress={() => {
-                  Alert.alert(
-                    partenaire.name,
-                    partenaire.description_longue,
-                    [{text: 'OK', onPress: () => {}}])
+                    this.openModal(partenaire);
                   }
                 }
-                >
-              </MapView.Marker>
+              />
             )
           }else{
             return (
@@ -97,14 +110,11 @@ export default class GeolocalisationActivity extends React.Component {
                 coordinate={{longitude: partenaire.longitude, latitude: partenaire.latitude}}
                 title={partenaire.name}
                 description={partenaire.description}
-          	    onCalloutPress={() => {
-                  Alert.alert(
-                    partenaire.name,
-                    partenaire.description_longue,
-                    [{text: 'OK', onPress: () => {}}])
+                onCalloutPress={() => {
+                    this.openModal(partenaire);
                   }
-                }>
-              </MapView.Marker>
+                }
+              />
             )
           }
         }
@@ -121,6 +131,36 @@ export default class GeolocalisationActivity extends React.Component {
             />
           </View>
         </View>
+        <Modal
+            visible={this.state.modalVisible}
+            animationType={'fade'}
+            onRequestClose={() => this.closeModal()}
+            transparent={true}
+        >
+          <View style={styles.modalContainer}>
+            <View style= {{backgroundColor:'white', height: _height*6/7, width: _width*6/7, alignItems: 'center'}}>
+              <ScrollView contentContainerStyle={{alignItems: 'center', marginLeft: 20, marginRight: 20 }}>
+                <Text style={{fontSize:24, fontWeight: 'bold', color:'red', textDecorationLine: 'underline'}}>{this.state.partenaire_act.name}</Text>
+                <Image source={{uri: this.state.partenaire_act.photo}}
+                 style={{width: this.state.width*5/7, height: this.state.height*2/7,
+                 resizeMode: Image.resizeMode.contain }} />
+                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Description</Text>
+                <Text style= {{textAlign: 'justify'}}>{this.state.partenaire_act.description_longue}</Text>
+                <Text></Text>
+                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Réductions</Text>
+                <Text style= {{textAlign: 'justify'}}>{this.state.partenaire_act.reductions}</Text>
+                <Text></Text>
+                <View style = {{flex: 1, flexDirection: 'row'}}>
+                  <Button
+                      onPress={() => this.closeModal()}
+                      title="Retour"
+                  />
+                </View>
+                <Text></Text>
+              </ScrollView>
+            </View>
+          </View>
+        </Modal>
         {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
       </View>
     );
@@ -142,7 +182,18 @@ const styles = StyleSheet.create({
 		left: 0,
 		bottom: 0,
 		right: 0
-	}
+	},
+  modalContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(100,100,100,0.5)',
+  },
+  innerContainer: {
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
 });
 
 function resetToScreen(navigation,screen,params=null){

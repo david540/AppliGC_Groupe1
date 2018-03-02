@@ -3,7 +3,7 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
-import CVAActivity from './Activity/CVAActivity';
+import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
 import BilletterieActivity from './Activity/Billetterie/BilletterieActivity';
