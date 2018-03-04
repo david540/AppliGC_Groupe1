@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, Modal, ScrollView, Image} from 'react-native';
-import { NavigationActions } from 'react-navigation';
+import { StyleSheet, Text, View, Dimensions, Button, Modal, ScrollView, Image} from 'react-native';
+import { NavigationActions } from 'react-navigation'; // 1.3.0
 import { Constants } from 'expo';
-import MapView from 'react-native-maps';
+import MapView from 'react-native-maps'; // 0.20.1
 import { getPartenariats } from '../Partenariats/DataLoader';
 /*
  * Exemple de 2ème activité
@@ -12,9 +12,10 @@ export default class GeolocalisationActivity extends React.Component {
   constructor(props){
     super(props);
     const navParams = this.props.navigation.state.params;
+    const partenaires = getPartenariats();
     this.state = {
         navigation: props.navigation,
-        partenaires: getPartenariats(),
+        partenaires: partenaires,
         idPartenaireChoisi: navParams === undefined ? -1:navParams.id,
         latitude: navParams === undefined ? 45.1878009:navParams.getLatitude(),
         longitude: navParams === undefined ? 5.7473533:navParams.getLongitude(),
@@ -24,12 +25,13 @@ export default class GeolocalisationActivity extends React.Component {
         latitudeDelta: navParams === undefined ? 0.1: 0.007,
         longitudeDelta: navParams === undefined ? 0.1: 0.007,
         modalVisible: false,
-        marker_act: null,
         error: null,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     }
   }
+
+  marker_act = null;
 
   ori_change = () => {
       this.setState({
@@ -61,8 +63,8 @@ export default class GeolocalisationActivity extends React.Component {
   }
 
   componentDidUpdate() {
-      if(this.state.marker_act != undefined){
-        this.state.marker_act.showCallout();
+      if(this.marker_act != null){
+        this.marker_act.showCallout();
       }
   }
 
@@ -75,7 +77,6 @@ export default class GeolocalisationActivity extends React.Component {
 
 	render() {
 		//_MainActivity()
-    navigation = this.state.navigation;
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
     return (
@@ -93,7 +94,7 @@ export default class GeolocalisationActivity extends React.Component {
             return (
               <MapView.Marker
                 key={partenaire.id}
-                ref={marker => (this.state.marker_act = marker)}
+                ref={marker => (this.marker_act = marker)}
                 coordinate={{longitude: partenaire.longitude, latitude: partenaire.latitude}}
                 title={partenaire.name}
                 description={partenaire.description}
@@ -125,7 +126,7 @@ export default class GeolocalisationActivity extends React.Component {
           <Text style={{color:'white'}}>Geolocalisation</Text>
           <View style = {{marginLeft: 20}}>
             <Button
-              onPress={() => { resetToScreen(navigation, "MainActivity")}}
+              onPress={() => { resetToScreen(this.state.navigation, "MainActivity")}}
               title = "Retour"
               color = "grey"
             />
@@ -173,10 +174,6 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1'
   },
-	centered_text: {
-		alignSelf: 'stretch',
-		textAlign: 'center',
-	},
 	map: {
 		position: 'absolute',
 		left: 0,
@@ -189,10 +186,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(100,100,100,0.5)',
-  },
-  innerContainer: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
   },
 });
 

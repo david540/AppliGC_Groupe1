@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, Button, Alert, FlatList, Picker, RefreshControl, Modal, Image} from 'react-native';
-import { List, ListItem } from 'react-native-elements';
-import { NavigationActions } from 'react-navigation';
+import { StyleSheet, Text, View, ScrollView, Dimensions, Button, Alert, FlatList, Picker, Modal, Image} from 'react-native';
+import { List, ListItem } from 'react-native-elements'; // 0.19.0
+import { NavigationActions } from 'react-navigation'; // 1.3.0
 import { getPartenariats } from './DataLoader';
 import { Constants } from 'expo';
 import { PartenariatObject } from './PartenariatObject';
+import "@expo/vector-icons"; // 6.3.1
 /*
  * Exemple de 2ème activité
  */
@@ -44,8 +45,7 @@ export default class PartenariatsActivity extends React.Component {
 
   refreshData(categoryid) {
     this.setState({ refreshing: true });
-    this.state.partenaires = getPartenariats(categoryid);
-    this.setState({ partenaires: partenaires, refreshing: false });
+    this.setState({partenaires : getPartenariats(categoryid), refreshing: false});
   }
 
   openModal(item){
@@ -61,18 +61,8 @@ export default class PartenariatsActivity extends React.Component {
 
 	render() {
 		//_MainActivity()
-    navigation = this.state.navigation;
-    FlatListItemSeparator = () => {
-      return (
-        <View
-          style={{
-            height: 1,
-            width: "100%",
-            backgroundColor: "#607D8B",
-          }}
-        />
-      );
-    }
+    var navigation = this.state.navigation;
+
   /*  const partenaires = [
         {
         name: 'Amy',
@@ -104,7 +94,7 @@ export default class PartenariatsActivity extends React.Component {
         </View>
         <Picker
           selectedValue={this.state.category}
-          onValueChange={(itemValue, itemIndex) => {this.setState({category: itemValue, partenaires: getPartenariats(itemValue)})}}>
+          onValueChange={(itemValue) => {this.setState({category: itemValue, partenaires: getPartenariats(itemValue)})}}>
           <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.ALL]} value={PartenariatObject.ALL} />
           <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.RESTAURATION]} value={PartenariatObject.RESTAURATION} />
           <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.BAR]} value={PartenariatObject.BAR} />
@@ -177,20 +167,12 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1'
   },
-	centered_text: {
-		alignSelf: 'stretch',
-		textAlign: 'center',
-	},
   modalContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(100,100,100,0.5)',
-  },
-  innerContainer: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
   },
 });
 

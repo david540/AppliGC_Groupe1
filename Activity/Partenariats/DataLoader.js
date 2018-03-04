@@ -1,12 +1,11 @@
 import { PartenariatObject } from './PartenariatObject'
-import { Alert } from 'react-native';
 
-arrayOfPartenaires = [];
+var arrayOfPartenaires = [];
 
 export function setPartenariats(responseJson){
-   partenaires = responseJson.split("|||");
+   var partenaires = responseJson.split("|||");
    for(var i=1; i< partenaires.length; i++){
-     infos = partenaires[i].split("&&&");
+     var infos = partenaires[i].split("&&&");
      if(infos.length >=8)
         arrayOfPartenaires[i-1] = new PartenariatObject(infos[0], infos[2], infos[1], infos[3], infos[4], infos[5], infos[6], infos[7], infos[8]);
    }
@@ -34,7 +33,7 @@ export function getPartenariats(categoryid = PartenariatObject.ALL){
      return arrayOfPartenaires;
    }
    var arrayToReturn = [];
-   for(i=0; i<arrayOfPartenaires.length; i++ ){
+   for(var i=0; i<arrayOfPartenaires.length; i++ ){
      if(arrayOfPartenaires[i].is_in_category(categoryid)){
        arrayToReturn.push(arrayOfPartenaires[i]);
      }
