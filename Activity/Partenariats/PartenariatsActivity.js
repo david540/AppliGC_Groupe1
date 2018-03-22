@@ -1,11 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, Button, Alert, FlatList, Picker, Modal, Image} from 'react-native';
-import { List, ListItem } from 'react-native-elements'; // 0.19.0
-import { NavigationActions } from 'react-navigation'; // 1.3.0
+import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, FlatList, Picker, Modal, Image, TouchableOpacity} from 'react-native';
+import { List, ListItem } from 'react-native-elements'; // Version can be specified in package.json
+import { NavigationActions } from 'react-navigation'; // Version can be specified in package.json
 import { getPartenariats } from './DataLoader';
-import { Constants } from 'expo';
-import { PartenariatObject } from './PartenariatObject';
-import "@expo/vector-icons"; // 6.3.1
+import { PartenariatObject } from './PartenariatObject'; // Version can be specified in package.json
 /*
  * Exemple de 2ème activité
  */
@@ -82,15 +80,15 @@ export default class PartenariatsActivity extends React.Component {
       {text: 'OK', onPress: () => console.log('OK Pressed')}])*/
     return (
       <View style={styles.container}>
-        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white'}}>Partenariats</Text>
-          <View style = {{marginLeft: 20}}>
-            <Button
-              onPress={() => { resetToScreen(navigation, "MainActivity")}}
-              title = "Retour"
-              color = "grey"
-            />
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: 30}}>PARTENARIATS CVA</Text>
+          <View style = {{marginLeft: 80}}>
+            <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
+              <Text style = {{color:'white', marginTop: 30}}>Retour</Text>
+            </TouchableOpacity>
           </View>
+        </View>
+        <View style={styles.colorLimit}>
         </View>
         <Picker
           selectedValue={this.state.category}
@@ -127,29 +125,30 @@ export default class PartenariatsActivity extends React.Component {
             onRequestClose={() => this.closeModal()}
             transparent={true}
         >
-          <View style={styles.modalContainer}>
-            <View style= {{backgroundColor:'white', height: this.state.height*6/7, width: this.state.width*6/7, alignItems: 'center'}}>
-              <ScrollView contentContainerStyle={{alignItems: 'center', marginLeft: 20, marginRight: 20 }}>
-                <Text style={{fontSize:24, fontWeight: 'bold', color:'red', textDecorationLine: 'underline'}}>{this.state.titleModal}</Text>
+          <View style={styles.modalBackgroundContainer}>
+            <View style= {styles.modalContainer}>
+              <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
+                <View style={styles.modalTitleBox}>
+                  <Text style={styles.modalTitleText}>{this.state.titleModal}</Text>
+                </View>
+                <View style={styles.colorLimitModal}>
+                </View>
                 <Image source={{uri: this.state.urlImageModal}}
                  style={{width: this.state.width*5/7, height: this.state.height*2/7,
                  resizeMode: Image.resizeMode.contain }} />
-                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Description</Text>
-                <Text style= {{textAlign: 'justify'}}>{this.state.descriptionModal}</Text>
-                <Text></Text>
-                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Réductions</Text>
-                <Text style= {{textAlign: 'justify'}}>{this.state.reductionsModal}</Text>
-                <Text></Text>
-                <View style = {{flex: 1, flexDirection: 'row'}}>
-                  <Button
-                      onPress={() => this.closeModal()}
-                      title="Retour"
-                  />
-                  <Text>    </Text>
-                  <Button
-                      onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}
-                      title="Map"
-                  />
+                  <Text style= {styles.modalDescriptionTitleText}>{"\n"}Description</Text>
+                  <Text style= {styles.modalDescriptionReductionText}>{this.state.descriptionModal}{"\n \n"}</Text>
+                 <Text style= {styles.modalReductionTitleText}>Réduction CVA</Text>
+                 <Text style= {styles.modalDescriptionReductionText}>{this.state.reductionsModal}{"\n \n"}</Text>
+                <View style = {styles.modalButtons}>
+                  <TouchableOpacity onPress={() => this.closeModal()}>
+                      <Text style={{color:'grey'}}> RETOUR </Text>
+                  </TouchableOpacity>
+                  <View style={{marginLeft: 60}}>
+                  <TouchableOpacity onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}>
+                      <Text style={{color:'grey'}}> MAP </Text>
+                  </TouchableOpacity>
+                  </View>
                 </View>
                 <Text></Text>
               </ScrollView>
@@ -164,15 +163,60 @@ export default class PartenariatsActivity extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: 'white',
   },
-  modalContainer: {
+  colorLimit: {
+    backgroundColor: '#f7bd13',
+    height: Dimensions.get('window').height*1/80,
+    width: Dimensions.get('window').width,
+  },
+  colorLimitModal: { //limitation black
+    backgroundColor: '#0f0f0f',
+    height: Dimensions.get('window').height*1/200,
+    width: Dimensions.get('window').width*8/9,
+  },
+  modalBackgroundContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(100,100,100,0.5)',
+  },
+  modalContainer: {
+    backgroundColor:'white',
+    height: Dimensions.get('window').height*8/9,
+    width: Dimensions.get('window').width*8/9,
+    alignItems: 'center',
+  },
+  scrollViewModalContainer: {
+    alignItems: 'center',
+  },
+  modalTitleBox: {
+    backgroundColor: "#f7bd13",
+    width: Dimensions.get('window').width*8/9,
+  },
+  modalTitleText: {
+    fontSize:30,
+    fontWeight: '400',
+    color:'white',
+    textAlign: 'center',
+  },
+  modalDescriptionTitleText: {
+    fontWeight: '200',
+    fontSize: 24,
+  },
+  modalDescriptionReductionText: {
+    textAlign: 'justify',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  modalReductionTitleText: {
+    fontWeight: '200',
+    fontSize: 24,
+  },
+  modalButtons: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
 

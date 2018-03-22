@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getPartenariats } from './Partenariats/DataLoader';
-import { Constants } from 'expo';
+import { getEvents } from './Actualites/EventLoader';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 /*
  * Classe principale de la page d'accueil
@@ -12,9 +13,13 @@ export default class MainActivity extends React.Component {
  	 /*
  	  * Constructeur qui sert à la navigation entre les activités (faite dans App.js)
  	  */
+
+    statusBarHeight = getStatusBarHeight();
+
   	constructor(props){
     		super(props);
         getPartenariats();
+        getEvents();
     		this.state = {
     		    navigation: props.navigation,
             width: Dimensions.get('window').width,
@@ -40,9 +45,9 @@ export default class MainActivity extends React.Component {
 	/*
 	 * Fonction appelé lorsque l'on clique sur le bouton
 	 */
-	_onPressLearnMore(){
-		Alert.alert('TODO')
-	}
+  	_onPressLearnMore(){
+  		Alert.alert('TODO')
+  	}
 	/*
 	 * C'est le retour de cette fonction qui gere l'affichage
 	 * C'est une syntaxe de XML
@@ -50,7 +55,7 @@ export default class MainActivity extends React.Component {
 	render() {
    		navigation = this.state.navigation;
     	var _width = Dimensions.get('window').width; //full screen width
-    	var _height = Dimensions.get('window').height - Constants.statusBarHeight; //full screen height
+    	var _height = Dimensions.get('window').height - this.statusBarHeight; //full screen height
 	  	return (
      	<View style={styles.main_container}>
     		<View style = {[styles.container, {width: _width, height: _height/10, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}]}>
@@ -111,7 +116,6 @@ export default class MainActivity extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
       flex: 1,
-      paddingTop: Constants.statusBarHeight,
       backgroundColor: '#ecf0f1'
   },
   container: {

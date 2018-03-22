@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button, Modal, ScrollView, Image} from 'react-native';
 import { NavigationActions } from 'react-navigation'; // 1.3.0
-import { Constants } from 'expo';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import MapView from 'react-native-maps'; // 0.20.1
 import { getPartenariats } from '../Partenariats/DataLoader';
 /*
  * Exemple de 2ème activité
  */
 export default class GeolocalisationActivity extends React.Component {
-
   constructor(props){
     super(props);
     const navParams = this.props.navigation.state.params;
@@ -17,9 +16,10 @@ export default class GeolocalisationActivity extends React.Component {
         navigation: props.navigation,
         partenaires: partenaires,
         idPartenaireChoisi: navParams === undefined ? -1:navParams.id,
-        latitude: navParams === undefined ? 45.1878009:navParams.getLatitude(),
-        longitude: navParams === undefined ? 5.7473533:navParams.getLongitude(),
+        latitude: navParams === undefined ? 45.1878009:navParams.latitude,
+        longitude: navParams === undefined ? 5.7473533:navParams.longitude,
         partenaire_act: navParams === undefined ? partenaires[0]: navParams,
+        varMarginTop: 1,
         myLatitude: 0,
         myLongitude: 0,
         latitudeDelta: navParams === undefined ? 0.1: 0.007,
@@ -41,8 +41,21 @@ export default class GeolocalisationActivity extends React.Component {
 
   componentWillMount() {
     Dimensions.addEventListener("change", this.ori_change);
+     //Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a repaint
+    //setTimeout(()=>this.refreshMap(),500);
   }
 
+  refreshMap = () => {
+    this.setState({varMarginTop: 1-this.state.varMarginTop});
+    if(this.marker_act != null){
+      this.marker_act.showCallout();
+    }
+  }
+
+
+
+
+/*
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(
       (position) => {
@@ -56,16 +69,11 @@ export default class GeolocalisationActivity extends React.Component {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
     );
   }
+  */
 
   componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchId);
+    //navigator.geolocation.clearWatch(this.watchId);
     Dimensions.removeEventListener("change", this.ori_change);
-  }
-
-  componentDidUpdate() {
-      if(this.marker_act != null){
-        this.marker_act.showCallout();
-      }
   }
 
   openModal(partenaire){
@@ -80,8 +88,18 @@ export default class GeolocalisationActivity extends React.Component {
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
     return (
-      <View style={styles.container}>
-        <MapView style={[styles.map, {top: (Constants.statusBarHeight + _height/9)}]}
+      <View style={[styles.container, {marginTop: this.state.varMarginTop}]}>
+        <MapView style={[styles.map, {top: _height/9}]}
+          provider="google"
+          showsUserLocation={true}
+          showsMyLocationButton={true}
+          showsCompass={true}
+          followsUserLocation={true}
+          loadingEnabled={true}
+          toolbarEnabled={true}
+          zoomEnabled={true}
+          rotateEnabled={true}
+          onMapReady = {() => this.refreshMap()}
           initialRegion={{
              latitude: this.state.latitude,
              longitude: this.state.longitude,
@@ -108,6 +126,7 @@ export default class GeolocalisationActivity extends React.Component {
             return (
               <MapView.Marker
                 key={partenaire.id}
+                onPress= {() => this.setState({varMarginTop: 1-this.state.varMarginTop})}
                 coordinate={{longitude: partenaire.longitude, latitude: partenaire.latitude}}
                 title={partenaire.name}
                 description={partenaire.description}
@@ -171,13 +190,12 @@ export default class GeolocalisationActivity extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1'
   },
 	map: {
 		position: 'absolute',
 		left: 0,
-		bottom: 0,
+    bottom: 0,
 		right: 0
 	},
   modalContainer: {
