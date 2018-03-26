@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, ScrollView, Dimensions,  Alert, FlatList, Touch
 import { List } from 'react-native-elements'; // Version can be specified in package.json
 import { NavigationActions } from 'react-navigation';
 import { EventObject } from './EventObject';
+import { getEvents } from './EventLoader';
 import EventRenderInList from './EventRenderInList'; // Version can be specified in package.json
 
 /*
@@ -44,20 +45,7 @@ export default class ActualitesActivity extends React.Component {
 		//_MainActivity()
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
-    var _array = [];
-    _array.push(new EventObject(10, 3, 2018, 20, 0, 21, 0, "Soirée E3", "Description Soirée E3 aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaa", 0));
-    _array.push(new EventObject(10, 3, 2018, 19, 0, 22, 30, "Kfet Phelma", "Description Kfet Phelma", 1));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30, "Soirée Papet", "Description Soirée Papet", 2));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 3));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 4));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 5));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 6));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 7));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 8));
-    _array.push(new EventObject(11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet", 9));
-    _array.push(new EventObject(12, 3, 2018, 20, 0, 22, 30,"NOM assez", "Description Soirée Papet", 10));
-    _array.push(new EventObject(12, 3, 2018, 20, 0, 22, 30,"NOM trop long pour tenir sur une seule ligne", "Description Soirée Papet", 11));
-
+    var _array = getEvents();
 
     return (
       <View style={styles.container}>

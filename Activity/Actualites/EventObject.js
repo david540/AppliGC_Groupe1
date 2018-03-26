@@ -1,6 +1,6 @@
 export class EventObject {
 
-  constructor(jour, mois, annee, heureD, minuteD, heureF,minuteF, nomEvent, description, id) {
+  constructor(id, jour, mois, annee, heureD, minuteD, heureF,minuteF, nomEvent, description) {
     this.jour = jour;
     this.mois = mois;
     this.annee = annee;
@@ -17,6 +17,7 @@ export class EventObject {
     this.id = id;
     this.intDate = annee * 10000 + mois * 100 + jour;
     this.dateStylee = (jour >= 10 ? jour.toString():"0" + jour.toString()) + "/" + (mois >= 10 ? mois.toString():"0" + mois.toString()) + "/" + annee.toString();
+    this.dateToSort = (((annee * 13 + mois) * 32 + jour) * 25 + heureD) * 61 + minuteD;
   }
   getIntDate(){
     return this.intDate;
