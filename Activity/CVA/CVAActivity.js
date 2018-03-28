@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 /*
  * Exemple de 2ème activité
@@ -14,12 +15,12 @@ export default class CVAActivity extends React.Component {
         username: '',
         password: '',
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height - getStatusBarHeight(),
     }
   }
   ori_change = () => {
       this.setState({
-        width: Dimensions.get('window').width, height: Dimensions.get('window').height
+        width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
       });
   }
 
@@ -70,40 +71,52 @@ export default class CVAActivity extends React.Component {
     var _width = Dimensions.get('window').width; //full width
     var _height = Dimensions.get('window').height; //full height
     return (
-      <ScrollView style={{padding: 20}}>
-        <Text
-            style={{fontSize: 27}}>
-            Login
-        </Text>
-        <TextInput placeholder='Username'
-         maxLength = {20}
-         onChangeText={(text) => this.setState({username: text})}
-         value = {this.state.username}/>
-        <TextInput placeholder='Password'
-         maxLength = {20}
-         onChangeText={(text) => this.setState({password: text})}
-         value = {this.state.password}/>
-        <View style={{margin:7}} />
-        <Button
-          onPress={this._onPressSubmit}
-          title="Submit"
-        />
-      </ScrollView>
+      <View style={styles.container}>
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>MAPS</Text>
+          <View style = {{marginLeft: 80}}>
+            <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
+              <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
+        <ScrollView style={{padding: 20}}>
+          <Text
+              style={{fontSize: 27}}>
+              Login
+          </Text>
+          <TextInput placeholder='Username'
+           maxLength = {20}
+           onChangeText={(text) => this.setState({username: text})}
+           value = {this.state.username}/>
+          <TextInput placeholder='Password'
+           maxLength = {20}
+           onChangeText={(text) => this.setState({password: text})}
+           value = {this.state.password}/>
+          <View style={{margin:7}} />
+          <Button
+            onPress={this._onPressSubmit}
+            title="Submit"
+          />
+        </ScrollView>
+      </View>
     );
 	}
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-		centered_text: {
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+	centered_text: {
 		alignSelf: 'stretch',
 		textAlign: 'center',
 	},
+  colorLimit: {
+    backgroundColor: '#f7bd13',
+  },
 });
 
 function resetToScreen(navigation,screen,params=null){

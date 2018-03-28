@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getPartenariats } from './Partenariats/DataLoader';
-import { getEvents } from './Actualites/EventLoader';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { getEvents } from './Actualites/EventLoader';
+
 
 /*
  * Classe principale de la page d'accueil
@@ -13,9 +14,6 @@ export default class MainActivity extends React.Component {
  	 /*
  	  * Constructeur qui sert à la navigation entre les activités (faite dans App.js)
  	  */
-
-    statusBarHeight = getStatusBarHeight();
-
   	constructor(props){
     		super(props);
         getPartenariats();
@@ -23,13 +21,13 @@ export default class MainActivity extends React.Component {
     		this.state = {
     		    navigation: props.navigation,
             width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
+            height: Dimensions.get('window').height - getStatusBarHeight(),
         }
   	}
 
     ori_change = () => {
         this.setState({
-          width: Dimensions.get('window').width, height: Dimensions.get('window').height
+          width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
         });
     }
 
@@ -53,57 +51,43 @@ export default class MainActivity extends React.Component {
 	 * C'est une syntaxe de XML
 	 */
 	render() {
-   		navigation = this.state.navigation;
-    	var _width = Dimensions.get('window').width; //full screen width
-    	var _height = Dimensions.get('window').height - this.statusBarHeight; //full screen height
+      var navigation = this.state.navigation;
 	  	return (
      	<View style={styles.main_container}>
-    		<View style = {[styles.container, {width: _width, height: _height/10, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}]}>
-    			<Text style={{color:'white'}}>ACCUEIL</Text>
+    		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
+    			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
       	</View>
-        <View style={{width:_width,height:_height*4/10, flexDirection: 'row'}}>
-          <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: "#13E500", borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 2, borderLeftWidth: 4}]}>
-            <Button
-              onPress={() => { goToScreen(navigation, "ActualitesActivity")}}
-              title = "Actualités"
-              color = "#13E500"
-            />
-            <Text style={[{color:'white'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
-          </View>
-          <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF004', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 2, borderLeftWidth: 4}]}>
-            <Button
-              onPress={() => { goToScreen(navigation, "CVAActivity")}}
-              title = "Accéder à votre CVA"
-              color = "#FFF004"
-            />
-            <Text style={[{color:'white'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
-          </View>
+        <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+          <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#fcfcfc"}]}>
+                      <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
+                      <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
+            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"black"}]}>
+                      <Text style={{color:"#cccccc"}}> CVA </Text>
+                      <Text style={[{color:'grey'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-     		<View style={{width:_width,height:_height*4/10, flexDirection: 'row'}}>
-          <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4848ee', borderBottomWidth: 2, borderTopWidth: 2, borderRightWidth: 2, borderLeftWidth: 4}]}>
-         	  <Button
-      				onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}
-      				title = "Maps"
-              color = "#4848ee"
-      			/>
-          	<Text style={[{color:'white'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
-        	</View>
-          <View style={[styles.container, {width:_width/2,height:_height*4/10, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FF2020', borderBottomWidth: 2, borderTopWidth: 4, borderRightWidth: 4, borderLeftWidth: 2}]}>
-            <Button
-              onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}
-              title = "Partenaires"
-              color = "#FF2020"
-            />
-            <Text style={[{color:'white'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
-          </View>
+     		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+          <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
+            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
+                       <Text style={{color:'#a8a8a8'}}> MAPS </Text>
+          	           <Text style={[{color:'#d4d4d4'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+        	  </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
+            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#a8a8a8"}]}>
+                      <Text style={{color:'#f7bd13'}}> PARTENAIRES CVA </Text>
+                      <Text style={[{color:'#ecf0f1'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
+
+            </View>
+          </TouchableOpacity>
       	</View>
-    		<View style = {{width: _width, height: _height/10, flexDirection: 'row', backgroundColor: 'grey', justifyContent: 'center', alignItems: 'center'}}>
-    			<View style = {[styles.container, {width: _width/2, height: _height/10, justifyContent: 'center', alignItems: 'center', borderBottomWidth: 4, borderTopWidth: 2, borderRightWidth: 2, borderLeftWidth: 4}]}>
-            <Text style={[{color:'white'}, styles.centered_text]}>Billetterie</Text>
-          </View>
-    			<View style = {[styles.container, {width: _width/2, height: _height/10, justifyContent: 'center', alignItems: 'center', borderBottomWidth: 4, borderTopWidth: 2, borderRightWidth: 4, borderLeftWidth: 2}]}>
-            <Text style={[{color:'white'}, styles.centered_text]}>"+ d'infos"</Text>
-			    </View>
+    		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
+    		    <Text style={styles.bottomContainerText}>+ d'infos</Text>
       	</View>
       </View>
     );
@@ -118,23 +102,39 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#ecf0f1'
   },
-  container: {
-    borderColor: '#d6d7da',
-  },
 	centered_text: {
 		alignSelf: 'stretch',
 		textAlign: 'center',
 	},
+	titleContainerBox: {
+	  flexDirection: 'row',
+	  backgroundColor: '#0f0f0f',
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	},
+	titleContainerText: {
+	  color: 'white',
+	  fontSize: 24,
+	  fontWeight: '300',
+	  textAlign: 'center',
+	},
+	bottomContainerText: {
+	  color: 'white',
+	  fontSize: 14,
+	  fontWeight: '300',
+	  textAlign: 'center',
+	},
+	rowContainer: {
+	  flexDirection: 'row',
+	},
+	categoryContainer: {
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	},
 });
-
-const colors = {
-  colorActualites: '#13E500',
-  colorCVA: '#FFF004',
-  colorMaps: '#4848ee',
-  colorPartenaires: '#FF2020',
-}
 /*
  * Fonction utilisé par la classe de Navigation situé dans App.js
+ onPress={() => { goToScreen(navigation, "ActualitesActivity")}}
  */
 function resetToScreen(navigation,screen,params=null){
 	var options = { routeName: screen };

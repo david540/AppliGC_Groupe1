@@ -7,6 +7,8 @@ class EventRenderInList extends Component {
   constructor(props){
     super(props)
     this.conditionDate = EventRenderInList.currentDate == this.props.intDate;
+    if(!this.conditionDate)
+      EventRenderInList.currentDate = this.props.intDate;
     this.state = {
       modalVisible: false,
       firstElement: false,
@@ -26,7 +28,8 @@ class EventRenderInList extends Component {
   render() {
     if(this.conditionDate){//on affiche pas la date
       return (
-        <View style={styles.containerEvent}>
+        <View style={styles.main}>
+          <View style={{height: 1, backgroundColor: '#808080'}}/>
           <View style={styles.eventLine}>
          <Text style={styles.horaireBox}>
             {this.props.heureD}:{this.props.minuteD}  {this.props.heureF}:{this.props.minuteF}
@@ -60,9 +63,9 @@ class EventRenderInList extends Component {
         </View>
       )
     }else{ //si c'est une nouvelle date, on ajoute la date
-      EventRenderInList.currentDate = this.props.intDate;
       return (
         <View style={styles.main}>
+        <View style={{height: 1, backgroundColor: '#808080'}}/>
         <View style={styles.row}>
          <View style={styles.dateBox}>
           <Text style={styles.dateText}>
@@ -70,6 +73,7 @@ class EventRenderInList extends Component {
             {"\n"}
           </Text>
          </View>
+         <View style={{height: 1, backgroundColor: '#808080'}}/>
          <View style={styles.eventLine}>
          <Text style={styles.horaireBox}>
             {this.props.heureD}:{this.props.minuteD}  {this.props.heureF}:{this.props.minuteF}
@@ -148,8 +152,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: "#f7bd13",
     flex: 1,
-    marginTop: 10,
-    marginBottom: 10,
   },
   dateText: { //texte de la date
     flex: 1,
@@ -157,6 +159,8 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     textAlign: 'center',
     textAlignVertical: 'center',
+    marginTop: 10,
+    marginBottom: 10,
     color: '#9f4210',
     margin: 24,
   },

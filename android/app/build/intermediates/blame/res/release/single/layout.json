@@ -53,7 +53,7 @@
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/dev_loading_view.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/layout/dev_loading_view.xml"
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/layout/dev_loading_view.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/select_dialog_item_material.xml",
@@ -77,7 +77,7 @@
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/redbox_item_title.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/layout/redbox_item_title.xml"
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/layout/redbox_item_title.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/abc_list_menu_item_icon.xml",
@@ -89,7 +89,7 @@
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/redbox_view.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/layout/redbox_view.xml"
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/layout/redbox_view.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/abc_activity_chooser_view.xml",
@@ -121,7 +121,7 @@
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/fps_view.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/layout/fps_view.xml"
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/layout/fps_view.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
@@ -133,7 +133,7 @@
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/redbox_item_frame.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.3/res/layout/redbox_item_frame.xml"
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/layout/redbox_item_frame.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/release/layout/abc_action_mode_bar.xml",

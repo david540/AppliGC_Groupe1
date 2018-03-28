@@ -4,6 +4,7 @@ import { List, ListItem } from 'react-native-elements'; // Version can be specif
 import { NavigationActions } from 'react-navigation'; // Version can be specified in package.json
 import { getPartenariats } from './DataLoader';
 import { PartenariatObject } from './PartenariatObject'; // Version can be specified in package.json
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 /*
  * Exemple de 2ème activité
  */
@@ -23,12 +24,12 @@ export default class PartenariatsActivity extends React.Component {
         itemModal: null,
         urlImageModal: 'https://blog.sqlauthority.com/i/a/errorstop.png',
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height - getStatusBarHeight(),
     }
   }
   ori_change = () => {
       this.setState({
-        width: Dimensions.get('window').width, height: Dimensions.get('window').height
+        width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
       });
   }
 
@@ -61,35 +62,17 @@ export default class PartenariatsActivity extends React.Component {
 		//_MainActivity()
     var navigation = this.state.navigation;
 
-  /*  const partenaires = [
-        {
-        name: 'Amy',
-        subtitle: 'Fille'
-      },
-        {
-        name: 'Sam',
-        subtitle: 'Gars'
-        }
-
-    ];*/
-  //  [Tous,Restauration,Bar,Ski,Magasin,Loisirs,Autres]
-  /*  Alert.alert(
-      item.name,
-      item.description_longue,
-      [{text: 'Map', onPress: () => goToScreen(navigation, "GeolocalisationActivity", item)},
-      {text: 'OK', onPress: () => console.log('OK Pressed')}])*/
     return (
       <View style={styles.container}>
         <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: 30}}>PARTENARIATS CVA</Text>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>PARTENARIATS CVA</Text>
           <View style = {{marginLeft: 80}}>
             <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
-              <Text style = {{color:'white', marginTop: 30}}>Retour</Text>
+              <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.colorLimit}>
-        </View>
+        <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
         <Picker
           selectedValue={this.state.category}
           onValueChange={(itemValue) => {this.setState({category: itemValue, partenaires: getPartenariats(itemValue)})}}>
@@ -126,12 +109,12 @@ export default class PartenariatsActivity extends React.Component {
             transparent={true}
         >
           <View style={styles.modalBackgroundContainer}>
-            <View style= {styles.modalContainer}>
+            <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
               <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
-                <View style={styles.modalTitleBox}>
+                <View style={[styles.modalTitleBox, {width: Dimensions.get('window').width*8/9}]}>
                   <Text style={styles.modalTitleText}>{this.state.titleModal}</Text>
                 </View>
-                <View style={styles.colorLimitModal}>
+                <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}>
                 </View>
                 <Image source={{uri: this.state.urlImageModal}}
                  style={{width: this.state.width*5/7, height: this.state.height*2/7,
@@ -167,13 +150,9 @@ const styles = StyleSheet.create({
   },
   colorLimit: {
     backgroundColor: '#f7bd13',
-    height: Dimensions.get('window').height*1/80,
-    width: Dimensions.get('window').width,
   },
   colorLimitModal: { //limitation black
     backgroundColor: '#0f0f0f',
-    height: Dimensions.get('window').height*1/200,
-    width: Dimensions.get('window').width*8/9,
   },
   modalBackgroundContainer: {
     flex: 1,
@@ -184,8 +163,6 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor:'white',
-    height: Dimensions.get('window').height*8/9,
-    width: Dimensions.get('window').width*8/9,
     alignItems: 'center',
   },
   scrollViewModalContainer: {
@@ -193,7 +170,6 @@ const styles = StyleSheet.create({
   },
   modalTitleBox: {
     backgroundColor: "#f7bd13",
-    width: Dimensions.get('window').width*8/9,
   },
   modalTitleText: {
     fontSize:30,
