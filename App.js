@@ -6,7 +6,7 @@ import TestActivity from './Activity/TestActivity';
 import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
-import BilletterieActivity from './Activity/Billetterie/BilletterieActivity';
+import InfoActivity from './Activity/Informations/InfoActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
 
 const App = StackNavigator({
@@ -15,7 +15,7 @@ const App = StackNavigator({
     CVAActivity: {screen:CVAActivity},
     PartenariatsActivity: {screen:PartenariatsActivity},
     GeolocalisationActivity: {screen:GeolocalisationActivity},
-    BilletterieActivity: {screen:BilletterieActivity},
+    InfoActivity: {screen:InfoActivity},
     ActualitesActivity: {screen:ActualitesActivity}
 },
 {

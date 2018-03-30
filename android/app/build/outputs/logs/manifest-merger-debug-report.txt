@@ -12,7 +12,7 @@ ADDED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidMan
 	xmlns:tools
 		ADDED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidManifest.xml:2:5-51
 	android:versionCode
-		ADDED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidManifest.xml:4:5-29
+		ADDED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidManifest.xml:4:5-28
 		INJECTED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/AndroidManifest.xml
 	xmlns:android

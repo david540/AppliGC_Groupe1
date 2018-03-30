@@ -132,29 +132,30 @@ export default class GeolocalisationActivity extends React.Component {
             onRequestClose={() => this.closeModal()}
             transparent={true}
         >
-          <View style={styles.modalContainer}>
-            <View style= {{backgroundColor:'white', height: this.state.height*6/7, width: this.state.width*6/7, alignItems: 'center'}}>
-              <ScrollView contentContainerStyle={{alignItems: 'center', marginLeft: 20, marginRight: 20 }}>
-                <Text style={{fontSize:24, fontWeight: 'bold', color:'red', textDecorationLine: 'underline'}}>{this.state.partenaire_act.name}</Text>
-                <Image source={{uri: this.state.partenaire_act.photo}}
-                 style={{width: this.state.width*5/7, height: this.state.height*2/7,
-                 resizeMode: Image.resizeMode.contain }} />
-                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Description</Text>
-                <Text style= {{textAlign: 'justify'}}>{this.state.partenaire_act.description_longue}</Text>
-                <Text></Text>
-                <Text style= {{fontWeight: 'bold', textDecorationLine: 'underline'}}>Réductions</Text>
-                <Text style= {{textAlign: 'justify'}}>{this.state.partenaire_act.reductions}</Text>
-                <Text></Text>
-                <View style = {{flex: 1, flexDirection: 'row'}}>
-                  <Button
-                      onPress={() => this.closeModal()}
-                      title="Retour"
-                  />
-                </View>
-                <Text></Text>
-              </ScrollView>
-            </View>
+        <View style={styles.modalBackgroundContainer}>
+          <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
+            <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
+              <View style={[styles.modalTitleBox, {width: Dimensions.get('window').width*8/9}]}>
+                <Text style={styles.modalTitleText}>{this.state.partenaire_act.name}</Text>
+              </View>
+              <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}>
+              </View>
+              <Image source={{uri: this.state.partenaire_act.photo}}
+               style={{width: this.state.width*5/7, height: this.state.height*2/7,
+               resizeMode: Image.resizeMode.contain }} />
+                <Text style= {styles.modalDescriptionTitleText}>{"\n"}Description</Text>
+                <Text style= {styles.modalDescriptionReductionText}>{this.state.partenaire_act.description_longue}{"\n \n"}</Text>
+               <Text style= {styles.modalReductionTitleText}>Réduction CVA</Text>
+               <Text style= {styles.modalDescriptionReductionText}>{this.state.partenaire_act.reductions}{"\n \n"}</Text>
+              <View style = {styles.modalButtons}>
+                <TouchableOpacity onPress={() => this.closeModal()}>
+                    <Text style={{color:'grey'}}> RETOUR </Text>
+                </TouchableOpacity>
+              </View>
+              <Text></Text>
+            </ScrollView>
           </View>
+        </View>
         </Modal>
         {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
       </View>
@@ -176,12 +177,48 @@ const styles = StyleSheet.create({
   colorLimit: {
     backgroundColor: '#f7bd13',
   },
-  modalContainer: {
+  colorLimitModal: { //limitation black
+    backgroundColor: '#0f0f0f',
+  },
+  modalBackgroundContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(100,100,100,0.5)',
+  },
+  modalContainer: {
+    backgroundColor:'white',
+    alignItems: 'center',
+  },
+  scrollViewModalContainer: {
+    alignItems: 'center',
+  },
+  modalTitleBox: {
+    backgroundColor: "#f7bd13",
+  },
+  modalTitleText: {
+    fontSize:30,
+    fontWeight: '400',
+    color:'white',
+    textAlign: 'center',
+  },
+  modalDescriptionTitleText: {
+    fontWeight: '200',
+    fontSize: 24,
+  },
+  modalDescriptionReductionText: {
+    textAlign: 'justify',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  modalReductionTitleText: {
+    fontWeight: '200',
+    fontSize: 24,
+  },
+  modalButtons: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
 

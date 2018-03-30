@@ -74,8 +74,8 @@ export default class MainActivity extends React.Component {
      		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
           <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
             <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
-                       <Text style={{color:'#a8a8a8'}}> MAPS </Text>
-          	           <Text style={[{color:'#d4d4d4'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+                       <Text style={{color:'#868686'}}> MAPS </Text>
+          	           <Text style={[{color:'#a3a3a3'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
         	  </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
@@ -86,16 +86,19 @@ export default class MainActivity extends React.Component {
             </View>
           </TouchableOpacity>
       	</View>
-    		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
-    		    <Text style={styles.bottomContainerText}>+ d'infos</Text>
-      	</View>
+
+        <TouchableOpacity onPress={() => { goToScreen(navigation, "InfoActivity")}}>
+      		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
+      		    <Text style={styles.bottomContainerText}>+ d'infos</Text>
+        	</View>
+        </TouchableOpacity>
       </View>
     );
 	}
 }
 
 /*
- * On peut définir ici tout les styles que l'on utilise, pour plus de lisibilité
+ * On peut définir ici tous les styles que l'on utilise, pour plus de lisibilité
  */
 const styles = StyleSheet.create({
   main_container: {

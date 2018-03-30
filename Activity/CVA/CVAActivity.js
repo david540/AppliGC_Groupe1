@@ -73,7 +73,7 @@ export default class CVAActivity extends React.Component {
     return (
       <View style={styles.container}>
         <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>MAPS</Text>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>CVA</Text>
           <View style = {{marginLeft: 80}}>
             <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
               <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
