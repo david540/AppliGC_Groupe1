@@ -7,6 +7,7 @@ import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
 import InfoActivity from './Activity/Informations/InfoActivity';
+import CarteActivity from './Activity/CVA/CarteActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
 
 const App = StackNavigator({
@@ -16,7 +17,8 @@ const App = StackNavigator({
     PartenariatsActivity: {screen:PartenariatsActivity},
     GeolocalisationActivity: {screen:GeolocalisationActivity},
     InfoActivity: {screen:InfoActivity},
-    ActualitesActivity: {screen:ActualitesActivity}
+    ActualitesActivity: {screen:ActualitesActivity},
+    CarteActivity: {screen:CarteActivity}
 },
 {
     initialRouteName: 'MainActivity',

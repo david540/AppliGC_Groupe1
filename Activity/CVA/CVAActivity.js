@@ -33,37 +33,68 @@ export default class CVAActivity extends React.Component {
     Dimensions.removeEventListener("change", this.ori_change);
   }
 
-  _nbCharLim = 20;
+  _nbCharLim = 10;
   _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect") };
 
 	_onPressLearnMore(){
 		Alert.alert('TODO')
 	}
-  _validChar(lettre){
-    return lettre.length === 1 && lettre.match(/[a-z]/i);
+  _validCharOrNum(lettre){
+    return lettre.length === 1 && (lettre.match(/[a-z]/i) || lettre.match(/[0-9]/));
   }
   _validNum(lettre){
     return lettre.length === 1 && lettre.match(/[0-9]/);
   }
+
+  _setInfos(responseJson){
+    var infos = responseJson.split("&&&");
+    this._goToCarte(infos[0], infos[1], infos[2], infos[3]);
+  }
+
+  _goToCarte(num_cva, nom, prenom, username){
+    this.props.navigation.navigate('CarteActivity', {
+                num_cva: num_cva,
+                nom: nom,
+                prenom: prenom,
+                username: username,
+              });
+  }
+
   _onPressSubmit = () => {
-    console.log("Connexion" + this.state.username + " " + this.state.password);
     if(this.state.username.length > this._nbCharLim || this.state.password > this._nbCharLim){
       this._authFailed();
       return;
     }
     for(var i=0; i < this.state.username.length; i++){
-      if( ! this._validNum(this.state.username.charAt(i)) ){
+      if( ! this._validCharOrNum(this.state.username.charAt(i)) ){
         this._authFailed();
         return;
       }
     }
     for(var i=0; i < this.state.password.length; i++){
-      if( ! this._validChar(this.state.password.charAt(i)) ){
+      if( ! this._validCharOrNum(this.state.password.charAt(i))) {
         this._authFailed();
         return;
       }
     }
-  }
+    fetch('http://inprod.grandcercle.org/appli/logincva.php', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      })
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        this._setInfos(responseJson);
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+
 
 	render() {
 		//_MainActivity()
@@ -92,6 +123,7 @@ export default class CVAActivity extends React.Component {
            value = {this.state.username}/>
           <TextInput placeholder='Password'
            maxLength = {20}
+           secureTextEntry={true}
            onChangeText={(text) => this.setState({password: text})}
            value = {this.state.password}/>
           <View style={{margin:7}} />
