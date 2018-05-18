@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
@@ -16,6 +16,7 @@ export default class CVAActivity extends React.Component {
         password: '',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
+        newAccount: false,
     }
   }
   ori_change = () => {
@@ -48,16 +49,62 @@ export default class CVAActivity extends React.Component {
 
   _setInfos(responseJson){
     var infos = responseJson.split("&&&");
-    this._goToCarte(infos[0], infos[1], infos[2], infos[3]);
+    if(infos[0] && infos[1] && infos[2] && infos[3] && infos[4]){
+      if(infos[5]){
+        try {
+          AsyncStorage.setItem('code', infos[5]).then(Alert.alert("Ce téléphone est maintenant lié à votre compte CVA"));
+        } catch (error) {
+          Alert.alert("Erreur, veuillez contacter Gean Claude pour lui signaler l'erreur numéro 661, merci :)")
+        }
+      }
+      this._goToCarte(infos[0], infos[1], infos[2], infos[3], infos[4]);
+    }
+    else if(infos[0] && infos[1]){
+      Alert.alert("Veuillez attendre avant de lier un nouveau téléphone sur ce compte CVA");
+    }
+    else{
+      this._authFailed();
+    }
   }
 
-  _goToCarte(num_cva, nom, prenom, username){
+  _goToCarte(num_cva, nom, prenom, ecole, username){
     this.props.navigation.navigate('CarteActivity', {
                 num_cva: num_cva,
                 nom: nom,
                 prenom: prenom,
+                ecole: ecole,
                 username: username,
               });
+  }
+  _connexion_automatique(_code){
+    AsyncStorage.getItem('username').then((username) => {this.state.username = username;
+    AsyncStorage.getItem('password').then((password) => {this.state.password = password;
+    //Alert.alert(password);
+    if(username != '' && password != ''){
+      this._connexion(_code)
+    }else{
+      this.setState({newAccount: true});
+    }
+  });});
+  }
+  _connexion = (_code) =>{
+    fetch('http://inprod.grandcercle.org/appli/logincva.php', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        code: _code,
+      })
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        this._setInfos(responseJson);
+      }).catch((error) => {
+        console.error(error);
+      });
   }
 
   _onPressSubmit = () => {
@@ -77,64 +124,74 @@ export default class CVAActivity extends React.Component {
         return;
       }
     }
-    fetch('http://inprod.grandcercle.org/appli/logincva.php', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-      })
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        this._setInfos(responseJson);
-      }).catch((error) => {
-        console.error(error);
-      });
+    var code = 0;
+    try {
+      AsyncStorage.setItem('username', this.state.username);
+      AsyncStorage.setItem('password', this.state.password);
+      AsyncStorage.getItem('code').then((code) => this._connexion(code));
+    } catch (error) {
+      //Il faudrait une demande de validation du choix de lier ce compte à ce téléphone
+      Alert.alert("Nouvelle connexion");
+      _connexion(0);
     }
+  }
 
+  componentDidMount() {
+    AsyncStorage.getItem('code').then((code) => {
+      if(code){
+        this._connexion_automatique(code);
+      }else{
+        this.setState({newAccount : true});
+      }
+    });
+  }
 
-	render() {
-		//_MainActivity()
-    navigation = this.state.navigation;
-    var _width = Dimensions.get('window').width; //full width
-    var _height = Dimensions.get('window').height; //full height
-    return (
-      <View style={styles.container}>
-        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>CVA</Text>
-          <View style = {{marginLeft: 80}}>
-            <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
-              <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
-        <ScrollView style={{padding: 20}}>
-          <Text
-              style={{fontSize: 27}}>
-              Login
-          </Text>
-          <TextInput placeholder='Username'
-           maxLength = {20}
-           onChangeText={(text) => this.setState({username: text})}
-           value = {this.state.username}/>
-          <TextInput placeholder='Password'
-           maxLength = {20}
-           secureTextEntry={true}
-           onChangeText={(text) => this.setState({password: text})}
-           value = {this.state.password}/>
-          <View style={{margin:7}} />
-          <Button
-            onPress={this._onPressSubmit}
-            title="Submit"
-          />
-        </ScrollView>
-      </View>
-    );
-	}
+ render() {
+ 		//_MainActivity()
+    if (!this.state.newAccount) {
+       return (<ActivityIndicator style = {{marginTop: 150}}/>)
+    }else{
+       return (
+         <View style={styles.container}>
+           <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>CVA</Text>
+             <View style = {{marginLeft: 150}}>
+               <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
+                 <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
+               </TouchableOpacity>
+             </View>
+           </View>
+           <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
+           <ScrollView style={{padding: 20}}>
+             <Text
+                 style={[{fontSize: 27 }, styles.centered_text]}>
+                 Voir sa CVA personnelle {"\n\n\n"}
+             </Text>
+             <TextInput placeholder='   Numéro de CVA'
+             style = {{borderWidth:1}}
+              maxLength = {20}
+              underlineColorAndroid="transparent"
+              onChangeText={(text) => this.setState({username: text})}
+              value = {this.state.username}/>
+             <TextInput placeholder='   Mot de passe'
+              style = {{borderWidth:1, marginTop:10}}
+              maxLength = {20}
+              secureTextEntry={true}
+              autocorrect={false}
+              underlineColorAndroid="transparent"
+              onChangeText={(text) => this.setState({password: text})}
+              value = {this.state.password}/>
+             <View style={{margin:7}} />
+             <Button
+               onPress={this._onPressSubmit}
+               title="Me connecter"
+               color="black"
+             />
+           </ScrollView>
+         </View>
+       );
+   	}
+  }
 }
 
 const styles = StyleSheet.create({

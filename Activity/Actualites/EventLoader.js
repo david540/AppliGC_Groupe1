@@ -11,17 +11,28 @@ function compare(a,b) {
   return 0;
 }
 
+function getIntDate(year, month, day, heure, minutes){
+  return (((year * 13 + month) * 32 + day) * 25 + heure) * 61 + minutes;
+}
+
 export function setEvents(responseJson){
    var currentDate = new Date();
+   //var currentIntDate = (((currentDate.getFullYear() * 13 + currentDate.getMonth() + 1) * 32 + currentDate.getDay()) * 25 + currentDate.getHours()) * 61 + currentDate.getMinutes();
+   //Alert.alert(currentDate.getFullYear().toString()+ " "+ (currentDate.getMonth() + 1).toString() + " " + currentDate.getDate().toString()+ " " +currentDate.getHours().toString() + " " + currentDate.getMinutes().toString())
+   var currentIntDate = getIntDate(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate(), currentDate.getHours(), currentDate.getMinutes());
+
    var events = responseJson.split("|||");
    var compteur = 0;
    for(var i=1; i< events.length; i++){
      var infos = events[i].split("&&&");
      //this.date = new Date(this.annee, this.mois - 1, this.jour + 1, 7, 0, 0, 0);
-     date = new Date(infos[3], infos[2] - 1, infos[1] + 1, 7, 0, 0, 0);
-     if(infos.length >= 7 && date > currentDate){
+
+     intDate = getIntDate(Number(infos[3]), Number(infos[2]), Number(infos[1]) + 1, 7, 0);
+//     Alert.alert(intDate.toString() + " " + currentIntDate.toString());
+
+     if(infos.length >= 7 && intDate > currentIntDate){
+       //Alert.alert(intDate.toString() +" " + currentIntDate.toString())
         arrayOfEvents[compteur++] = new EventObject(infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6], infos[7], infos[8], infos[9]);
-        Alert.alert(date.getDay()+" "+currentDate.getDay() )
       }
    }
    arrayOfEvents.sort(compare);

@@ -42,17 +42,8 @@ export default class ActualitesActivity extends React.Component {
 	}
 
 	render() {
-		//_MainActivity()
     var _array = getEvents();
-    /*_array.push(new EventObject(0, 10, 3, 2018, 20, 0, 21, 0, "Soirée E3", "Description Soirée E3 aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaa"));
-    _array.push(new EventObject(1, 10, 3, 2018, 19, 0, 22, 30, "Kfet Phelma", "Description Kfet Phelma"));
-    _array.push(new EventObject(2, 11, 3, 2018, 20, 0, 22, 30, "Soirée Papet", "Description Soirée Papet"));
-    _array.push(new EventObject(3, 11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet"));
-    _array.push(new EventObject(4, 11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet"));
-    _array.push(new EventObject(5, 11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet"));
-    _array.push(new EventObject(6, 11, 3, 2018, 20, 0, 22, 30,"Soirée Papet", "Description Soirée Papet"));*/
-
-
+    
     return (
       <View style={[styles.container, {width: this.state.width, height: this.state.height}]}>
         <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
