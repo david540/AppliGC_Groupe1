@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTPackagerConnection.m \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBundleURLProvider.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/Yoga.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/../Libraries/WebSocket/RCTReconnectingWebSocket.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/../Libraries/WebSocket/RCTSRWebSocket.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTPackagerConnectionBridgeConfig.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTPackagerConnectionConfig.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTReloadPackagerMethod.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTPackagerClient.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/DevSupport/RCTSamplingProfilerPackagerMethod.h

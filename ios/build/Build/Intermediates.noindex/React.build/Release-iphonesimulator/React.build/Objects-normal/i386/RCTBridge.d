@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridge.m \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/Yoga.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/ios/build/Build/Products/Release-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTJSEnvironment.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTModuleData.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/loutera/Desktop/gcAppIOS/GCApp/node_modules/react-native/React/Base/RCTReloadCommand.h
