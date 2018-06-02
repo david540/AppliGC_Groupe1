@@ -21,7 +21,7 @@ export default class MainActivity extends React.Component {
     		this.state = {
     		    navigation: props.navigation,
             width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height - getStatusBarHeight(),
+            height: Dimensions.get('window').height,
         }
   	}
 
