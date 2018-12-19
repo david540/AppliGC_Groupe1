@@ -1,14 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { getPartenariats } from './Partenariats/DataLoader';
+import { getPartenariats, partenairesAreLoaded } from './Partenariats/DataLoader';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { getEvents } from './Actualites/EventLoader';
+import { getAssosAndEvents, eventsAreLoaded } from './Actualites/AssoLoader'
 
 
 /*
  * Classe principale de la page d'accueil
  */
+
+
+
 export default class MainActivity extends React.Component {
 
  	 /*
@@ -16,14 +20,21 @@ export default class MainActivity extends React.Component {
  	  */
   	constructor(props){
     		super(props);
-        getPartenariats();
-        getEvents();
     		this.state = {
     		    navigation: props.navigation,
             width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
+            height: Dimensions.get('window').height - getStatusBarHeight(),
+            loadisnotdone: !this.checkIfInfosAreLoaded()
         }
   	}
+
+    checkIfInfosAreLoaded(){
+      return eventsAreLoaded() && partenairesAreLoaded();
+    }
+
+    loadForPartenariatsAndEvents(){
+      getPartenariats(() => {getAssosAndEvents(() => {this.setState({loadisnotdone: false})})});
+    }
 
     ori_change = () => {
         this.setState({
@@ -40,6 +51,10 @@ export default class MainActivity extends React.Component {
       Dimensions.removeEventListener("change", this.ori_change);
     }
 
+    componentDidMount(){
+      if(!this.checkIfInfosAreLoaded())
+        this.loadForPartenariatsAndEvents();
+    }
 	/*
 	 * Fonction appelé lorsque l'on clique sur le bouton
 	 */
@@ -53,47 +68,56 @@ export default class MainActivity extends React.Component {
 	render() {
       var navigation = this.state.navigation;
 	  	return (
-     	<View style={styles.main_container}>
-    		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
-    			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
-      	</View>
-        <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
-          <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
-            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#fcfcfc"}]}>
-                      <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
-                      <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
+        this.state.loadisnotdone
+        ? (
+          <View style={{justifyContent: 'center', alignItems: 'center', height:this.state.height, width:this.state.width}}>
+            <Text>Chargement des informations</Text>
+            <Text>Vérifiez que vous êtes connecté à internet</Text>
+            <ActivityIndicator/>
+          </View>
+        )
+        : (
+         	<View style={styles.main_container}>
+        		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
+        			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
+          	</View>
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#fcfcfc"}]}>
+                          <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"black"}]}>
+                          <Text style={{color:"#cccccc"}}> CVA </Text>
+                          <Text style={[{color:'grey'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
-            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"black"}]}>
-                      <Text style={{color:"#cccccc"}}> CVA </Text>
-                      <Text style={[{color:'grey'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-     		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
-          <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
-            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
-                       <Text style={{color:'#868686'}}> MAPS </Text>
-          	           <Text style={[{color:'#a3a3a3'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
-        	  </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
-            <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#a8a8a8"}]}>
-                      <Text style={{color:'#f7bd13'}}> PARTENAIRES CVA </Text>
-                      <Text style={[{color:'#ecf0f1'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
+         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
+                           <Text style={{color:'#868686'}}> MAPS </Text>
+              	           <Text style={[{color:'#a3a3a3'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+            	  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#a8a8a8"}]}>
+                          <Text style={{color:'#f7bd13'}}> PARTENAIRES CVA </Text>
+                          <Text style={[{color:'#ecf0f1'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
 
-            </View>
-          </TouchableOpacity>
-      	</View>
+                </View>
+              </TouchableOpacity>
+          	</View>
 
-        <TouchableOpacity onPress={() => { goToScreen(navigation, "InfoActivity")}}>
-      		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
-      		    <Text style={styles.bottomContainerText}>+ d'infos</Text>
+            <TouchableOpacity onPress={() => { goToScreen(navigation, "InfoActivity")}}>
+          		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
+          		    <Text style={styles.bottomContainerText}>+ d infos</Text>
         	</View>
         </TouchableOpacity>
       </View>
-    );
+  )  );
 	}
 }
 

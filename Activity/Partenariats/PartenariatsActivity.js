@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, FlatList, Picker, Modal, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, ActivityIndicator, FlatList, Picker, Modal, Image, TouchableOpacity} from 'react-native';
 import { List, ListItem } from 'react-native-elements'; // Version can be specified in package.json
 import { NavigationActions } from 'react-navigation'; // Version can be specified in package.json
-import { getPartenariats } from './DataLoader';
+import { getPartenariats, partenairesAreLoaded } from './DataLoader';
 import { PartenariatObject } from './PartenariatObject'; // Version can be specified in package.json
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 /*
@@ -16,7 +16,7 @@ export default class PartenariatsActivity extends React.Component {
     this.state = {
         navigation: props.navigation,
         category: PartenariatObject.ALL,
-        partenaires: getPartenariats(PartenariatObject.ALL),
+        partenaires: [],
         modalVisible: false,
         titleModal: '404 not found',
         descriptionModal: '404 not found',
@@ -25,6 +25,7 @@ export default class PartenariatsActivity extends React.Component {
         urlImageModal: 'https://blog.sqlauthority.com/i/a/errorstop.png',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
+        loadisnotdone: partenairesAreLoaded()
     }
   }
   ori_change = () => {
@@ -41,7 +42,9 @@ export default class PartenariatsActivity extends React.Component {
     // Important to stop updating state after unmount
     Dimensions.removeEventListener("change", this.ori_change);
   }
-
+  componentDidMount(){
+    this.setState({partenaires:getPartenariats(() => this.setState({loadisnotdone: false}), PartenariatObject.ALL)});
+  }
   refreshData(categoryid) {
     this.setState({ refreshing: true });
     this.setState({partenaires : getPartenariats(categoryid), refreshing: false});
@@ -63,6 +66,15 @@ export default class PartenariatsActivity extends React.Component {
     var navigation = this.state.navigation;
 
     return (
+      this.state.loadisnotdone
+      ? (
+        <View style={{justifyContent: 'center', alignItems: 'center', height:this.state.height, width:this.state.width}}>
+          <Text>Chargement des informations</Text>
+          <Text>Vérifiez que vous êtes connecté à internet</Text>
+          <ActivityIndicator/>
+        </View>
+      )
+      : (
       <View style={styles.container}>
         <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>PARTENARIATS CVA</Text>
@@ -73,35 +85,39 @@ export default class PartenariatsActivity extends React.Component {
           </View>
         </View>
         <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
-        <Picker
-          selectedValue={this.state.category}
-          onValueChange={(itemValue) => {this.setState({category: itemValue, partenaires: getPartenariats(itemValue)})}}>
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.ALL]} value={PartenariatObject.ALL} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.RESTAURATION]} value={PartenariatObject.RESTAURATION} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.BAR]} value={PartenariatObject.BAR} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.SKI]} value={PartenariatObject.SKI} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.MAGASIN]} value={PartenariatObject.MAGASIN} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.LOISIRS]} value={PartenariatObject.LOISIRS} />
-          <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.AUTRES]} value={PartenariatObject.AUTRES} />
-        </Picker>
-        <List>
-          <FlatList
-          data={this.state.partenaires}
-          renderItem={({item}) => (
-            <ListItem
-              button onPress={() => {
-                this.openModal(item);
-              }}
-              roundAvatar
-              avatar={{uri:item.photo}}
-              title={item.name}
-              subtitle={item.description}
-              badge={{ value: PartenariatObject.CATEGORIES_NAME[item.category]}}
+        <View style={{height: this.state.height*1/9}}>
+          <Picker
+            selectedValue={this.state.category}
+            onValueChange={(itemValue) => {this.setState({category: itemValue, partenaires: getPartenariats(() => {}, itemValue)})}}>
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.ALL]} value={PartenariatObject.ALL} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.RESTAURATION]} value={PartenariatObject.RESTAURATION} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.BAR]} value={PartenariatObject.BAR} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.SKI]} value={PartenariatObject.SKI} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.MAGASIN]} value={PartenariatObject.MAGASIN} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.LOISIRS]} value={PartenariatObject.LOISIRS} />
+            <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.AUTRES]} value={PartenariatObject.AUTRES} />
+          </Picker>
+        </View>
+        <View style={{height:this.state.height*(1 - 2/9 - 1/80)}}>
+          <List>
+            <FlatList
+            data={this.state.partenaires}
+            renderItem={({item}) => (
+              <ListItem
+                button onPress={() => {
+                  this.openModal(item);
+                }}
+                roundAvatar
+                avatar={{uri:item.photo}}
+                title={item.name}
+                subtitle={item.description}
+                badge={{ value: PartenariatObject.CATEGORIES_NAME[item.category]}}
+              />
+            )}
+            keyExtractor= {item => item.id}
             />
-          )}
-          keyExtractor= {item => item.id}
-          />
-        </List>
+          </List>
+        </View>
         <Modal
             visible={this.state.modalVisible}
             animationType={'fade'}
@@ -111,11 +127,10 @@ export default class PartenariatsActivity extends React.Component {
           <View style={styles.modalBackgroundContainer}>
             <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
               <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
-                <View style={[styles.modalTitleBox, {width: Dimensions.get('window').width*8/9}]}>
+                <View style={[styles.modalTitleBox, {width: this.state.width*8/9}]}>
                   <Text style={styles.modalTitleText}>{this.state.titleModal}</Text>
                 </View>
-                <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}>
-                </View>
+                <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}/>
                 <Image source={{uri: this.state.urlImageModal}}
                  style={{width: this.state.width*5/7, height: this.state.height*2/7,
                  resizeMode: Image.resizeMode.contain }} />
@@ -128,9 +143,9 @@ export default class PartenariatsActivity extends React.Component {
                       <Text style={{color:'grey'}}> RETOUR </Text>
                   </TouchableOpacity>
                   <View style={{marginLeft: 60}}>
-                  <TouchableOpacity onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}>
-                      <Text style={{color:'grey'}}> MAP </Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}>
+                        <Text style={{color:'grey'}}> MAP </Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
                 <Text></Text>
@@ -139,7 +154,8 @@ export default class PartenariatsActivity extends React.Component {
           </View>
         </Modal>
       </View>
-    );
+    )
+  );
 	}
 }
 

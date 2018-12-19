@@ -15,9 +15,9 @@ export class EventObject {
     this.dayName = EventObject.days[d.getDay()];
     this.monthName = EventObject.months[mois - 1];
     this.id = id;
-    this.intDate = annee * 10000 + mois * 100 + jour;
+    this.intDate = Number(annee) * 10000 + Number(mois) * 100 + Number(jour);
     this.dateStylee = (jour >= 10 ? jour.toString():"0" + jour.toString()) + "/" + (mois >= 10 ? mois.toString():"0" + mois.toString()) + "/" + annee.toString();
-    this.dateToSort = (((annee * 13 + mois) * 32 + jour) * 25 + heureD) * 61 + minuteD;
+    this.dateToSort = (((Number(annee) * 13 + Number(mois)) * 32 + Number(jour)) * 25 + Number(heureD)) * 61 + Number(minuteD);
   }
   getIntDate(){
     return this.intDate;

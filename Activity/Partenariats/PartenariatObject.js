@@ -17,7 +17,7 @@ export class PartenariatObject {
     this.name = name;
     this.category = category;
     this.description = description;
-    this.description_longue = description_longue != ""?description_longue:description;
+    this.description_longue = description_longue //!== ""?description_longue:description;
     this.readMore = false;
     this.photo= photo;
     this.latitude = parseFloat(latitude);

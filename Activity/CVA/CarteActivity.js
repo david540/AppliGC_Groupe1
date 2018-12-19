@@ -49,7 +49,7 @@ export default class CarteActivity extends React.Component {
 	render() {
 		//_MainActivity()
     //const { params } = this.props.navigation.state;
-    const params = {num_cva: 1, nom: "Dupont", prenom: "Jean", ecole: "Ense3"};
+    const params = {num_cva: this.props.navigation.state.params.num_cva, nom: this.props.navigation.state.params.nom, prenom: this.props.navigation.state.params.prenom, ecole: this.props.navigation.state.params.ecole};
     const backgroundColorVar = this.animatedValue.interpolate(
     {
         inputRange: [ 0, 0.2, 0.4, 0.6, 0.8, 1 ],

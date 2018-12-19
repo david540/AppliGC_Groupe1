@@ -56,7 +56,7 @@ export default class InfoActivity extends React.Component {
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
                   <Text style={styles.descriptionText}>
-                    Le Grand Cercle, c'est un des plus importants BDE de France, qui regroupe toutes les écoles de Grenoble INP, soit au total près de 6000 étudiants. Il est là pour créer une harmonie et une cohésion entre les six écoles d'ingénieurs et la prépa intégrée. de l'intégration à la diplomation des étudiants, le Grand Cercle a pour mission de proposer tout au long de l'année, grâce à son équipe de 60 étudiants ultra-motivés, des événements de grande ampleur, allant d'événements sportifs à son prestigieux Gala qui regroupe pas moins de 1600 personnes.{"\n\n"}
+                    Le Grand Cercle, c'est un des plus importants BDE de France, qui regroupe toutes les écoles de Grenoble INP, soit au total près de 6000 étudiants. Il est là pour créer une harmonie et une cohésion entre les six écoles d'ingénieurs et la prépa intégrée. De l'intégration à la diplomation des étudiants, le Grand Cercle a pour mission de proposer tout au long de l'année, grâce à son équipe de 60 étudiants ultra-motivés, des événements de grande ampleur, allant d'événements sportifs à son prestigieux Gala qui regroupe pas moins de 1600 personnes.{"\n\n"}
                     Le Grand Cercle propose également des réductions avantageuses et pertinentes chez ses partenaires, de sorte que les étudiants puissent profiter pleinement de leurs années à Grenoble grâce à la CVA.{"\n\n"}
                     Enfin, grâce à des actions concrètes, le GC sensibilise les étudiants aux questions du développement durable et de la prévention à travers chacun de ses événements.
                   </Text>
@@ -71,7 +71,7 @@ export default class InfoActivity extends React.Component {
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
                   <Text style={styles.descriptionText}>
-                    L'application est conçue pour aider les étudiants au quotidien. Elle regroupe non seulement l'ensemble des événements organisés par les cercles et associations de Grenoble INP, permettant aux étudiants de voir ce qui est organisé pour eux et parfois par eux durant leurs années d'études en école d'ingénieur.{"\n"}Elle apporte aussi de la visibilité aux nombreux partenaires qui nous suivent chaque année dans le cadre de la CVA, en les géolocalisant dans la ville, en détaillant les partenariats négociés avec eux.{"\n"}Elle permet également aux étudiants ayant acheté la CVA de pouvoir la dématérialiser.
+                    L'application est conçue pour aider les étudiants au quotidien. Elle regroupe l'ensemble des événements organisés par les cercles et associations de Grenoble INP, permettant aux étudiants de voir ce qui est organisé pour eux et parfois par eux durant leurs années d'études en école d'ingénieur.{"\n"}Elle apporte aussi de la visibilité aux nombreux partenaires qui nous suivent chaque année dans le cadre de la CVA, en les géolocalisant dans la ville, en détaillant les partenariats négociés avec eux.{"\n"}Elle permet également aux étudiants ayant acheté la CVA de pouvoir la dématérialiser.
                   </Text>
             </View>
             <Text>

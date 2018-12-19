@@ -16,6 +16,7 @@ function getIntDate(year, month, day, heure, minutes){
 }
 
 export function setEvents(responseJson){
+    arrayOfEvents = [];
    var currentDate = new Date();
    //var currentIntDate = (((currentDate.getFullYear() * 13 + currentDate.getMonth() + 1) * 32 + currentDate.getDay()) * 25 + currentDate.getHours()) * 61 + currentDate.getMinutes();
    //Alert.alert(currentDate.getFullYear().toString()+ " "+ (currentDate.getMonth() + 1).toString() + " " + currentDate.getDate().toString()+ " " +currentDate.getHours().toString() + " " + currentDate.getMinutes().toString())
@@ -38,9 +39,9 @@ export function setEvents(responseJson){
    arrayOfEvents.sort(compare);
 }
 
-export function getEvents(reload = false){
+export function getEvents(stringOfChoixAssos, fonctionThen = () => {}, reload = false){
   if(arrayOfEvents.length === 0 || reload){
-    fetch('http://inprod.grandcercle.org/appli/get_event_info.php', { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+    fetch('http://inprod.grandcercle.org/appli/get_event_info.php?assos='+stringOfChoixAssos, { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',
@@ -48,13 +49,11 @@ export function getEvents(reload = false){
       },
     }).then((response) => response.json())
          .then((responseJson) => {
-
            setEvents(decodeURIComponent(escape(responseJson)));
-
+           fonctionThen();
      }).catch((error) => {
        console.error(error);
      });
-
    }
    return arrayOfEvents;
 }

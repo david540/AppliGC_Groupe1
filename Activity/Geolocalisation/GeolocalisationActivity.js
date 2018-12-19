@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Modal, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Modal, ScrollView, Image, TouchableOpacity, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation'; // 1.3.0
 import MapView from 'react-native-maps'; // 0.20.1
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { getPartenariats } from '../Partenariats/DataLoader';
+import { getPointsDinterets } from '../Partenariats/DataLoader';
 /*
  * Exemple de 2ème activité
  */
@@ -11,14 +12,22 @@ export default class GeolocalisationActivity extends React.Component {
   constructor(props){
     super(props);
     const navParams = this.props.navigation.state.params;
-    const partenaires = getPartenariats();
+    const partenaires = getPartenariats(() => {});
+    const pointsDinterets = getPointsDinterets();
+    const listePoints = [];
+    for(var i = 0; i < partenaires.length; i++){
+      listePoints.push(partenaires[i]);
+    }
+    for(var i = 0; i < pointsDinterets.length; i++){
+      listePoints.push(pointsDinterets[i]);
+    }
     this.state = {
         navigation: props.navigation,
-        partenaires: partenaires,
+        partenaires: listePoints,
         idPartenaireChoisi: navParams === undefined ? -1:navParams.id,
         latitude: navParams === undefined ? 45.1878009:navParams.latitude,
         longitude: navParams === undefined ? 5.7473533:navParams.longitude,
-        partenaire_act: navParams === undefined ? partenaires[0]: navParams,
+        partenaire_act: navParams === undefined ? listePoints[0]: navParams,
         varMarginTop: 1,
         myLatitude: 0,
         myLongitude: 0,
@@ -101,6 +110,7 @@ export default class GeolocalisationActivity extends React.Component {
                 coordinate={{longitude: partenaire.longitude, latitude: partenaire.latitude}}
                 title={partenaire.name}
                 description={partenaire.description}
+                pinColor={partenaire.category == 0 ? 'green':'red'}
           	    onCalloutPress={() => {
                     this.openModal(partenaire);
                   }
@@ -115,6 +125,7 @@ export default class GeolocalisationActivity extends React.Component {
                 coordinate={{longitude: partenaire.longitude, latitude: partenaire.latitude}}
                 title={partenaire.name}
                 description={partenaire.description}
+                pinColor={partenaire.category == 0 ? 'green':'red'}
                 onCalloutPress={() => {
                     this.openModal(partenaire);
                   }
@@ -135,7 +146,7 @@ export default class GeolocalisationActivity extends React.Component {
         <View style={styles.modalBackgroundContainer}>
           <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
             <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
-              <View style={[styles.modalTitleBox, {width: Dimensions.get('window').width*8/9}]}>
+              <View style={[styles.modalTitleBox, {width: this.state.width*8/9}]}>
                 <Text style={styles.modalTitleText}>{this.state.partenaire_act.name}</Text>
               </View>
               <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}>
@@ -145,8 +156,18 @@ export default class GeolocalisationActivity extends React.Component {
                resizeMode: Image.resizeMode.contain }} />
                 <Text style= {styles.modalDescriptionTitleText}>{"\n"}Description</Text>
                 <Text style= {styles.modalDescriptionReductionText}>{this.state.partenaire_act.description_longue}{"\n \n"}</Text>
-               <Text style= {styles.modalReductionTitleText}>Réduction CVA</Text>
-               <Text style= {styles.modalDescriptionReductionText}>{this.state.partenaire_act.reductions}{"\n \n"}</Text>
+                {this.state.partenaire_act.category > 0 ?
+                  (
+                    <View style={{width:this.state.width*8/9, alignItems: 'center'}}>
+                      <Text style= {styles.modalReductionTitleText}>Réduction CVA</Text>
+                      <Text style= {styles.modalDescriptionReductionText}>{this.state.partenaire_act.reductions}{"\n \n"}</Text>
+                    </View>
+                  )
+                :
+                  (
+                    <View/>
+                  )
+                }
               <View style = {styles.modalButtons}>
                 <TouchableOpacity onPress={() => this.closeModal()}>
                     <Text style={{color:'grey'}}> RETOUR </Text>

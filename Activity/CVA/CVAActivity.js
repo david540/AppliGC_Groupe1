@@ -35,7 +35,8 @@ export default class CVAActivity extends React.Component {
   }
 
   _nbCharLim = 10;
-  _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect") };
+  _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect");
+                        this.setState({newAccount: true});};
 
 	_onPressLearnMore(){
 		Alert.alert('TODO')
@@ -52,15 +53,16 @@ export default class CVAActivity extends React.Component {
     if(infos[0] && infos[1] && infos[2] && infos[3] && infos[4]){
       if(infos[5]){
         try {
-          AsyncStorage.setItem('code', infos[5]).then(Alert.alert("Ce téléphone est maintenant lié à votre compte CVA"));
+          AsyncStorage.setItem('code', infos[5]).then(Alert.alert("Ce téléphone est maintenant lié\n à votre compte CVA"));
         } catch (error) {
-          Alert.alert("Erreur, veuillez contacter Gean Claude pour lui signaler l'erreur numéro 661, merci :)")
+          Alert.alert("Erreur, veuillez contacter Gean Claude\n pour lui signaler l'erreur numéro 661, merci :)")
         }
       }
       this._goToCarte(infos[0], infos[1], infos[2], infos[3], infos[4]);
     }
     else if(infos[0] && infos[1]){
-      Alert.alert("Veuillez attendre avant de lier un nouveau téléphone sur ce compte CVA");
+      Alert.alert("Veuillez attendre avant de lier\n un nouveau téléphone sur ce compte CVA");
+      this.setState({newAccount:true});
     }
     else{
       this._authFailed();
@@ -132,7 +134,7 @@ export default class CVAActivity extends React.Component {
     } catch (error) {
       //Il faudrait une demande de validation du choix de lier ce compte à ce téléphone
       Alert.alert("Nouvelle connexion");
-      _connexion(0);
+      this._connexion(1);
     }
   }
 
