@@ -1,4 +1,4 @@
-# Premier lancement de l'appli:
+# Premier lancement de l'appli (groupe 1):
 
 * Dans le dossier où se situe App.js : 
 * Installer npm : https://doc.ubuntu-fr.org/nodejs
