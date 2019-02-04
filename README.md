@@ -3,7 +3,8 @@
 * mkdir ProjetGC
 * cd ProjetGC
 * git init
-* git pull https://github.com/david540/AppliGC_Groupe1
+* git remote add origin https://github.com/david540/AppliGC_Groupe1/
+* git pull origin master
 * Installer npm : https://doc.ubuntu-fr.org/nodejs
 * npm install -g react-native-cli
 * En fonction de l'output, faire export PATH=... comme indiqué dans https://stackoverflow.com/questions/37189081/react-native-command-not-found. NE PAS FAIRE react-native init
