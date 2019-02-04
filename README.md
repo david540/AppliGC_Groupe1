@@ -1,3 +1,5 @@
+Premier commit : pas fait
+
 # Premier lancement de l'appli (groupe 1):
 
 * mkdir ProjetGC
