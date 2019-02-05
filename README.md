@@ -14,7 +14,8 @@ Premier commit : pas fait
 * Sur votre android: Activer le mode développeur https://www.androidpit.fr/comment-activer-options-developpeurs-android
 * Dans les parametres/Options pour développeurs: Cocher Débogage USB 
 * télécharger le SDK (pas android studio) https://developer.android.com/studio/
-* Vous pouvez maintenant lancer l'appli sur votre smartphone avec la commande : react-native run-android
+* Mettre la location du sdk dans RunAndroid.sh
+* Vous pouvez maintenant lancer l'appli sur votre smartphone avec la commande : ./RunAndroid.sh
 
 
 # Cahier des charges : Extensions de l’application du Grand Cercle
