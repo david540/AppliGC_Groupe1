@@ -5,7 +5,7 @@ Premier commit : pas fait
 * mkdir ProjetGC
 * cd ProjetGC
 * git init
-* git remote add origin https://github.com/david540/AppliGC_Groupe1/
+* git remote add origin https://github.com/david540/AppliGC_Groupe2/
 * git pull origin master
 * Installer npm : https://doc.ubuntu-fr.org/nodejs
 * npm install -g react-native-cli
@@ -14,9 +14,10 @@ Premier commit : pas fait
 * Sur votre android: Activer le mode développeur https://www.androidpit.fr/comment-activer-options-developpeurs-android
 * Dans les parametres/Options pour développeurs: Cocher Débogage USB 
 * télécharger le SDK (pas android studio) https://developer.android.com/studio/
-* Mettre la location du sdk dans RunAndroid.sh
-* Vous pouvez maintenant lancer l'appli sur votre smartphone avec la commande : ./RunAndroid.sh
-
+* Mettre la location du sdk dans android/local.properties
+* Se placer dans le dossier tools/ du SDK et entrer la commande : ./android update sdk --no-ui --all --filter platform-tools,android-25,extra-android-m2repository 
+* Vous pouvez maintenant lancer l'appli sur votre smartphone avec la commande : react-native run-android
+* La compilation marche mais l'application ne se lance pas : react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 
 # Cahier des charges : Extensions de l’application du Grand Cercle
 Membre d’équipe : Anas Louter (MMIS), Guillaume Caulier (MMIS), Thomas Ludeau (MMIS)
