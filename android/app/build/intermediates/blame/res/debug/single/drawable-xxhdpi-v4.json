@@ -1,19 +1,19 @@
 [
     {
-        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
-    },
-    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
@@ -22,6 +22,46 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
@@ -44,31 +84,15 @@
         "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
-    },
-    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
-    },
-    {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
-    },
-    {
-        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/googleg_standard_color_18.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
         "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
-    },
-    {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
-        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     }
 ]

@@ -3,579 +3,246 @@
 
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="046c67a90dec48951ff5b05c68ac06c6127cdee5">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_13907777c53f10cc0fb58968ab8f33694a00d1dc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_5beeb8912dcd4452e6f6ea155c4d148b1b9663b3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-10.2.4_f7bf88c9b3a92cb5180c48bf6e8f8c94fcad32d6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_98812228f703ce71bb3117f3327717d6d49a3f9b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f768861356f4cd8613da447181fd15c3f584f52d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.50.4_4661d43dbc1c179e1f62142e6cc9deb00215a1a3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_4d9a49b403b144089a42fcc6ac5e57f5bdcf5d89.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_4affb81063f572b27be06245c1063ba0f88db2ed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f768861356f4cd8613da447181fd15c3f584f52d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.50.4_b32663de95a752ae41b07962353a095928514a96.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.4_d528bfeddd9f4529611a33a5753f9a3d5d54c6eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.4_e194348fddcdc9ec172d1c3070a5c6049a9bad3b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_95bfb908f09b071526297fff3a1d130844e7f73f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.4_bb53a108c2317b65692ee94f74086b1101b66c41.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_72b79ee56fecd565709ec2280f5ba1b45aa64b52.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_6f5e9425e304e26267471f56237c009811ead40f.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_699b672dfb10a6e34b53ac8e597a66c98b52f648.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_ef3c2a74ce4258870a114793457cd92de9d3fb39.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_bbe3a36888b4a4eb45d4c4ea806262209de69dd1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_87c2808d55438e59289a41765047d41c37cc01c1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_20fd87800e0dc7548ce0f209d16d072e9d4baf91.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.4_e8dd7b8831da8d4b06f0bb5905ef38576276b0f9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_73a57548663a62a49b72faa17bffe86bd88f0e31.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_b2ebbb332b47b506c87805eda8dba7c3ebb93d86.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_3ad0f1761e9b856c98d1f5cf0426fa41af34dcc4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_2869b64d23d6f3dc15a34e64637b299f82f9ff2c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_81acec5b5ac527d347d3dbbe7d57c499705c73b7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.4_c05258f10e9673d9b85028af118c49f8ad069367.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/GCApp/react-native-vector-icons/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="831b3db16e18758486b4466538d2dfd6df075c4a">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-vector-icons-unspecified_d7516611434c44461f923d722b6e5c3ffe13e16e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_320161c9f2ab706753e6d53d81746b5a765b815b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_a71fa7730e49ee9e8263c00ed8506b86a3f9787d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_aa8d512826461a7e58b4b7deb26d84ddece15bc1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.4_43cba277d6ba58f5dba886bcfe514b05b83fff8e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_3d6eac661113fd4de4af21014b17cf5bbfb15fc9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_89ac19be61a696c1c72a19edfa419b3833759dc6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_0c4f80dd6670cd260dbce89256fe501ff79d5a05.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_1c4dc625e1b265b2ac8e93fb21610c907e4a2177.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_2a4594f63f6cab47b1dd9b78672cc23ebfeafbe1.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_1ebca91114f3e060d99e4cb6ff02afc29fc347b0.jar" />
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_091e736bc5f4f2325f4a3bf5e5a307964ade749f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_75e9e0767181fb01ccad18c04665866936090617.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_83766de47614f10c37fd156e250681d97edc400c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_f42880fe05ed041458c2edf07f0bbab5e8d001e0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f768861356f4cd8613da447181fd15c3f584f52d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.50.4_36a7a09b90be456946002fed8733d27d74075752.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.4_b0ccee37217a1b9f9d5cba15e380c3b043c203e2.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.4_1143b3d5e896004c528da0b2b413bbdd88278ada.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/GCApp/react-native-vector-icons/unspecified/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.51.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="831b3db16e18758486b4466538d2dfd6df075c4a">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-vector-icons-unspecified_942aa7d14d420e77fdb454565ddfbfa5fd2a4e15.jar" />
+        sha1="99941aaaf86dc5e525cd9208c2f7c9a624f4f004">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.51.0_b06e889f4cfb30a53037e8f81a9eafe888f87bbb.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/GCApp/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_f46278c10a98c189d4adf1bf4c05523a5fc0e56d.jar" />
+        sha1="1f32d248ec690bd1fca0677ed1ce2fcc993ec0b9">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-vector-icons-unspecified_92c1634966e57220c44606735db0c8f939d4c4bd.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="046c67a90dec48951ff5b05c68ac06c6127cdee5">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_be9516276a52d8f97f07080a78991c98024115ba.jar" />
+        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.4_7dbdccc3b6b2615ced606615e472ed33241a4311.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.51.0/jars/libs/infer-annotations-4.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_2bd3edfdc4c280c5040295780025baebf10b9e5d.jar" />
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_8839b700e078704010812705019e9636daf9740f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_152cd21e4313de788b7b8e776d9f9200cd35dd50.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_f02efab7bdefb83e6cb567f5b5f5908ae1c9c7ae.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.4_02a99c81ab0d84e6d9cefbe4e292d8eb1876a2a2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.4_efa148b6611e5338f6c8720db7d25d603f0435a5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_6253030f1cf6f8d8c3160d337dc5768046a1fda8.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_6298a16b99f0037a7669acc5d8b1249f20d24aa9.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-10.2.4_ad812dfb70feee233b014b61a00376b03208af9b.jar" />
+        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.4_cea875bfd4ac3406d3a080c6543b124c4b69bbdf.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-10.2.4_98e7cfc5c451562b3f78e7dcc59b54e1bea65241.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_2edda1542de53b8c6b19d812fc1e440d8e228796.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_6444e35016b8b7975f88fa7eb1aff941f60b8d5f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="2fb407d76f571b1bc5023516bf4c048ff9f16144">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_4d35285d4081252c93b7461a6682588e3c984779.jar" />
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_3e78748fce1c8848089d7de771c9477ff09085ae.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_3cb110b17d00336e5a292f9331726fa6b8b71638.jar" />
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_02056902bee7a5981e4616c58e2fcd662851060a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_77c6efc07ede5a472c559d2d1954ee50e966997e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_1bbfd4f483a8ebf78499b4701f02d0328c6d89c0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_6c4b1147cbfd24d43adff058a7c85357581aef16.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_09a9bd63ad876a1a31fb4979c6dc3febf2b2381f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_fe26edb8968fc618b7b59a49863d109f06bb9fa3.jar" />
+        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-10.2.4_13f22a6b280f5eb25d2ab0136369107af36d40e9.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_acf9cb4e6cb133e9400098bea6a21000e7f27328.jar" />
+        sha1="06610ac12bc616c2ab4d2c3baa39f406ae91a3da">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_4bbe85bfc96ff05b575370a7efda628d3e40b7df.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_0f0bad77050a2e1197d7fd11b27c33d72998bd5f.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_0e8dd0e501804ee1ac8cc7fce5d87969ac999b8b.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_f2b4e96593867d2bea2c67d4895c8981a61580ed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_bb48b5196dc154f0c970b486e8ff42b2bcef3de1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_f62f5cd41133d1ee26ef18887cbe33c6b376a9ef.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
-        <dex dex="/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_a813251123e3a00421b6a60e0114a2bddd33aea6.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_3d95e7a3d08197c44c0ac9905fb8cffa6d354e94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_107c9ca16db7bb216ee47a1d41fbe048a775cfb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_2f9f7889c2803ef6b334a4e75497f0f42950beb4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_0aaefad2a3b6e4a724d87470e1191994c2be1532.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_40169647776d9ac0ccc5c5570d337e5685572880.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_d08ed455ee7a42909200f853fc50099ef50fa958.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_6d3440fdb3a5e815bec810fea1e2511f1919a08f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_342bba93cb81b144551da7e41e38db8b8945d755.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_b3a8f74d08c4b61be9b58569bd8bcc287af66e7a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ananas/Downloads/ProjetGCRequires/SDK/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_b2792dfa8ec470fa02998670289a52699b75da9c.jar" />
     </item>
 
 </items>
