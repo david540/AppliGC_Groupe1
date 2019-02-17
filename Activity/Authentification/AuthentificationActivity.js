@@ -6,8 +6,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 /*
  * Exemple de 2ème activité
  */
-export default class CVAActivity extends React.Component {
-
+export default class AuthentificationActivity extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -38,9 +37,9 @@ export default class CVAActivity extends React.Component {
   _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect");
                         this.setState({newAccount: true});};
 
-	_onPressLearnMore(){
-		Alert.alert('TODO')
-	}
+  _onPressLearnMore(){
+    Alert.alert('TODO')
+  }
   _validCharOrNum(lettre){
     return lettre.length === 1 && (lettre.match(/[a-z]/i) || lettre.match(/[0-9]/));
   }
@@ -148,15 +147,15 @@ export default class CVAActivity extends React.Component {
     });
   }
 
- render() {
- 		//_MainActivity()
+  render() {
+    //_MainActivity()
     if (!this.state.newAccount) {
        return (<ActivityIndicator style = {{marginTop: 150}}/>)
     }else{
        return (
          <View style={styles.container}>
-           <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>CVA</Text>
+           <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>Connexion</Text>
              <View style = {{marginLeft: 150}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
@@ -167,9 +166,9 @@ export default class CVAActivity extends React.Component {
            <ScrollView style={{padding: 20}}>
              <Text
                  style={[{fontSize: 27 }, styles.centered_text]}>
-                 Voir sa CVA personnelle {"\n\n\n"}
+                 Se connecter {"\n\n\n"}
              </Text>
-             <TextInput placeholder='   Numéro de CVA'
+             <TextInput placeholder='   Adresse mail'
              style = {{borderWidth:1}}
               maxLength = {20}
               underlineColorAndroid="transparent"
@@ -187,42 +186,42 @@ export default class CVAActivity extends React.Component {
              <Button
                onPress={this._onPressSubmit}
                title="Me connecter"
-               color="black"
+               color="#333745"
              />
            </ScrollView>
          </View>
        );
-   	}
+    }
   }
-}
+  }
 
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
   },
-	centered_text: {
-		alignSelf: 'stretch',
-		textAlign: 'center',
-	},
+  centered_text: {
+    alignSelf: 'stretch',
+    textAlign: 'center',
+  },
   colorLimit: {
     backgroundColor: '#f7bd13',
   },
-});
+  });
 
-function resetToScreen(navigation,screen,params=null){
-	var options = { routeName: screen };
+  function resetToScreen(navigation,screen,params=null){
+  var options = { routeName: screen };
 
-	if (params){
-		options['params'] = params;
-	}
+  if (params){
+    options['params'] = params;
+  }
 
-	const resetAction = NavigationActions.reset({
-	  index: 0,
-	  actions: [
-	    NavigationActions.navigate(options)
-	  ]
-	});
+  const resetAction = NavigationActions.reset({
+    index: 0,
+    actions: [
+      NavigationActions.navigate(options)
+    ]
+  });
 
-	navigation.dispatch(resetAction);
-}
+  navigation.dispatch(resetAction);
+  }

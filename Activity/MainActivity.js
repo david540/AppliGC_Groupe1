@@ -89,7 +89,7 @@ export default class MainActivity extends React.Component {
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>TODO</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
+              <TouchableOpacity onPress= {() => { goToScreen(navigation, "AuthentificationActivity")}}>
                 <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
                           <Text style={{color:"grey"}}> Authentification </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>connectez vous pour profiter au maximum de nos fonctionnalités !</Text>

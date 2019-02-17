@@ -15,6 +15,7 @@ const App = StackNavigator({
     MainActivity: {screen: MainActivity},
 		TestActivity: {screen: TestActivity},
     CVAActivity: {screen:CVAActivity},
+    AuthentificationActivity: {screen:AuthentificationActivity},
     PartenariatsActivity: {screen:PartenariatsActivity},
     GeolocalisationActivity: {screen:GeolocalisationActivity},
     InfoActivity: {screen:InfoActivity},
