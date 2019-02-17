@@ -81,31 +81,47 @@ export default class MainActivity extends React.Component {
         		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
         			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
           	</View>
-            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#fcfcfc"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
+                          <Text style={{color:'grey', fontWeight:'100'}}> Groupe 1  </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>TODO</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress= {() => { goToScreen(navigation, "AuthentificationActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
+                          <Text style={{color:"grey"}}> Authentification </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>connectez vous pour profiter au maximum de nos fonctionnalités !</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
                           <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"black"}]}>
-                          <Text style={{color:"#cccccc"}}> CVA </Text>
-                          <Text style={[{color:'grey'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
+                          <Text style={{color:"grey"}}> CVA TEST </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
                 </View>
               </TouchableOpacity>
             </View>
-         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
-                           <Text style={{color:'#868686'}}> MAPS </Text>
-              	           <Text style={[{color:'#a3a3a3'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
+                           <Text style={{color:'grey'}}> MAPS </Text>
+              	           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
             	  </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#a8a8a8"}]}>
-                          <Text style={{color:'#f7bd13'}}> PARTENAIRES CVA </Text>
-                          <Text style={[{color:'#ecf0f1'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
+                          <Text style={{color:'grey'}}> PARTENAIRES CVA </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
 
                 </View>
               </TouchableOpacity>
@@ -127,7 +143,7 @@ export default class MainActivity extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
       flex: 1,
-      backgroundColor: '#ecf0f1'
+      backgroundColor: '#FFFFFF'
   },
 	centered_text: {
 		alignSelf: 'stretch',
@@ -135,9 +151,12 @@ const styles = StyleSheet.create({
 	},
 	titleContainerBox: {
 	  flexDirection: 'row',
-	  backgroundColor: '#0f0f0f',
+	  backgroundColor: '#333745',
 	  justifyContent: 'center',
 	  alignItems: 'center',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
 	},
 	titleContainerText: {
 	  color: 'white',
@@ -157,7 +176,12 @@ const styles = StyleSheet.create({
 	categoryContainer: {
 	  justifyContent: 'center',
 	  alignItems: 'center',
+    backgroundColor:'#68a0cf',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#FFFFFF'
 	},
+
 });
 /*
  * Fonction utilisé par la classe de Navigation situé dans App.js

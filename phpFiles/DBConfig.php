@@ -1,15 +1,15 @@
 <?php
 
 //Define your host here.
-$HostName = "servername";
+$HostName = "localhost";
 
 //Define your database name here.
-$DatabaseName = "dbname";
+$DatabaseName = "ProjetGC";
 
 //Define your database username here.
-$HostUser = "username";
+$HostUser = "root";
 
 //Define your database password here.
-$HostPass = "password";
+$HostPass = "";
 
 ?>
