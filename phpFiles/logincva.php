@@ -9,7 +9,7 @@
       $mypassword = mysqli_real_escape_string($db, $obj['password']);
       $mycode = mysqli_real_escape_string($db, $obj['code']);
       if(_test_mdp($mypassword) && _test_username($myusername)){
-
+        
         $sql = "SELECT num_cva, nom, prenom, ecole, code, timestmp FROM cva_account WHERE num_cva = '$myusername' and password = '$mypassword'";
         $result = mysqli_query($db,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);

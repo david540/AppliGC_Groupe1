@@ -81,29 +81,45 @@ export default class MainActivity extends React.Component {
         		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
         			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
           	</View>
-            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#fcfcfc"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#fcfcfc"}]}>
+                          <Text style={{color:'grey', fontWeight:'100'}}> Groupe 1  </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>TODO</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#50E3C2"}]}>
+                          <Text style={{color:"#cccccc"}}> Authentification </Text>
+                          <Text style={[{color:'grey'}, styles.centered_text]}>connectez vous pour profiter au maximum de nos fonctionnalités !</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#fcfcfc"}]}>
                           <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"black"}]}>
-                          <Text style={{color:"#cccccc"}}> CVA </Text>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"black"}]}>
+                          <Text style={{color:"#cccccc"}}> CVA TEST </Text>
                           <Text style={[{color:'grey'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
                 </View>
               </TouchableOpacity>
             </View>
-         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*2/5}]}>
+         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#f7bd13"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#f7bd13"}]}>
                            <Text style={{color:'#868686'}}> MAPS </Text>
               	           <Text style={[{color:'#a3a3a3'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
             	  </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/10, backgroundColor:"#a8a8a8"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#a8a8a8"}]}>
                           <Text style={{color:'#f7bd13'}}> PARTENAIRES CVA </Text>
                           <Text style={[{color:'#ecf0f1'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
 
