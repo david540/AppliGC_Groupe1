@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button,Picker, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
+import Dialog from "react-native-dialog";
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
@@ -11,6 +12,7 @@ export default class AuthentificationActivity extends React.Component {
     super(props);
     this.state = {
         navigation: props.navigation,
+        email: '',
         username: '',
         password: '',
         width: Dimensions.get('window').width,
@@ -155,7 +157,7 @@ export default class AuthentificationActivity extends React.Component {
        return (
          <View style={styles.container}>
            <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>Connexion</Text>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Authentification</Text>
              <View style = {{marginLeft: 150}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
@@ -182,12 +184,21 @@ export default class AuthentificationActivity extends React.Component {
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({password: text})}
               value = {this.state.password}/>
-             <View style={{margin:7}} />
+             <View style={{margin:10}} />
              <Button
                onPress={this._onPressSubmit}
-               title="Me connecter"
-               color="#333745"
-             />
+               title="Se connecter"
+               color="#333745">
+             </Button>
+             <View style={{margin:50}} />
+             <TouchableOpacity onPress={() => {
+                this.props.navigation.navigate('NewAuthentificationActivity')
+             }}>
+               <View style={{width:8*this.state.width/9, height:this.state.height*1/10, backgroundColor:"#ffffff"}}>
+                    <Text style={{textAlign: 'center',color:'blue', textDecorationLine: 'underline'}}> Demander ses identifiants ? </Text>
+               </View>
+             </TouchableOpacity>
+
            </ScrollView>
          </View>
        );
@@ -207,6 +218,16 @@ export default class AuthentificationActivity extends React.Component {
   colorLimit: {
     backgroundColor: '#f7bd13',
   },
+  rowContainer: {
+	  flexDirection: 'row',
+	},
+	categoryContainer: {
+
+    backgroundColor:'#68a0cf',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#FFFFFF'
+	},
   });
 
   function resetToScreen(navigation,screen,params=null){

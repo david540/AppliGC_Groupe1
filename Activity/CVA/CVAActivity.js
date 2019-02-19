@@ -155,41 +155,12 @@ export default class CVAActivity extends React.Component {
     }else{
        return (
          <View style={styles.container}>
-           <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>CVA</Text>
-             <View style = {{marginLeft: 150}}>
-               <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
-                 <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
-               </TouchableOpacity>
-             </View>
-           </View>
-           <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
-           <ScrollView style={{padding: 20}}>
-             <Text
+
+            <Text
                  style={[{fontSize: 27 }, styles.centered_text]}>
-                 Voir sa CVA personnelle {"\n\n\n"}
+                 hello world{"\n\n\n"}
              </Text>
-             <TextInput placeholder='   Numéro de CVA'
-             style = {{borderWidth:1}}
-              maxLength = {20}
-              underlineColorAndroid="transparent"
-              onChangeText={(text) => this.setState({username: text})}
-              value = {this.state.username}/>
-             <TextInput placeholder='   Mot de passe'
-              style = {{borderWidth:1, marginTop:10}}
-              maxLength = {20}
-              secureTextEntry={true}
-              autocorrect={false}
-              underlineColorAndroid="transparent"
-              onChangeText={(text) => this.setState({password: text})}
-              value = {this.state.password}/>
-             <View style={{margin:7}} />
-             <Button
-               onPress={this._onPressSubmit}
-               title="Me connecter"
-               color="black"
-             />
-           </ScrollView>
+
          </View>
        );
    	}
