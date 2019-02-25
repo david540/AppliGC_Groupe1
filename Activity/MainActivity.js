@@ -21,7 +21,8 @@ export default class MainActivity extends React.Component {
   	constructor(props){
     		super(props);
     		this.state = {
-    		    navigation: props.navigation,
+            authentificationType: 1,
+            navigation: props.navigation,
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height - getStatusBarHeight(),
             loadisnotdone: !this.checkIfInfosAreLoaded()
@@ -82,56 +83,54 @@ export default class MainActivity extends React.Component {
         			<Text style={[styles.titleContainerText, {marginTop: this.state.height/50}]}>ACCUEIL</Text>
           	</View>
 
-            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*9/30}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#EEF5DB"}]}>
                           <Text style={{color:'grey', fontWeight:'100'}}> Groupe 1  </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>TODO</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress= {() => { goToScreen(navigation, "AuthentificationActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#C7EFCF"}]}>
                           <Text style={{color:"grey"}}> Authentification </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>connectez vous pour profiter au maximum de nos fonctionnalités !</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
-            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
+            <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*9/30}]}>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#C7EFCF"}]}>
                           <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress= {() => { goToScreen(navigation, "CVAActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
-                          <Text style={{color:"grey"}}> CVA TEST </Text>
-                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Grâce à la CVA, profitez de réductions pour nos évènements et chez nos partenaires</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*4/15}]}>
-              <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#EEF5DB"}]}>
-                           <Text style={{color:'grey'}}> MAPS </Text>
-              	           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
-            	  </View>
-              </TouchableOpacity>
               <TouchableOpacity onPress={() => { goToScreen(navigation, "PartenariatsActivity")}}>
-                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*4/15, backgroundColor:"#C7EFCF"}]}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#EEF5DB"}]}>
                           <Text style={{color:'grey'}}> PARTENAIRES CVA </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Liste de nos partenaires organisée par catégories</Text>
 
                 </View>
               </TouchableOpacity>
+
+            </View>
+         		<View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*9/30}]}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "GeolocalisationActivity")}}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#EEF5DB"}]}>
+                           <Text style={{color:'grey'}}> MAPS </Text>
+                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Regardez nos partenaires autour de vous</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress= {() => {goToScreen(navigation, "InfoActivity")
+                }}>
+                <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#C7EFCF"}]}>
+                          <Text style={{color:"grey"}}> Grand Cercle </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>plus d'informations</Text>
+                </View>
+              </TouchableOpacity>
           	</View>
 
-            <TouchableOpacity onPress={() => { goToScreen(navigation, "InfoActivity")}}>
-          		<View style = {[styles.titleContainerBox, {width: this.state.width, height: this.state.height/10}]}>
-          		    <Text style={styles.bottomContainerText}>+ d infos</Text>
-        	</View>
-        </TouchableOpacity>
       </View>
   )  );
 	}

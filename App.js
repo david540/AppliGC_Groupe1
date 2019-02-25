@@ -4,6 +4,8 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
 import AuthentificationActivity from './Activity/Authentification/AuthentificationActivity';
+import Authentificated from './Activity/Authentification/Authentificated';
+import AccountRequestActivity from './Activity/Authentification/AccountRequestActivity';
 import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
@@ -16,6 +18,8 @@ const App = StackNavigator({
 		TestActivity: {screen: TestActivity},
     CVAActivity: {screen:CVAActivity},
     AuthentificationActivity: {screen:AuthentificationActivity},
+    Authentificated: {screen:Authentificated},
+    AccountRequestActivity: {screen:AccountRequestActivity},
     PartenariatsActivity: {screen:PartenariatsActivity},
     GeolocalisationActivity: {screen:GeolocalisationActivity},
     InfoActivity: {screen:InfoActivity},
