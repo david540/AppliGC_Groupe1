@@ -5,7 +5,7 @@ import MainActivity from './Activity/MainActivity';
 import TestActivity from './Activity/TestActivity';
 import AuthentificationActivity from './Activity/Authentification/AuthentificationActivity';
 import Authentificated from './Activity/Authentification/Authentificated';
-import NewAuthentificationActivity from './Activity/Authentification/NewAuthentificationActivity';
+import AccountRequestActivity from './Activity/Authentification/AccountRequestActivity';
 import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
@@ -19,7 +19,7 @@ const App = StackNavigator({
     CVAActivity: {screen:CVAActivity},
     AuthentificationActivity: {screen:AuthentificationActivity},
     Authentificated: {screen:Authentificated},
-    NewAuthentificationActivity: {screen:NewAuthentificationActivity},
+    AccountRequestActivity: {screen:AccountRequestActivity},
     PartenariatsActivity: {screen:PartenariatsActivity},
     GeolocalisationActivity: {screen:GeolocalisationActivity},
     InfoActivity: {screen:InfoActivity},

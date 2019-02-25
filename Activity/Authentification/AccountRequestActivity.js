@@ -7,7 +7,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 /*
  * Exemple de 2ème activité
  */
-export default class NewAuthentificationActivity extends React.Component {
+export default class AccountRequestActivity extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -103,12 +103,20 @@ export default class NewAuthentificationActivity extends React.Component {
                  style={[{fontSize: 27 }, styles.centered_text]}>
                  Demander ses identifiants {"\n\n\n"}
              </Text>
-             <TextInput placeholder='   Adresse mail'
-             style = {{borderWidth:1}}
-              maxLength = {20}
-              underlineColorAndroid="transparent"
-              onChangeText={(text) => this.setState({username: text})}
-              value = {this.state.username}/>
+             <View style={[{flexDirection: 'row'}, styles.container]}>
+                 <TextInput placeholder='   Adresse mail'
+                            style = {{width: this.state.width/2, borderWidth:1}}
+                            maxLength = {20}
+                            underlineColorAndroid="transparent"
+                            onChangeText={(text) => this.setState({username: text})}
+                            value = {this.state.username}/>
+                 <Text
+                     style={[{width: this.state.width/2,fontSize: 14 }]}>
+                     {"\n"}
+                     {" "}
+                     @grenoble-inp.org
+                 </Text>
+             </View>
             <View style = {{height:this.state.height/20}}/>
 
 

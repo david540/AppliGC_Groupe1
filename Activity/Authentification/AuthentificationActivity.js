@@ -112,7 +112,7 @@ export default class AuthentificationActivity extends React.Component {
              </Button>
              <View style={{margin:50}} />
              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('NewAuthentificationActivity')
+                this.props.navigation.navigate('AccountRequestActivity')
              }}>
                <View style={{width:8*this.state.width/9, height:this.state.height*1/10, backgroundColor:"#ffffff"}}>
                     <Text style={{textAlign: 'center',color:'blue', textDecorationLine: 'underline'}}> Demander ses identifiants ? </Text>
