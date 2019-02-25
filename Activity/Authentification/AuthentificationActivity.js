@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button,Picker, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
 import Dialog from "react-native-dialog";
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -39,6 +39,15 @@ export default class AuthentificationActivity extends React.Component {
   _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect");
                         this.setState({newAccount: true});};
 
+  _goToAuthentificated(){
+        this.props.navigation.navigate('Authentificated', {
+        num_cva: "",
+        nom: "louter",
+        prenom: "anas",
+        ecole: "ENSIMAG",
+        username: "Loutera",
+        });
+  }
   _onPressLearnMore(){
     Alert.alert('TODO')
   }
@@ -49,95 +58,6 @@ export default class AuthentificationActivity extends React.Component {
     return lettre.length === 1 && lettre.match(/[0-9]/);
   }
 
-  _setInfos(responseJson){
-    var infos = responseJson.split("&&&");
-    if(infos[0] && infos[1] && infos[2] && infos[3] && infos[4]){
-      if(infos[5]){
-        try {
-          AsyncStorage.setItem('code', infos[5]).then(Alert.alert("Ce téléphone est maintenant lié\n à votre compte CVA"));
-        } catch (error) {
-          Alert.alert("Erreur, veuillez contacter Gean Claude\n pour lui signaler l'erreur numéro 661, merci :)")
-        }
-      }
-      this._goToCarte(infos[0], infos[1], infos[2], infos[3], infos[4]);
-    }
-    else if(infos[0] && infos[1]){
-      Alert.alert("Veuillez attendre avant de lier\n un nouveau téléphone sur ce compte CVA");
-      this.setState({newAccount:true});
-    }
-    else{
-      this._authFailed();
-    }
-  }
-
-  _goToCarte(num_cva, nom, prenom, ecole, username){
-    this.props.navigation.navigate('CarteActivity', {
-                num_cva: num_cva,
-                nom: nom,
-                prenom: prenom,
-                ecole: ecole,
-                username: username,
-              });
-  }
-  _connexion_automatique(_code){
-    AsyncStorage.getItem('username').then((username) => {this.state.username = username;
-    AsyncStorage.getItem('password').then((password) => {this.state.password = password;
-    //Alert.alert(password);
-    if(username != '' && password != ''){
-      this._connexion(_code)
-    }else{
-      this.setState({newAccount: true});
-    }
-  });});
-  }
-  _connexion = (_code) =>{
-    fetch('http://inprod.grandcercle.org/appli/logincva.php', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-        code: _code,
-      })
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        this._setInfos(responseJson);
-      }).catch((error) => {
-        console.error(error);
-      });
-  }
-
-  _onPressSubmit = () => {
-    if(this.state.username.length > this._nbCharLim || this.state.password > this._nbCharLim){
-      this._authFailed();
-      return;
-    }
-    for(var i=0; i < this.state.username.length; i++){
-      if( ! this._validCharOrNum(this.state.username.charAt(i)) ){
-        this._authFailed();
-        return;
-      }
-    }
-    for(var i=0; i < this.state.password.length; i++){
-      if( ! this._validCharOrNum(this.state.password.charAt(i))) {
-        this._authFailed();
-        return;
-      }
-    }
-    var code = 0;
-    try {
-      AsyncStorage.setItem('username', this.state.username);
-      AsyncStorage.setItem('password', this.state.password);
-      AsyncStorage.getItem('code').then((code) => this._connexion(code));
-    } catch (error) {
-      //Il faudrait une demande de validation du choix de lier ce compte à ce téléphone
-      Alert.alert("Nouvelle connexion");
-      this._connexion(1);
-    }
-  }
 
   componentDidMount() {
     AsyncStorage.getItem('code').then((code) => {
@@ -186,7 +106,7 @@ export default class AuthentificationActivity extends React.Component {
               value = {this.state.password}/>
              <View style={{margin:10}} />
              <Button
-               onPress={this._onPressSubmit}
+               onPress={() => {this._goToAuthentificated()}}
                title="Se connecter"
                color="#333745">
              </Button>

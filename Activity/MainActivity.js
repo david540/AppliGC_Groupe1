@@ -22,7 +22,7 @@ export default class MainActivity extends React.Component {
     		super(props);
     		this.state = {
             authentificationType: 1,
-    		    navigation: props.navigation,
+            navigation: props.navigation,
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height - getStatusBarHeight(),
             loadisnotdone: !this.checkIfInfosAreLoaded()

@@ -44,7 +44,7 @@ export default class CarteActivity extends React.Component {
             duration: 12000
         }
     ).start(() => { this.animateBackgroundColor() });
-    }
+  }
 
 	render() {
 		//_MainActivity()
