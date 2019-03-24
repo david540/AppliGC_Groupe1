@@ -71,6 +71,30 @@ export default class AccountRequestActivity extends React.Component {
     }
   }
 
+    _onPressSubmit = () => {
+        if(this.state.email === ''){
+            Alert.alert("Echec", "Veuillez renseigner votre email petit con");
+        }
+        else{
+            console.log("notre email est : " + this.state.email);
+            this._handleEmail(this.state.email);
+            Alert.alert("Echec", "Veuillez renseigner votre email petit con");
+            goToScree
+        }
+    };
+
+    _handleEmail = (dest) => {
+        const to = [dest]; // string or array of email addresses
+        email(to, {
+            // Optional additional arguments
+            cc: [], // string or array of email addresses
+            bcc: '', // string or array of email addresses
+            subject: 'Test',
+            body: 'tes indentifiant, petit con.'
+        }).catch(console.error).then(
+            Alert.alert("parfait !", "votre demande de mot de passe a été effectuée, veuillez verifier votre mail. ")
+        )
+    };
 
   componentDidMount() {
     AsyncStorage.getItem('code').then((code) => {
@@ -108,7 +132,7 @@ export default class AccountRequestActivity extends React.Component {
                             style = {{width: this.state.width/2, borderWidth:1}}
                             maxLength = {20}
                             underlineColorAndroid="transparent"
-                            onChangeText={(text) => this.setState({username: text})}
+                            onChangeText={(text) => this.setState({username: text + "@grenoble-inp.org"})}
                             value = {this.state.username}/>
                  <Text
                      style={[{width: this.state.width/2,fontSize: 14 }]}>
@@ -140,7 +164,7 @@ export default class AccountRequestActivity extends React.Component {
             </View>
              <View style={{margin:10}} />
              <Button
-               onPress={this._onPressSubmit}
+               onPress={this._onPressSubmit()}
                title="envoyer"
                color="#333745">
              </Button>

@@ -10,6 +10,12 @@ import CVAActivity from './Activity/CVA/CVAActivity';
 import PartenariatsActivity from './Activity/Partenariats/PartenariatsActivity';
 import GeolocalisationActivity from './Activity/Geolocalisation/GeolocalisationActivity';
 import InfoActivity from './Activity/Informations/InfoActivity';
+import BonplanActivity from './Activity/Bonplan/BonplanActivity';
+import CovoitActivity from './Activity/Bonplan/Covoit/CovoitActivity';
+import LogementActivity from './Activity/Bonplan/Logement/LogementActivity';
+import FormulaireLogementActivity from './Activity/Bonplan/Logement/FormulaireLogementActivity';
+import StageActivity from './Activity/Bonplan/Stage/StageActivity';
+import MaterielActivity from './Activity/Bonplan/Materiel/MaterielActivity';
 import CarteActivity from './Activity/CVA/CarteActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
 
@@ -24,7 +30,13 @@ const App = StackNavigator({
     GeolocalisationActivity: {screen:GeolocalisationActivity},
     InfoActivity: {screen:InfoActivity},
     ActualitesActivity: {screen:ActualitesActivity},
-    CarteActivity: {screen:CarteActivity}
+    CarteActivity: {screen:CarteActivity},
+    BonplanActivity: {screen:BonplanActivity},
+    CovoitActivity: {screen:CovoitActivity},
+    LogementActivity: {screen:LogementActivity},
+    StageActivity: {screen:StageActivity},
+    MaterielActivity: {screen:MaterielActivity},
+    FormulaireLogementActivity: {screen:FormulaireLogementActivity}
 },
 {
     initialRouteName: 'MainActivity',

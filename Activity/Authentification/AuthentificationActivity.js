@@ -13,7 +13,6 @@ export default class AuthentificationActivity extends React.Component {
     this.state = {
         navigation: props.navigation,
         email: '',
-        username: '',
         password: '',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
@@ -37,15 +36,86 @@ export default class AuthentificationActivity extends React.Component {
 
   _nbCharLim = 10;
   _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect");
-                        this.setState({newAccount: true});};
+                        //this.setState({newAccount: true});
+      };
 
-  _goToAuthentificated(){
+  _setInfos(responseJson){
+      //var infos = responseJson.split("&&&");
+      console.log("coucou");
+      console.log(responseJson);
+      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole){
+
+          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole);
+      }
+      else{
+          Alert.alert("erreur, pas de données");
+      }
+
+  }
+
+
+  _connexion = (_code) =>{
+      fetch('http://192.168.0.12/phpFiles/logincva.php', {
+      //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              email: this.state.email,
+              password: this.state.password,
+              code: _code,
+          })
+      }).then((response) => {
+          console.log(response);
+          console.log("anas");
+          var body = JSON.parse(response._bodyText);
+          console.log(body);
+          this._setInfos(body);
+      }).catch((error) => {
+              console.error(error);
+        });
+  }
+
+    _connexion_automatique(_code){
+        AsyncStorage.getItem('email').then((email) => {this.state.email = email;
+        AsyncStorage.getItem('password').then((password) => {this.state.password = password;
+            //Alert.alert(password);
+            if(username != '' && password != ''){
+                this._connexion(_code)
+            }else{
+                this.setState({newAccount: true});
+            }
+        });});
+    }
+
+
+  _onPressSubmit = () => {
+      var code = 0;
+      try {
+          AsyncStorage.setItem('email', this.state.email);
+          AsyncStorage.setItem('password', this.state.password);
+          AsyncStorage.multiGet(['email', 'password']).then((data)=> {
+              console.log("retour mail : " + data[0][1]);
+          });
+          AsyncStorage.getItem('code').then((code) => this._connexion(code));
+      } catch (error) {
+          //Il faudrait une demande de validation du choix de lier ce compte à ce téléphone
+          Alert.alert("Nouvelle connexion");
+          this._connexion(1);
+      }
+  }
+  _goToAuthentificated(numCVA, nom, prenom, ecole){
+      AsyncStorage.setItem('numCVA', numCVA);
+      AsyncStorage.setItem('nom', nom);
+      AsyncStorage.setItem('prenom', prenom);
+      AsyncStorage.setItem('ecole', ecole);
         this.props.navigation.navigate('Authentificated', {
-        num_cva: "",
-        nom: "louter",
-        prenom: "anas",
-        ecole: "ENSIMAG",
-        username: "Loutera",
+        num_cva: numCVA,
+        nom: nom,
+        prenom: prenom,
+        ecole: ecole,
         });
   }
   _onPressLearnMore(){
@@ -94,8 +164,8 @@ export default class AuthentificationActivity extends React.Component {
              style = {{borderWidth:1}}
               maxLength = {20}
               underlineColorAndroid="transparent"
-              onChangeText={(text) => this.setState({username: text})}
-              value = {this.state.username}/>
+              onChangeText={(text) => this.setState({email: text})}
+              value = {this.state.email}/>
              <TextInput placeholder='   Mot de passe'
               style = {{borderWidth:1, marginTop:10}}
               maxLength = {20}
@@ -106,7 +176,12 @@ export default class AuthentificationActivity extends React.Component {
               value = {this.state.password}/>
              <View style={{margin:10}} />
              <Button
-               onPress={() => {this._goToAuthentificated()}}
+               onPress={() => {
+                   if(this.state.email === "" || this.state.password === ""){
+                       this._authFailed();
+                   }
+                   else{this._onPressSubmit()}
+               }}
                title="Se connecter"
                color="#333745">
              </Button>

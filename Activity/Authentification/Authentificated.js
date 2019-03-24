@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button,Picker, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
+//import email from 'react-native-email';
 import DialogInput from 'react-native-dialog-input';
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -11,6 +12,7 @@ export default class Authentificated extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            cva : "",
             navigation: props.navigation,
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height - getStatusBarHeight(),
@@ -40,8 +42,19 @@ export default class Authentificated extends React.Component {
 
     }
 
+    deconnect() {
+        let keys = ['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole'];
+        AsyncStorage.multiRemove(keys, (err) => {
+            console.log('Déconnecté !');
+        });
+        goToScreen(this.state.navigation, "MainActivity");
+    }
+
+    requestCVA(){
+
+    }
     renderCVA(){
-        if(this.props.navigation.state.params.num_cva === ''){
+        if(this.props.navigation.state.params.num_cva === '0'){
             return(
 
                 <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#FFFFFF"}]}>
@@ -61,8 +74,8 @@ export default class Authentificated extends React.Component {
                 <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*6/31}]}>
                     <TouchableOpacity onPress={() => {}}>
                         <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#EEF5DB"}]}>
-                            <Text style={{color:'grey'}}> CVA </Text>
-                            <Text style={[{color:'#cccccc'}, styles.centered_text]}>{this.props.navigation.state.params.num_cva}</Text>
+                            <Text style={{color:'#cccccc'}}> CVA </Text>
+                            <Text style={[{color:'grey'}, styles.centered_text]}>{this.props.navigation.state.params.num_cva}</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -94,8 +107,8 @@ export default class Authentificated extends React.Component {
                     <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*6/31}]}>
                         <TouchableOpacity onPress={() => {}}>
                             <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#C7EFCF"}]}>
-                                <Text style={{color:'grey', fontWeight:'100'}}> Nom </Text>
-                                <Text style={[{color:'#cccccc'}, styles.centered_text]}>{params.nom}</Text>
+                                <Text style={{color:'#cccccc', fontWeight:'100'}}> Nom </Text>
+                                <Text style={[{color:'grey'}, styles.centered_text]}>{params.nom}</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -103,8 +116,8 @@ export default class Authentificated extends React.Component {
                     <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*6/31}]}>
                         <TouchableOpacity onPress={() => {}}>
                             <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#C7EFCF"}]}>
-                                <Text style={{color:'grey', fontWeight:'100'}}> Prénom </Text>
-                                <Text style={[{color:'#cccccc'}, styles.centered_text]}>{params.prenom}</Text>
+                                <Text style={{color:'#cccccc', fontWeight:'100'}}> Prénom </Text>
+                                <Text style={[{color:'grey'}, styles.centered_text]}>{params.prenom}</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -112,8 +125,8 @@ export default class Authentificated extends React.Component {
                     <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*6/31}]}>
                         <TouchableOpacity onPress={() => {}}>
                             <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#EEF5DB"}]}>
-                                <Text style={{color:'grey'}}> Ecole </Text>
-                                <Text style={[{color:'#cccccc'}, styles.centered_text]}>{params.ecole}</Text>
+                                <Text style={{color:'#cccccc'}}> Ecole </Text>
+                                <Text style={[{color:'grey'}, styles.centered_text]}>{params.ecole}</Text>
 
                             </View>
                         </TouchableOpacity>
@@ -122,13 +135,22 @@ export default class Authentificated extends React.Component {
                     <DialogInput isDialogVisible={this.state.isDialogVisible}
                                  title={"Liaison de compte CVA"}
                                  message={"entrez votre numéro de CVA"}
-                                 submitInput={ (inputText) => {Alert.alert("", "Votre demande de liaison est envoyée.");
-                                     this.setState({ isDialogVisible: false });
+
+                                 submitInput={ (inputText) => {Alert.alert("", "Votre demande de liaison est envoyée." + inputText);
+                                     //this.setState({ isDialogVisible: false });
                                  } }
                                  closeDialog={ () => {this.setState({ isDialogVisible: false })}}>
                     </DialogInput>
+
                     {this.renderCVA()}
 
+                    <Button
+                        onPress={() => {
+                            this.deconnect();
+                        }}
+                        title="Déconnexion"
+                        color="#333745">
+                    </Button>
 
                 </ScrollView>
             </View>
@@ -176,4 +198,15 @@ function resetToScreen(navigation,screen,params=null){
     });
 
     navigation.dispatch(resetAction);
+}
+
+function goToScreen(navigation,screen,params=null){
+    var options = { routeName: screen };
+
+    if (params){
+        options['params'] = params;
+    }
+    const action = NavigationActions.navigate(options);
+
+    navigation.dispatch(action);
 }

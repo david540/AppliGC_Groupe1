@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getPartenariats, partenairesAreLoaded } from './Partenariats/DataLoader';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -52,6 +52,28 @@ export default class MainActivity extends React.Component {
       Dimensions.removeEventListener("change", this.ori_change);
     }
 
+    isConnected(){
+        AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole']).then((data)=> {
+            console.log("salut");
+            let email = data[0][1];
+            let password = data [1][1];
+            if(email !== null && password !== null && data[2][1] !== null && data[3][1] !== null && data[4][1] !== null && data[5][1] !== null){
+                console.log("oucou");
+                this.props.navigation.navigate('Authentificated', {
+                    num_cva: data[2][1],
+                    nom: data[3][1],
+                    prenom: data[4][1],
+                    ecole: data[5][1],
+                });
+            }
+            else{
+                console.log("anasssss");
+                goToScreen(this.state.navigation, "AuthentificationActivity");
+            }
+        });
+
+    }
+
     componentDidMount(){
       if(!this.checkIfInfosAreLoaded())
         this.loadForPartenariatsAndEvents();
@@ -84,16 +106,16 @@ export default class MainActivity extends React.Component {
           	</View>
 
             <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*9/30}]}>
-              <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+              <TouchableOpacity onPress={() => { goToScreen(navigation, "BonplanActivity")}}>
                 <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#EEF5DB"}]}>
-                          <Text style={{color:'grey', fontWeight:'100'}}> Groupe 1  </Text>
-                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>TODO</Text>
+                          <Text style={{color:"grey"}}> BONS PLANS </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Cherchez les bons plans autour de chez vous</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress= {() => { goToScreen(navigation, "AuthentificationActivity")}}>
+              <TouchableOpacity onPress= {() => {this.isConnected()}}>
                 <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#C7EFCF"}]}>
-                          <Text style={{color:"grey"}}> Authentification </Text>
-                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>connectez vous pour profiter au maximum de nos fonctionnalités !</Text>
+                          <Text style={{color:"grey"}}> MON COMPTE </Text>
+                          <Text style={[{color:'#cccccc'}, styles.centered_text]}>Connectez vous pour profiter au maximum de nos fonctionnalités !</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -139,7 +161,7 @@ export default class MainActivity extends React.Component {
 /*
  * On peut définir ici tous les styles que l'on utilise, pour plus de lisibilité
  */
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   main_container: {
       flex: 1,
       backgroundColor: '#FFFFFF'
@@ -172,6 +194,16 @@ const styles = StyleSheet.create({
 	rowContainer: {
 	  flexDirection: 'row',
 	},
+  field: {
+      height: 40,
+      width: 200,
+      borderColor: 'black',
+      borderRadius: 2,
+      backgroundColor:'white',
+      marginHorizontal:15,
+      marginTop : 10,
+      marginBottom : 25
+  },
 	categoryContainer: {
 	  justifyContent: 'center',
 	  alignItems: 'center',
@@ -186,7 +218,7 @@ const styles = StyleSheet.create({
  * Fonction utilisé par la classe de Navigation situé dans App.js
  onPress={() => { goToScreen(navigation, "ActualitesActivity")}}
  */
-function resetToScreen(navigation,screen,params=null){
+export function resetToScreen(navigation,screen,params=null){
 	var options = { routeName: screen };
 
 	if (params){
@@ -202,7 +234,7 @@ function resetToScreen(navigation,screen,params=null){
 
 	navigation.dispatch(resetAction);
 }
-function goToScreen(navigation,screen,params=null){
+export function goToScreen(navigation,screen,params=null){
 	var options = { routeName: screen };
 
 	if (params){
