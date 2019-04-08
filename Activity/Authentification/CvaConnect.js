@@ -77,7 +77,7 @@ export default class AccountRequestActivity extends React.Component {
             AsyncStorage.getItem('email').then((email) => {
               var emailUser = email;
 
-              fetch('http://192.168.0.11/phpFiles/liaisoncva.php', {
+              fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
               //fetch('http://172.20.10.10/phpFiles/logincva.php', {
                   method: 'POST',
                   headers: {
