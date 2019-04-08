@@ -13,6 +13,7 @@ export default class Authentificated extends React.Component {
         super(props);
         this.state = {
             cva : "",
+            cvaInput :"",
             navigation: props.navigation,
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height - getStatusBarHeight(),
@@ -50,6 +51,10 @@ export default class Authentificated extends React.Component {
         goToScreen(this.state.navigation, "MainActivity");
     }
 
+    lierCVA(inputText) {
+      console.log("on lie la cva");
+    }
+
     requestCVA(){
 
     }
@@ -61,7 +66,7 @@ export default class Authentificated extends React.Component {
                     <Text style={{color:'grey'}}> {"\n"} </Text>
                     <Button
                         onPress={() => {
-                            this.setState({ isDialogVisible: true });}}
+                            this.props.navigation.navigate("CvaConnect");}}
                         title="Lier ma CVA à mon compte"
                         color="#333745">
                     </Button>
@@ -132,15 +137,7 @@ export default class Authentificated extends React.Component {
                         </TouchableOpacity>
 
                     </View>
-                    <DialogInput isDialogVisible={this.state.isDialogVisible}
-                                 title={"Liaison de compte CVA"}
-                                 message={"entrez votre numéro de CVA"}
 
-                                 submitInput={ (inputText) => {Alert.alert("", "Votre demande de liaison est envoyée." + inputText);
-                                     //this.setState({ isDialogVisible: false });
-                                 } }
-                                 closeDialog={ () => {this.setState({ isDialogVisible: false })}}>
-                    </DialogInput>
 
                     {this.renderCVA()}
 

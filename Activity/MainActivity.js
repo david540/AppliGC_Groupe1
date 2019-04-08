@@ -178,7 +178,7 @@ export const styles = StyleSheet.create({
     borderRadius:10,
     borderWidth: 1,
     borderColor: '#fff'
-	},
+  },
 	titleContainerText: {
 	  color: 'white',
 	  fontSize: 24,

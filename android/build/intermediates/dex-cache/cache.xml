@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f768861356f4cd8613da447181fd15c3f584f52d">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.50.4_fe5bf9d3c054e1ac5a91a98976bfc853a675c634.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
         jumboMode="false"
         optimize="true"
@@ -39,20 +48,11 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.51.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="99941aaaf86dc5e525cd9208c2f7c9a624f4f004">
-        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.51.0_b06e889f4cfb30a53037e8f81a9eafe888f87bbb.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/GCApp/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="1f32d248ec690bd1fca0677ed1ce2fcc993ec0b9">
+        sha1="526a445406d661bb9c5606b74ab6ddf34a4b3004">
         <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-vector-icons-unspecified_92c1634966e57220c44606735db0c8f939d4c4bd.jar" />
     </item>
     <item
@@ -63,15 +63,6 @@
         revision="23.0.1"
         sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
         <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.4_7dbdccc3b6b2615ced606615e472ed33241a4311.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.51.0/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_8839b700e078704010812705019e9636daf9740f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -111,6 +102,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_63e37c571922f354736c361c24d6880d8aea7752.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/ananas/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
         jumboMode="false"
         optimize="true"
@@ -129,21 +129,21 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="88a33b87e6390f6e3d3c4e5f9ebacf1aa6d0bf56">
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_4bbe85bfc96ff05b575370a7efda628d3e40b7df.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
         <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-10.2.4_13f22a6b280f5eb25d2ab0136369107af36d40e9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/GCApp/react-native-maps/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="06610ac12bc616c2ab4d2c3baa39f406ae91a3da">
-        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/GCApp-react-native-maps-unspecified_4bbe85bfc96ff05b575370a7efda628d3e40b7df.jar" />
     </item>
     <item
         is-multidex="false"
@@ -237,12 +237,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/ananas/Downloads/ProjetGCRequires/SDK/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jar="/home/ananas/Downloads/ProjetGCSDK/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_b2792dfa8ec470fa02998670289a52699b75da9c.jar" />
+        <dex dex="/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_59ebb17b0d9108621441d75ce9ce627145c12817.jar" />
     </item>
 
 </items>

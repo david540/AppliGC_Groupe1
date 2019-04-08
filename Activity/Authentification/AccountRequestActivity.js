@@ -13,9 +13,7 @@ export default class AccountRequestActivity extends React.Component {
     this.state = {
         navigation: props.navigation,
         email: '',
-        username: '',
-        password: '',
-        ecole: '',
+        ecole: 'Ensimag',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
         newAccount: false,
@@ -72,29 +70,34 @@ export default class AccountRequestActivity extends React.Component {
   }
 
     _onPressSubmit = () => {
-        if(this.state.email === ''){
-            Alert.alert("Echec", "Veuillez renseigner votre email petit con");
-        }
-        else{
-            console.log("notre email est : " + this.state.email);
-            this._handleEmail(this.state.email);
-            Alert.alert("Echec", "Veuillez renseigner votre email petit con");
-            goToScree
-        }
+          console.log("notre email est : " + this.state.email);
+          this._handleEmail();
+          Alert.alert("Succès", "Votre demande a été envoyée, consultez vos mails.");
+          this.props.navigation.navigate('MainActivity');
     };
 
-    _handleEmail = (dest) => {
-        const to = [dest]; // string or array of email addresses
-        email(to, {
-            // Optional additional arguments
-            cc: [], // string or array of email addresses
-            bcc: '', // string or array of email addresses
-            subject: 'Test',
-            body: 'tes indentifiant, petit con.'
-        }).catch(console.error).then(
-            Alert.alert("parfait !", "votre demande de mot de passe a été effectuée, veuillez verifier votre mail. ")
-        )
-    };
+    _handleEmail = () =>{
+        fetch('http://192.168.0.11/phpFiles/accountRequest.php', {
+        //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: this.state.email + "@grenoble-inp.org",
+                ecole: this.state.ecole,
+            })
+        }).then((response) => {
+            console.log(response);
+            /*console.log("anas");
+            var body = JSON.parse(response._bodyText);
+            console.log(body);
+            this._setInfos(body);*/
+        }).catch((error) => {
+                console.error(error);
+          });
+    }
 
   componentDidMount() {
     AsyncStorage.getItem('code').then((code) => {
@@ -132,8 +135,8 @@ export default class AccountRequestActivity extends React.Component {
                             style = {{width: this.state.width/2, borderWidth:1}}
                             maxLength = {20}
                             underlineColorAndroid="transparent"
-                            onChangeText={(text) => this.setState({username: text + "@grenoble-inp.org"})}
-                            value = {this.state.username}/>
+                            onChangeText={(text) => this.setState({email: text})}
+                            value = {this.state.email}/>
                  <Text
                      style={[{width: this.state.width/2,fontSize: 14 }]}>
                      {"\n"}
@@ -164,7 +167,13 @@ export default class AccountRequestActivity extends React.Component {
             </View>
              <View style={{margin:10}} />
              <Button
-               onPress={this._onPressSubmit()}
+               onPress={() => {
+                 console.log("tchoin");
+                 if(this.state.email === ""){
+                   console.log("tchoin");
+                 }
+                 else{this._onPressSubmit()}
+               }}
                title="envoyer"
                color="#333745">
              </Button>
