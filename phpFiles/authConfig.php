@@ -1,7 +1,11 @@
 <?php
-   define('DB_SERVER', 'localhost');
-   define('DB_USERNAME', 'root');
-   define('DB_PASSWORD', '');
-   define('DB_DATABASE', 'ProjetGC');
-   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+try
+{
+$db = new PDO('mysql:host=192.168.0.11;dbname=cercle;charset=utf8', 'root', '');
+//$db = new PDO('mysql:host=172.20.10.10;dbname=cercle;charset=utf8', 'root', '');
+}
+catch (Exception $e)
+{
+     die('Erreur : ' . $e->getMessage());
+}
 ?>
