@@ -12,6 +12,10 @@
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_popup_exit.xml"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_down.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_slide_down.xml"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_slide_up.xml"
     },
@@ -34,6 +38,10 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_in.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
@@ -64,6 +72,10 @@
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_out.xml"
+    },
+    {
         "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_in.xml",
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_fade_in.xml"
     },
@@ -76,16 +88,28 @@
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_push_up_in.xml"
     },
     {
-        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_out.xml"
     },
     {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_slide_up.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
@@ -94,6 +118,14 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_push_up_in.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_bottom.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
@@ -168,12 +200,20 @@
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_out.xml"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_popup_enter.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
@@ -188,12 +228,24 @@
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_fade_out.xml"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_out.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_fade_out.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_bottom.xml"
     },
     {
         "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_bottom.xml"
     },
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_out.xml",
@@ -212,6 +264,10 @@
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_fade_out.xml"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_in.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_fade_in.xml"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/anim/catalyst_slide_up.xml"
     },
@@ -222,6 +278,10 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
     },
     {
         "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
@@ -238,6 +298,10 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/halfbad/ProjetGC/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_popup_exit.xml"
     },
     {
         "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",

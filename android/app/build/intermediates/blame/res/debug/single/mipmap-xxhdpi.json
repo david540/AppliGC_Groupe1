@@ -12,6 +12,10 @@
         "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/halfbad/ProjetGC/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     }

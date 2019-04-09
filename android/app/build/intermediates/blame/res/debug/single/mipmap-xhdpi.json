@@ -14,5 +14,9 @@
     {
         "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
         "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/halfbad/ProjetGC/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/halfbad/ProjetGC/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }
 ]
