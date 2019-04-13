@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]
