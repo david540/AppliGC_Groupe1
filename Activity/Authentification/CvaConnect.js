@@ -12,8 +12,7 @@ export default class AccountRequestActivity extends React.Component {
     super(props);
     this.state = {
         navigation: props.navigation,
-        email: '',
-        ecole: 'Ensimag',
+        cva: '',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
         newAccount: false,
@@ -69,27 +68,40 @@ export default class AccountRequestActivity extends React.Component {
     }
   }
 
-    _onPressSubmit = () => {
-          console.log("notre email est : " + this.state.email);
-          this._handleEmail();
-          Alert.alert("Succès", "Votre demande a été envoyée, consultez vos mails.");
-          this.props.navigation.navigate('MainActivity');
-    };
+    _handleCVA = () =>{
+        AsyncStorage.getItem('nom').then((nom) => {
+          var nomUser = nom;
+          AsyncStorage.getItem('prenom').then((prenom) => {
+            var prenomUser = prenom;
+            console.log("User : " + prenomUser + " " + nomUser);
+            AsyncStorage.getItem('email').then((email) => {
+              var emailUser = email;
 
-    _handleEmail = () =>{
-        fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/accountRequest.php', {
-        //fetch('http://172.20.10.10/phpFiles/logincva.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: this.state.email + "@grenoble-inp.org",
-                ecole: this.state.ecole,
-            })
+              fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
+              //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+                  method: 'POST',
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                      nom: nomUser,
+                      prenom: prenomUser,
+                      cva: this.state.cva,
+                      email: emailUser
+                  })
         }).then((response) => {
-            console.log(response);
+            var body = JSON.parse(response._bodyText);
+            console.log("body : " + body);
+            console.log("state : "  + this.state.cva);
+            if(body == this.state.cva && body != 0) {
+              AsyncStorage.setItem('numCVA', this.state.cva).then(() => {
+                Alert.alert("Liaison CVA réussie !");
+                this.props.navigation.navigate("MainActivity");
+              })
+            } else if(body == 0) {
+              Alert.alert("Informations erronées.");
+            }
             /*console.log("anas");
             var body = JSON.parse(response._bodyText);
             console.log(body);
@@ -97,7 +109,10 @@ export default class AccountRequestActivity extends React.Component {
         }).catch((error) => {
                 console.error(error);
           });
-    }
+      });
+    });
+    });
+  }
 
   componentDidMount() {
     AsyncStorage.getItem('code').then((code) => {
@@ -117,7 +132,7 @@ export default class AccountRequestActivity extends React.Component {
        return (
          <View style={styles.container}>
            <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Authentification</Text>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Demande de CVA</Text>
              <View style = {{marginLeft: 150}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
@@ -128,51 +143,22 @@ export default class AccountRequestActivity extends React.Component {
            <ScrollView style={{padding: 20}}>
              <Text
                  style={[{fontSize: 27 }, styles.centered_text]}>
-                 Demander ses identifiants {"\n\n\n"}
+                 Lier sa CVA {"\n\n\n"}
              </Text>
              <View style={[{flexDirection: 'row'}, styles.container]}>
-                 <TextInput placeholder='   Adresse mail'
-                            style = {{width: this.state.width/2, borderWidth:1}}
+                 <TextInput placeholder='   N° CVA'
+                            style = {{width: 4*this.state.width/5, borderWidth:1}}
+                            keyboardType = 'numeric'
                             maxLength = {20}
                             underlineColorAndroid="transparent"
-                            onChangeText={(text) => this.setState({email: text})}
-                            value = {this.state.email}/>
-                 <Text
-                     style={[{width: this.state.width/2,fontSize: 14 }]}>
-                     {"\n"}
-                     {" "}
-                     @grenoble-inp.org
-                 </Text>
+                            onChangeText={(text) => this.setState({cva: text})}
+                            value = {this.state.cva}/>
              </View>
-            <View style = {{height:this.state.height/20}}/>
-
-
-            <Text
-                style={[{fontSize: 14 }]}>
-                Choisir votre école
-            </Text>
-
-            <View style={{height: this.state.height*1/9}}>
-                <Picker
-                  selectedValue={this.state.ecole}
-                  onValueChange={(itemValue) => {this.setState({ecole: itemValue})}}>
-                  <Picker.Item label={"1. Ensimag"} value={"Ensimag"} />
-                  <Picker.Item label={"2. Phelma"} value={"Phelma"} />
-                  <Picker.Item label={"3. Ense3"} value={"Ense3"} />
-                  <Picker.Item label={"4. Pagora"} value={"Pagora"} />
-                  <Picker.Item label={"5. Génie Ind"} value={"Génie Ind"} />
-                  <Picker.Item label={"6. CPP"} value={"CPP"} />
-                  <Picker.Item label={"7. Esisar"} value={"Esisar"} />
-                </Picker>
-            </View>
              <View style={{margin:10}} />
              <Button
                onPress={() => {
                  console.log("tchoin");
-                 if(this.state.email === ""){
-                   console.log("tchoin");
-                 }
-                 else{this._onPressSubmit()}
+                 this._handleCVA();
                }}
                title="envoyer"
                color="#333745">

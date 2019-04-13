@@ -1,10 +1,10 @@
 <?php
 
 //Define your host here.
-$HostName = "localhost";
-
+$HostName = "192.168.0.11";
+//$HostName = "172.20.10.10";
 //Define your database name here.
-$DatabaseName = "ProjetGC";
+$DatabaseName = "cercle";
 
 //Define your database username here.
 $HostUser = "root";

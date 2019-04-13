@@ -44,7 +44,6 @@ export default class AuthentificationActivity extends React.Component {
       console.log("coucou");
       console.log(responseJson);
       if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole){
-
           this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole);
       }
       else{
@@ -55,7 +54,7 @@ export default class AuthentificationActivity extends React.Component {
 
 
   _connexion = (_code) =>{
-      fetch('http://192.168.0.12/phpFiles/logincva.php', {
+      fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/logincva.php', {
       //fetch('http://172.20.10.10/phpFiles/logincva.php', {
           method: 'POST',
           headers: {
@@ -69,10 +68,15 @@ export default class AuthentificationActivity extends React.Component {
           })
       }).then((response) => {
           console.log(response);
-          console.log("anas");
-          var body = JSON.parse(response._bodyText);
-          console.log(body);
-          this._setInfos(body);
+          if(response._bodyText == 0) {
+            Alert.alert("Mot de passe incorrect");
+          } else if(response._bodyText == 1) {
+            Alert.alert("Mail inexistant");
+          } else {
+            var body = JSON.parse(response._bodyText);
+            console.log(body);
+            this._setInfos(body);
+          }
       }).catch((error) => {
               console.error(error);
         });
@@ -162,7 +166,7 @@ export default class AuthentificationActivity extends React.Component {
              </Text>
              <TextInput placeholder='   Adresse mail'
              style = {{borderWidth:1}}
-              maxLength = {20}
+              maxLength = {50}
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({email: text})}
               value = {this.state.email}/>
