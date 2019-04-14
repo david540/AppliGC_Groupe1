@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, ActivityIndicator, FlatList, Picker, Modal, Image, TouchableOpacity} from 'react-native';
+import { Text, View, ScrollView, Dimensions, Alert, ActivityIndicator, FlatList, Picker, Modal, Image, TouchableOpacity} from 'react-native';
 import { List, ListItem } from 'react-native-elements'; // Version can be specified in package.json
 import { LogementObject } from'./LogementObject';
 import { getLogements, logementsAreLoaded } from './DataLoader';
@@ -94,7 +94,7 @@ export default class LogementActivity extends React.Component {
                             <Text style={[styles.text_neutral, styles.page_title_left]}>LOGEMENTS</Text>
                         </View>
                         <View style = {styles.top_right_banner}>
-                            <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "BonplanActivity") }}>
+                            <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "MesOffresActivity") }}>
                                 <Text style = {[styles.text_neutral, styles.top_right_text]}>Consulter mes offres</Text>
                             </TouchableOpacity>
                         </View>

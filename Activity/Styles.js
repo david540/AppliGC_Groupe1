@@ -148,9 +148,14 @@ export const styles = StyleSheet.create({
     },
 
     // List box (must often leave space for a bottom button)
-    // HAUTEUR : Page - 1/9 - 1/10 (bouton du bas) - 1/80 - 1/18
+    // HAUTEUR : Page - 1/9 - 1/10 (bouton du bas) - 1/80 - 1/18 (picker)
     list_box: {
         height: leftheight - wheight*28/180,
+        backgroundColor: "white",
+    },
+    // Pareil sans bouton en bas
+    full_page_list_box: {
+        height: leftheight,
         backgroundColor: "white",
     },
 
