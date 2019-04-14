@@ -1,4 +1,5 @@
 import React from 'react';
+import TouchableOpacity from 'react';
 import MainActivity from './MainActivity';
 
 import renderer from 'react-test-renderer';
@@ -33,14 +34,17 @@ describe('MainActivity Component', () => {
     expect(MainActivity.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 
-  it('increments the counter', () => {
-    const wrapper = shallow(<MainActivity />);
-
-    wrapper.setState({ loadisnotdon : true });
-    wrapper.find('touchableOpacity').at(0).simulate('click');
-
-    expect(wrapper.state().loadisnotdone).to.equal(false);
-  });
+  // it('onPress', () => {
+  //   // const wrapper = shallow(<MainActivity />);
+  //
+  //   // wrapper.setState({ loadisnotdone : true });
+  //
+  //
+  //   let wrapper = shallow(<MainActivity  />);
+  //   wrapper.simulate('press');  //find(TouchableOpacity).at(0)
+  //   expect(wrapper.props().onPress.name).to.contain('bound goToScreen');
+  //
+  // });
 
   // it('decrements the counter', () => {
   //   const wrapper = shallow(<App />);

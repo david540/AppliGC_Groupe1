@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getPartenariats, partenairesAreLoaded } from './Partenariats/DataLoader';
-import { StatusBar } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { getEvents } from './Actualites/EventLoader';
 import { getAssosAndEvents, eventsAreLoaded } from './Actualites/AssoLoader'
 
@@ -24,7 +24,7 @@ export default class MainActivity extends React.Component {
             authentificationType: 1,
             navigation: props.navigation,
             width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height - StatusBar.Height,
+            height: Dimensions.get('window').height - getStatusBarHeight(),
             loadisnotdone: !this.checkIfInfosAreLoaded()
         }
   	}
@@ -39,7 +39,7 @@ export default class MainActivity extends React.Component {
 
     ori_change = () => {
         this.setState({
-          width: Dimensions.get('window').width, height: Dimensions.get('window').height - StatusBar.Height
+          width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
         });
     }
 
