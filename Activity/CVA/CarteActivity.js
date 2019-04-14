@@ -6,7 +6,7 @@ import { NavigationActions } from 'react-navigation';
  * Exemple de 2ème activité
  */
 export default class CarteActivity extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -44,7 +44,7 @@ export default class CarteActivity extends React.Component {
             duration: 12000
         }
     ).start(() => { this.animateBackgroundColor() });
-  }
+    }
 
 	render() {
 		//_MainActivity()

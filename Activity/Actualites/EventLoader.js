@@ -41,7 +41,7 @@ export function setEvents(responseJson){
 
 export function getEvents(stringOfChoixAssos, fonctionThen = () => {}, reload = false){
   if(arrayOfEvents.length === 0 || reload){
-    fetch('http://inprod.grandcercle.org/appli/get_event_info.php?assos='+stringOfChoixAssos, { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+    fetch('http://inprod.grandcercle.org/appli/get_event_info.php', { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',
