@@ -6,7 +6,7 @@ import { NavigationActions } from 'react-navigation';
  * Exemple de 2ème activité
  */
 export default class CarteActivity extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function resetToScreen(navigation,screen,params=null){
+export function resetToScreen(navigation,screen,params=null){
 	var options = { routeName: screen };
 
 	if (params){
