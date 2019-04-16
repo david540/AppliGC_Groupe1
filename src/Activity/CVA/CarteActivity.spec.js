@@ -7,8 +7,8 @@ describe("<CarteActivity />", () => {
 
   it('calls componentDidMount', () => {
     sinon.spy(CarteActivity.prototype, 'componentDidMount');
-
-    const wrapper = mount(<CarteActivity />);
+    const navigation = { navigate: jest.fn() };
+    const wrapper = mount(<CarteActivity navigation={navigation}/>);
     expect(Cartectivity.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 
