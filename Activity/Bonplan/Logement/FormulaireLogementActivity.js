@@ -27,9 +27,9 @@ export default class LogementActivity extends React.Component {
         adresseRue: '',
         codePostal: '',
         ville: '',
-        category_type: 'Coloc',
-        nb_places: '',
-        category_locate: LogementObject.ALL,
+        category_type: "Logement individuel",
+        places: '',
+        category_locate: 4,
         description: '',
         longitude: '0',
         latitude: '0',
@@ -56,7 +56,7 @@ export default class LogementActivity extends React.Component {
     finalValidation() {
         ok=true;
         if (isEmpty(this.state.nb_places)) {
-            this.setState({nb_placesError: validate('nb_places', '')});
+            this.setState({nb_placesError: validate('places', '')});
             ok = false;
         }
         if (isEmpty(this.state.adresseNum)) {
@@ -124,9 +124,9 @@ export default class LogementActivity extends React.Component {
         prix: this.state.prix,
         surface: this.state.surface,
       })
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        Alert.alert(responseJson);
+    }).then((response) => {
+        console.log("la reponse");
+        console.log(response);
         this.setState({loadisnotdone: false});
       }).catch((error) => {
         console.error(error);
@@ -167,10 +167,10 @@ export default class LogementActivity extends React.Component {
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.field}
-                          placeholder = "Nombre de place(s) (1 si logement individuel)"
-                          onChangeText={(text) => this.setState({nb_places: text})}
+                          placeholder = "Ntmombre de place(s) (1 si logement individuel)"
+                          onChangeText={(text) => this.setState({places: text})}
                           onBlur={() => {
-                              this.setState({nb_placesError: validate('nb_places', this.state.nb_places)})}}
+                              this.setState({nb_placesError: validate('places', this.state.places)})}}
                         />
                         <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
                             {this.state.nb_placesError} </Text>
@@ -181,11 +181,14 @@ export default class LogementActivity extends React.Component {
                             <Picker prompt={"Sélectionnez le quartier"}
                               selectedValue={this.state.category_locate}
                               onValueChange={(itemValue) => {this.setState({category_locate: itemValue})}}>
-                                <Picker.Item label="Hypercentre" value="Hypercentre"/>
-                                <Picker.Item label="Presqu'île" value="Presqu'île"/>
-                                <Picker.Item label="Gare" value="Gare"/>
-                                <Picker.Item label="Ile Verte" value="Ile Verte"/>
-                                <Picker.Item label="Saint-Martin-d'Hères" value="Saint-Martin-d'Hères"/>
+                                <Picker.Item label="Hypercentre" value='4'/>
+                                <Picker.Item label="Presqu'île" value='5'/>
+                                <Picker.Item label="Gare" value='6'/>
+                                <Picker.Item label="Ile Verte" value='7'/>
+                                <Picker.Item label="Saint-Martin-d'Hères" value='8'/>
+                                <Picker.Item label="Est" value='3'/>
+                                <Picker.Item label="Ouest" value='1'/>
+                                <Picker.Item label="Centre" value='2'/>
                             </Picker>
                         </View>
 
@@ -270,9 +273,9 @@ export default class LogementActivity extends React.Component {
                           keyboardType = 'numeric'
                           style={styles.field}
                           placeholder = "Loyer (en €)"
-                          onChangeText={(text) => this.setState({loyer: text})}
+                          onChangeText={(text) => this.setState({prix: text})}
                           onBlur={() => {
-                              this.setState({loyerError: validate('loyer', this.state.loyer)})}}
+                              this.setState({loyerError: validate('loyer', this.state.prix)})}}
                         />
                         <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
                             {this.state.loyerError} </Text>

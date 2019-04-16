@@ -33,7 +33,7 @@ export default class LogementActivity extends React.Component {
         height: Dimensions.get('window').height - getStatusBarHeight(),
         loadisnotdone: !logementsAreLoaded()
     };
-    //this.refreshData(this.state.category);
+    this.refreshData(this.state.category);
   }
 
   ori_change = () => {
@@ -42,7 +42,6 @@ export default class LogementActivity extends React.Component {
       });
   }
 
-  /*
   componentWillMount() {
     Dimensions.addEventListener("change", this.ori_change);
   }
@@ -55,11 +54,10 @@ export default class LogementActivity extends React.Component {
     this.setState({logements: getLogements(() => this.setState({loadisnotdone: false}), LogementObject.ALL)});
   }
   refreshData(categoryid) {
-    this.setState({ refreshing: true });
-    this.setState({logements : getLogements(categoryid), refreshing: false});
+    this.setState({loadisnotdone: true });
+    this.setState({logements: getLogements(() => this.setState({loadisnotdone: false}), categoryid)});
   }
 
-*/
   openModal(item){
     this.setState({itemModal: item, descriptionModal: item.description, adresseModal: item.getAdresse(), surfaceModal: item.surface, prixModal: item.prix, typeModal: item.type, placesModal: item.places, modalVisible: true});
   }
@@ -79,7 +77,7 @@ export default class LogementActivity extends React.Component {
     var navigation = this.state.navigation;
 
         return(
-            !this.state.loadisnotdone ?
+            this.state.loadisnotdone ?
             (
                 <View style={styles.loading_screen}>
                     <Text>Chargement des informations : Logements</Text>
