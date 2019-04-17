@@ -14,7 +14,8 @@ export class LogementObject {
 
     static CATEGORIES_NAME = ["Tous", "Ouest", "Centre", "Est", "Hypercentre", "Presqu'île", "Gare", "Ile Verte", "Saint-Martin-d'Hères"];
 
-    constructor(id, numAd, rueAd, codePostalAd, villeAd, type, places, quartier, description, photo="http://192.168.1.35/GC/photo.jpg", longitude = 0, latitude = 0, prix, surface){
+    constructor(id, email, numAd, rueAd, codePostalAd, villeAd, type, places, quartier, description, photo="http://192.168.1.35/GC/photo.jpg", longitude, latitude, prix, surface){
+        this.email = email;
         this.id = parseInt(id);
         this.type = type;
         this.places = parseInt(places);
@@ -26,8 +27,8 @@ export class LogementObject {
         this.description = description;
         this.readMore = false;
         this.photo = photo;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.longitude = parseFloat(longitude);
+        this.latitude = parseFloat(latitude);
         this.prix = parseInt(prix);
         this.surface = parseInt(surface);
         

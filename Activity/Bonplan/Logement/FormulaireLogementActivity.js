@@ -4,7 +4,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, ActivityIndicator, FlatList, Picker, Modal, Image, TouchableOpacity, TextInput, KeyboardAvoidingView} from 'react-native';
 import { List, ListItem } from 'react-native-elements'; // Version can be specified in package.json
 import { LogementObject } from'./LogementObject';
-import { getLogement, logementsAreLoaded } from './DataLoader';
+import { getLogements, logementsAreLoaded } from './DataLoader';
 import { getPartenariats, partenairesAreLoaded } from '../../Partenariats/DataLoader';
 import { PartenariatObject } from '../../Partenariats/PartenariatObject'; // Version can be specified in package.json
 
@@ -27,7 +27,7 @@ export default class LogementActivity extends React.Component {
         adresseRue: '',
         codePostal: '',
         ville: '',
-        category_type: "Logement individuel",
+        category_type: "Individuel",
         places: '',
         category_locate: 4,
         description: '',
@@ -99,7 +99,8 @@ export default class LogementActivity extends React.Component {
         var navigation = this.state.navigation;
         if (this.finalValidation()) {
             this._request();
-            goToScreen(navigation, "LogementActivity");
+            getLogements(() => {this.setState({loadisnotdone: false})}, LogementObject.ALL);
+            resetToScreen(navigation, "LogementActivity");
         } else {
             this.state.validationError = validate('validation', '');
         }
@@ -113,6 +114,7 @@ export default class LogementActivity extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        email: 'guilhaume.dauriac@grenoble-inp.org',
         numAd: this.state.adresseNum,
         rueAd: this.state.adresseRue,
         codePostal: this.state.codePostal,
@@ -158,7 +160,7 @@ export default class LogementActivity extends React.Component {
                             <Picker prompt={"Choisissez le type de logement"}
                               selectedValue={this.state.category_type}
                               onValueChange={(itemValue) => {this.setState({category_type: itemValue})}}>
-                                <Picker.Item label="Logement individuel" value="Logement individuel"/>
+                                <Picker.Item label="Logement individuel" value="Individuel"/>
                                 <Picker.Item label="Colocation" value="Colocation"/>
                             </Picker>
                         </View>

@@ -8,6 +8,8 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 /*
  * Exemple de 2ème activité
  */
+var connected = false;
+
 export default class Authentificated extends React.Component {
     constructor(props){
         super(props);
@@ -48,6 +50,7 @@ export default class Authentificated extends React.Component {
         AsyncStorage.multiRemove(keys, (err) => {
             console.log('Déconnecté !');
         });
+        connected = false;
         goToScreen(this.state.navigation, "MainActivity");
     }
 
@@ -92,6 +95,7 @@ export default class Authentificated extends React.Component {
 
     render() {
         //_MainActivity()
+        connected = true;
         const params = {num_cva: this.props.navigation.state.params.num_cva, nom: this.props.navigation.state.params.nom, prenom: this.props.navigation.state.params.prenom, ecole: this.props.navigation.state.params.ecole, username: this.props.navigation.state.params.username};
         return (
             <View style={styles.container}>
@@ -206,4 +210,9 @@ function goToScreen(navigation,screen,params=null){
     const action = NavigationActions.navigate(options);
 
     navigation.dispatch(action);
+}
+
+export function isConnected(){
+    console.log('lo');
+    return connected;
 }

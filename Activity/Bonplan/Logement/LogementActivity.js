@@ -6,8 +6,7 @@ import { List, ListItem } from 'react-native-elements'; // Version can be specif
 import { LogementObject } from'./LogementObject';
 import { getLogements, logementsAreLoaded } from './DataLoader';
 import { getPartenariats, partenairesAreLoaded } from '../../Partenariats/DataLoader';
-import { PartenariatObject } from '../../Partenariats/PartenariatObject'; // Version can be specified in package.json
-
+import { isConnected } from '../../Authentification/Authentificated';
 import { resetToScreen, goToScreen } from '../../MainActivity';
 import { styles } from '../../Styles';
 
@@ -31,9 +30,8 @@ export default class LogementActivity extends React.Component {
         urlImageModal: 'https://blog.sqlauthority.com/i/a/errorstop.png',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
-        loadisnotdone: !logementsAreLoaded()
+        loadisnotdone: !logementsAreLoaded(),
     };
-    this.refreshData(this.state.category);
   }
 
   ori_change = () => {
@@ -59,7 +57,7 @@ export default class LogementActivity extends React.Component {
   }
 
   openModal(item){
-    this.setState({itemModal: item, descriptionModal: item.description, adresseModal: item.getAdresse(), surfaceModal: item.surface, prixModal: item.prix, typeModal: item.type, placesModal: item.places, modalVisible: true});
+    this.setState({itemModal: item, descriptionModal: item.description, adresseModal: item.getAdresse(), surfaceModal: item.surface, prixModal: item.prix, typeModal: item.type, placesModal: item.places, urlImageModal: item.photo, modalVisible: true});
   }
   closeModal(){
     this.setState({modalVisible: false});
@@ -92,7 +90,9 @@ export default class LogementActivity extends React.Component {
                             <Text style={[styles.text_neutral, styles.page_title_left]}>LOGEMENTS</Text>
                         </View>
                         <View style = {styles.top_right_banner}>
-                            <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "MesOffresActivity") }}>
+                            <TouchableOpacity onPress={() => { 
+                                goToScreen(navigation, true ? "MesOffresActivity" : "AuthentificationActivity") }}>
+
                                 <Text style = {[styles.text_neutral, styles.top_right_text]}>Consulter mes offres</Text>
                             </TouchableOpacity>
                         </View>
@@ -141,12 +141,12 @@ export default class LogementActivity extends React.Component {
                         transparent={true}
                     >
                       <View style={styles.modalBackgroundContainer}>
-                        <View style= {styles.modalContainer}>
+                        <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
                           <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
-                            <View style={styles.modalTitleBox}>
+                            <View style={[styles.modalTitleBox, {width: this.state.width*8/9}]}>
                                 <Text style={[styles.text_neutral, styles.modalTitleText]}>{this.state.adresseModal}</Text>
                             </View>
-                            <View style={styles.colorLimitModal}/>
+                <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}/>
                             <Image source={{uri: this.state.urlImageModal}}
                               style={{width: this.state.width*5/7, height: this.state.height*2/7,
                               resizeMode: Image.resizeMode.contain }} />
@@ -158,14 +158,17 @@ export default class LogementActivity extends React.Component {
                                 <Text style={[styles.text_neutral, styles.modalDescriptionLeft]}>Surface: {this.state.surfaceModal} m²</Text>
                                 <Text style={[styles.text_neutral, styles.modalDescriptionRight]}>   Prix: {this.state.prixModal}€/mois</Text>
                             </View>
-                            <Text style={[styles.text_neutral, styles.modalDescriptionReductionText]}>{"\n \n"}{this.state.descriptionModal}{"\n \n"}</Text>
-                            <View style = {styles.modalButtons}>
+                            <Text style={styles.modalDescriptionTitleText}>Description{"\n \n"}</Text>
+                            <Text style={styles.modalDescriptionReductionText}>{this.state.descriptionModal}{"\n \n"}</Text>
+                            <View style = {[styles.modalButtons, {bottom: 0}]}>
                                 <TouchableOpacity onPress={() => this.closeModal()}>
                                     <Text style={[styles.text_neutral, {color:'grey'}]}> RETOUR </Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}>
-                                    <Text style={[styles.text_neutral, {color:'grey'}]}> MAP </Text>
-                                </TouchableOpacity>
+                                <View style={{marginLeft: 60}}>
+                                    <TouchableOpacity onPress={() => {goToScreen(navigation, "GeolocalisationActivity", this.state.itemModal); this.closeModal();}}>
+                                        <Text style={[styles.text_neutral, {color:'grey'}]}> MAP </Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                             <Text></Text>
                           </ScrollView>
@@ -173,7 +176,8 @@ export default class LogementActivity extends React.Component {
                       </View>
                     </Modal>
                     <View style = {styles.bottom_button}>
-                        <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "FormulaireLogementActivity") }}>
+                        <TouchableOpacity onPress={() => { 
+                                goToScreen(navigation, true ? "FormulaireLogementActivity" : "AuthentificationActivity") }}>
                             <Text style={[styles.text_neutral, styles.bottomContainerText]}>Proposer un logement</Text>
                         </TouchableOpacity>
                     </View>

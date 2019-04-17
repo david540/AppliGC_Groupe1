@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
-import { goToScreen, resetToScreen} from '../MainActivity.js';
 
 import { styles } from '../Styles';
 
@@ -108,3 +107,33 @@ export default class BonplanActivity extends React.Component {
             );
     }
 }
+
+
+function resetToScreen(navigation,screen,params=null){
+    var options = { routeName: screen };
+
+    if (params){
+        options['params'] = params;
+    }
+
+    const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+            NavigationActions.navigate(options)
+        ]
+    });
+
+    navigation.dispatch(resetAction);
+}
+
+function goToScreen(navigation,screen,params=null){
+    var options = { routeName: screen };
+
+    if (params){
+        options['params'] = params;
+    }
+    const action = NavigationActions.navigate(options);
+
+    navigation.dispatch(action);
+}
+
