@@ -50,7 +50,9 @@ export const styles = StyleSheet.create({
         height: wheight/9,
         flexDirection: 'row',
         alignContent: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: background,
+         
     },
     
     // Bandeau supérieur de la page d'accueil
@@ -168,16 +170,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    field: {
-        height: 40,
-        width: 260,
-        borderColor: 'black',
-        borderRadius: 2,
-        backgroundColor:'white',
-        marginHorizontal:15,
-        marginTop : 10,
-        marginBottom : 5
-    },
 	categoryContainer: {
   	    justifyContent: 'center',
 	    alignItems: 'center',
@@ -220,12 +212,84 @@ export const styles = StyleSheet.create({
         width: wwidth*8/9,
     },
     
+    // FORM SECTION
+    
+    form_page: {
+        marginHorizontal: wwidth/15,
+        marginTop: wheight/60,
+        height: (1 - 1/9 - 1/60)*wheight,
+        width: (1 - 2/15)*wwidth,
+    },
+    
+    form_field_regular: {
+        height: 50,
+        width: 260,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
+        marginBottom : 5
+    },
+    
+    form_field_desc: {
+        height: 150,
+        width: 260,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
+        marginBottom : 5,
+        textAlignVertical: 'top',
+        paddingLeft: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+
+    form_field_short: {
+        height: 50,
+        width: 50,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
+        marginBottom : 5
+    },
+
+    form_field_medium: {
+        height: 50,
+        width: 180,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
+        marginBottom : 5
+    },
+
+    form_validation_button: {
+  	    justifyContent: 'center',
+	    alignItems: 'center',
+        backgroundColor:'#68a0cf',
+        borderRadius:10,
+        borderWidth: 2,
+        borderColor: '#000000',
+        width: wwidth/2,
+        height: wheight/10,
+        marginHorizontal: wwidth/5,
+        marginBottom: 25,
+           
+
+    },
 
       //*****************//
       //** TEXT STYLES **//
       //*****************//
+      
+
     text_neutral: {
-        color: 'white',
     },
 	centered_text: {
 		alignSelf: 'stretch',
@@ -313,7 +377,35 @@ export const styles = StyleSheet.create({
     modalReductionTitleText: {
         fontWeight: '200',
         fontSize: 24,
+    },
+
+    // FORM SECTION
+    
+    form_incomplete_error_regular: {
+        color: '#ff0000',
+        width: 260,
+        marginLeft: 15,
+        marginBottom: 15,
+    },
+    form_incomplete_error_short: {
+        color: '#ff0000',
+        width: 65,
+        marginLeft: 15,
+        marginBottom: 15,
+    },
+    form_incomplete_error_medium: {
+        color: '#ff0000',
+        width: 190,
+        marginLeft: 15,
+        marginBottom: 15,
+    },
+
+    form_validation_button_text: {
+        color: 'white',
+        fontSize: 20,
     }
+
+
 });
 /*
 const styles = StyleSheet.create({

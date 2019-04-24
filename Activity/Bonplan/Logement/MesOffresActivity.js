@@ -16,6 +16,17 @@ export default class MesOffresActivity extends React.Component {
         }
     }
 
+    openModal(item){
+        this.setState({itemModal: item, descriptionModal: item.description, 
+                       adresseModal: item.getAdresse(), surfaceModal: item.surface, 
+                       prixModal: item.prix, typeModal: item.type, 
+                       placesModal: item.places, modalVisible: true});
+    }
+
+    closeModal(){
+        this.setState({modalVisible: false});
+    }
+
     render() {
         return (
             <View style={styles.main_container}>
@@ -34,6 +45,15 @@ export default class MesOffresActivity extends React.Component {
                     <List>
                     </List>
                 </View>
+                <Modal
+                  visible = {this.state.modalVisible}
+                  animationType = {'fade'}
+                  onRequestClose={() => this.closeModal()}
+                  transparent = {true}
+                >
+                    <View style={styles.yellow_strip}/>
+                </Modal>
+
             </View>
         );
 

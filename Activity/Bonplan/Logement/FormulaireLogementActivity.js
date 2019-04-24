@@ -142,19 +142,17 @@ export default class LogementActivity extends React.Component {
         //TODO : Afficher le nombre de places disponibles si l'on propose une colocation
         return (
                 <View style={styles.container}>
-                    <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#263238', justifyContent: 'center', alignItems: 'center'}}>
-                        <Text style={{color:'white', fontWeight: 'bold', fontSize: 22}}>PROPOSITION DE LOGEMENT</Text>
+                    <View style = {styles.top_banner}>
+                        <Text style={[styles.text_neutral,  styles.page_title_left]}>PROPOSITION DE LOGEMENT</Text>
                     </View>
                     <KeyboardAvoidingView 
-                      style={{marginHorizontal: this.state.width/15, marginTop: this.state.height/60, 
-                            height: (1 - 1/9 - 1/60)*this.state.height, width: (1 - 2/15)*this.state.width}}
+                      style={styles.form_page}
                       behavior="padding">
-
 
                       <ScrollView>
 
-                        <Text>Type de logement :</Text>
-                        <View style={[styles.field, {height:50}]}>
+                        <Text style={styles.text_neutral}>Type de logement :</Text>
+                        <View style={styles.form_field_regular}>
                             <Picker prompt={"Choisissez le type de logement"}
                               selectedValue={this.state.category_type}
                               onValueChange={(itemValue) => {this.setState({category_type: itemValue})}}>
@@ -163,21 +161,21 @@ export default class LogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text>Nombre de place(s) disponible(s) :</Text>
+                        <Text style={styles.text_neutral}>Nombre de place(s) disponible(s) :</Text>
                         <TextInput
                           keyboardType = 'numeric'
-                          style={styles.field}
+                          style={styles.form_field_regular}
                           placeholder = "Nombre de place(s) (1 si logement individuel)"
                           onChangeText={(text) => this.setState({nb_places: text})}
                           onBlur={() => {
                               this.setState({nb_placesError: validate('nb_places', this.state.nb_places)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.nb_placesError} </Text>
 
 
-                        <Text>Quartier</Text>
-                        <View style={[styles.field, {height:50}]}>
+                        <Text style={styles.text_neutral}>Quartier</Text>
+                        <View style={styles.form_field_regular}>
                             <Picker prompt={"Sélectionnez le quartier"}
                               selectedValue={this.state.category_locate}
                               onValueChange={(itemValue) => {this.setState({category_locate: itemValue})}}>
@@ -189,71 +187,71 @@ export default class LogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text>Adresse :</Text>
-                        <View style={{flexDirection:"row"}}>
+                        <Text style={styles.text_neutral}>Adresse :</Text>
+                        <View style={{flexDirection: 'row'}}>
                             <TextInput
-                              style={[styles.field, {width: 50}]}
+                              style={styles.form_field_short}
                               placeholder = "Numéro"
                               onChangeText={(text) => this.setState({adresseNum: text.trim()})}
                               onBlur={() => {
                                   this.setState({adresseNumError: validate('adresseNum', this.state.adresseNum)})}} 
                               />
                             <TextInput
-                              style={[styles.field, {width: 180}]}
+                              style={styles.form_field_medium}
                               placeholder = "Rue"
                               onChangeText={(text) => this.setState({adresseRue: text.trim()})}
                               onBlur={() => {
                                   this.setState({adresseRueError: validate('adresseRue', this.state.adresseRue)})}} 
                               />
                         </View>      
-                        <View style={{flexDirection:"row"}}>
-                            <Text style={{color:'#ff0000', width:65, marginLeft:15, marginBottom:15}}> 
+                        <View style={{flexDirection: 'row'}}>
+                            <Text style={[styles.text_neutral, styles.form_incomplete_error_short]}> 
                                 {this.state.adresseNumError} </Text>
-                            <Text style={{color:'#ff0000', width:190, marginLeft:15, marginBottom:15}}> 
+                            <Text style={[styles.text_neutral, styles.form_incomplete_error_medium]}> 
                                 {this.state.adresseRueError} </Text>
                         </View>
 
-                        <Text>Ville :</Text>
+                        <Text style={styles.text_neutral}>Ville :</Text>
                         <TextInput
-                          style={styles.field}
+                          style={styles.form_field_regular}
                           placeholder = "Ville"
                           onChangeText={(text) => this.setState({ville: text})}
                           onBlur={() => {
                               this.setState({villeError: validate('ville', this.state.ville)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.villeError} </Text>
 
 
-                        <Text>Code postal :</Text>
+                        <Text style={styles.text_neutral}>Code postal :</Text>
                         <TextInput
                           keyboardType = 'numeric'
-                          style={styles.field}
+                          style={styles.form_field_regular}
                           placeholder = "Code postal"
                           onChangeText={(text) => this.setState({codePostal: text})}
                           onBlur={() => {
                               this.setState({codePostalError: validate('codePostal', this.state.codePostal)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.codePostalError} </Text>
 
 
-                        <Text>Surface du logement :</Text>
+                        <Text style={styles.text_neutral}> Surface du logement :</Text>
                         <TextInput
                           keyboardType = 'numeric'
-                          style={styles.field}
+                          style={styles.form_field_regular}
                           placeholder = "Surface (m²)"
                           onChangeText={(text) => this.setState({surface: text})}
                           onBlur={() => {
                               this.setState({surfaceError: validate('surface', this.state.surface)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.surfaceError} </Text>
 
 
-                        <Text>Veuillez renseigner une description :</Text>
+                        <Text style={styles.text_neutral}> Veuillez renseigner une description :</Text>
                         <TextInput
-                          style={[styles.field, {height:150, textAlignVertical:'top', paddingLeft: 10, paddingTop: 10, paddingBottom: 10}]}
+                          style={styles.form_field_desc}
                           placeholder = "Proximité des transports, commerces à proximité, calme/bruyant, etc..."
                           editable={true}
                           multiline={true}
@@ -261,33 +259,34 @@ export default class LogementActivity extends React.Component {
                           onBlur={() => {
                               this.setState({descriptionError: validate('description', this.state.description)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.descriptionError} </Text>
 
 
-                        <Text>Indiquez le loyer mensuel</Text>
+                        <Text style={styles.text_neutral}>Indiquez le loyer mensuel</Text>
                         <TextInput
                           keyboardType = 'numeric'
-                          style={styles.field}
+                          style={styles.form_field_regular}
                           placeholder = "Loyer (en €)"
                           onChangeText={(text) => this.setState({loyer: text})}
                           onBlur={() => {
                               this.setState({loyerError: validate('loyer', this.state.loyer)})}}
                         />
-                        <Text style={{color:'#ff0000', width:260, marginLeft:15, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.loyerError} </Text>
 
 
 
+                        <Text style={styles.text_neutral}> </Text>
                         <TouchableOpacity
                           style={{justifyContent:'center'}}
                           onPress={() => { this.submitLogement();}}>
 
-                            <View style={[styles.categoryContainer, {width:this.state.width/2, height:this.state.height/10, marginHorizontal:this.state.width/5, marginBottom:25}]} > 
-                                <Text style={{color:'white', fontSize:20}}> Valider </Text>
+                            <View style={styles.form_validation_button} > 
+                                <Text style={[styles.text_neutral, styles.form_validation_button_text]}> Valider </Text>
                             </View> 
                         </TouchableOpacity>
-                        <Text style={{color:'#ff0000', width:260, marginLeft:this.state.width/5, marginBottom:15}}> 
+                        <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.validationError} </Text>
                       </ScrollView>
                     </KeyboardAvoidingView>
