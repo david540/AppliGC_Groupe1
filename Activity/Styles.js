@@ -52,7 +52,23 @@ export const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         backgroundColor: background,
-         
+    },
+
+    // Comme un bandeau mais 2 fois moins haut 
+    tabs: {
+        width: wwidth,
+        height: wheight/18,
+        flexDirection: 'row',
+        alignContent: 'center',
+        justifyContent: 'center',
+        backgroundColor: background,
+    },
+    
+    tab_2: {
+        width: wwidth/2,
+        height: wheight/18,
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     
     // Bandeau supérieur de la page d'accueil
@@ -88,6 +104,11 @@ export const styles = StyleSheet.create({
     yellow_strip: {
         width: wwidth,
         height: wheight/80,
+        backgroundColor: yellow_strip_color
+    },
+    thin_yellow_strip: {
+        width: wwidth,
+        height: wheight/120,
         backgroundColor: yellow_strip_color
     },
 
@@ -381,6 +402,11 @@ export const styles = StyleSheet.create({
 
     // FORM SECTION
     
+    field_name_covoit: {
+        color: 'white',
+        marginLeft: wwidth/10
+    },
+
     form_incomplete_error_regular: {
         color: '#ff0000',
         width: 260,
