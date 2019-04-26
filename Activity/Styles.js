@@ -269,7 +269,7 @@ export const styles = StyleSheet.create({
     },
 
     form_field_short: {
-        height: 50,
+        height: 40,
         width: 50,
         borderColor: 'black',
         borderRadius: 2,
@@ -277,6 +277,16 @@ export const styles = StyleSheet.create({
         marginHorizontal:15,
         marginTop : 10,
         marginBottom : 5
+    },
+
+    form_field_half: {
+        height: 50,
+        width: 130,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
     },
 
     form_field_medium: {
@@ -301,8 +311,12 @@ export const styles = StyleSheet.create({
         height: wheight/10,
         marginHorizontal: wwidth/5,
         marginBottom: 25,
-           
-
+    },
+    form_picker_hour:{
+        height: 50,
+        width: 100,
+        marginHorizontal: 15,
+        backgroundColor: "white",
     },
 
       //*****************//
@@ -419,6 +433,17 @@ export const styles = StyleSheet.create({
         marginLeft: 15,
         marginBottom: 15,
     },
+    form_incomplete_error_half: {
+        color: '#ff0000',
+        width: 115,
+        marginLeft: 15,
+        marginBottom: 15,
+    },
+    form_text_field: {
+        color: 'white',
+        width: 130,
+        marginLeft: 15,
+    },
     form_incomplete_error_medium: {
         color: '#ff0000',
         width: 190,
@@ -430,6 +455,7 @@ export const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
     }
+
 
 
 });
