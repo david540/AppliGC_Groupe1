@@ -176,6 +176,11 @@ export const styles = StyleSheet.create({
         height: leftheight - wheight*28/180,
         backgroundColor: "white",
     },
+    // List box for covoit (tabs + thin_strip + text + field + text + picker + texte + picker + empty(20))
+    covoit_list_box: {
+        height: leftheight - wheight*(1/18 + 1/120 + 3/80 + 3/80 + (1/80) + 3/80 + (1/80) + 1/10) - 50 - 25 - 25 - 20,
+        backgroundColor: "white",
+    },
     // Pareil sans bouton en bas
     full_page_list_box: {
         height: leftheight,
@@ -243,7 +248,7 @@ export const styles = StyleSheet.create({
     },
     
     form_field_regular: {
-        height: 50,
+        height: 40,
         width: 260,
         borderColor: 'black',
         borderRadius: 2,
@@ -280,7 +285,7 @@ export const styles = StyleSheet.create({
     },
 
     form_field_half: {
-        height: 50,
+        height: 40,
         width: 130,
         borderColor: 'black',
         borderRadius: 2,
@@ -288,9 +293,8 @@ export const styles = StyleSheet.create({
         marginHorizontal:15,
         marginTop : 10,
     },
-
     form_field_medium: {
-        height: 50,
+        height: 40,
         width: 180,
         borderColor: 'black',
         borderRadius: 2,
@@ -313,10 +317,31 @@ export const styles = StyleSheet.create({
         marginBottom: 25,
     },
     form_picker_hour:{
-        height: 50,
-        width: 100,
+        height: 25,
+        width: 80,
         marginHorizontal: 15,
         backgroundColor: "white",
+        marginTop: wheight/80,
+    },
+    form_picker_month:{
+        height: 25,
+        width: 200,
+        marginHorizontal: 15,
+        backgroundColor: "white",
+        marginTop: wheight/80,
+    },
+    form_picker_style_hour:{
+        height: 25,
+    },
+    picker_form_regular: {
+        height: 50,
+        width: 260,
+        borderColor: 'black',
+        borderRadius: 2,
+        backgroundColor:'white',
+        marginHorizontal:15,
+        marginTop : 10,
+        marginBottom : 10,
     },
 
       //*****************//
@@ -425,30 +450,37 @@ export const styles = StyleSheet.create({
         color: '#ff0000',
         width: 260,
         marginLeft: 15,
-        marginBottom: 15,
+        marginBottom: 4,
     },
     form_incomplete_error_short: {
         color: '#ff0000',
         width: 65,
         marginLeft: 15,
-        marginBottom: 15,
+        marginBottom: 4,
     },
     form_incomplete_error_half: {
         color: '#ff0000',
         width: 115,
         marginLeft: 15,
-        marginBottom: 15,
+        marginBottom: 4,
     },
-    form_text_field: {
+    form_text_field_covoit: {
         color: 'white',
         width: 130,
         marginLeft: 15,
+        marginTop: wheight/80,
+        height: wheight/40,
+    },
+    form_text_field: {
+        width: 130,
+        marginLeft: 15,
+        marginTop: wheight/80,
     },
     form_incomplete_error_medium: {
         color: '#ff0000',
         width: 190,
         marginLeft: 15,
-        marginBottom: 15,
+        marginBottom: 4,
     },
 
     form_validation_button_text: {

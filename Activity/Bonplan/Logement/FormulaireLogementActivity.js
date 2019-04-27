@@ -13,7 +13,7 @@ import { styles } from '../../Styles';
 
 import { resetToScreen, goToScreen } from '../../MainActivity';
 
-export default class LogementActivity extends React.Component {
+export default class FormulaireLogementActivity extends React.Component {
 
   	constructor(props){
     		super(props);
@@ -139,7 +139,6 @@ export default class LogementActivity extends React.Component {
 
         var navigation = this.state.navigation;
 
-        //TODO : Afficher le nombre de places disponibles si l'on propose une colocation
         return (
                 <View style={styles.container}>
                     <View style = {styles.top_banner}>
@@ -151,8 +150,8 @@ export default class LogementActivity extends React.Component {
 
                       <ScrollView>
 
-                        <Text style={styles.text_neutral}>Type de logement :</Text>
-                        <View style={styles.form_field_regular}>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Type de logement :</Text>
+                        <View style={styles.picker_form_regular}>
                             <Picker prompt={"Choisissez le type de logement"}
                               selectedValue={this.state.category_type}
                               onValueChange={(itemValue) => {this.setState({category_type: itemValue})}}>
@@ -161,7 +160,7 @@ export default class LogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text style={styles.text_neutral}>Nombre de place(s) disponible(s) :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Nombre de place(s) disponible(s) :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -174,8 +173,8 @@ export default class LogementActivity extends React.Component {
                             {this.state.nb_placesError} </Text>
 
 
-                        <Text style={styles.text_neutral}>Quartier</Text>
-                        <View style={styles.form_field_regular}>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Quartier</Text>
+                        <View style={styles.picker_form_regular}>
                             <Picker prompt={"Sélectionnez le quartier"}
                               selectedValue={this.state.category_locate}
                               onValueChange={(itemValue) => {this.setState({category_locate: itemValue})}}>
@@ -187,7 +186,7 @@ export default class LogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text style={styles.text_neutral}>Adresse :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Adresse :</Text>
                         <View style={{flexDirection: 'row'}}>
                             <TextInput
                               style={styles.form_field_short}
@@ -211,7 +210,7 @@ export default class LogementActivity extends React.Component {
                                 {this.state.adresseRueError} </Text>
                         </View>
 
-                        <Text style={styles.text_neutral}>Ville :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Ville :</Text>
                         <TextInput
                           style={styles.form_field_regular}
                           placeholder = "Ville"
@@ -223,7 +222,7 @@ export default class LogementActivity extends React.Component {
                             {this.state.villeError} </Text>
 
 
-                        <Text style={styles.text_neutral}>Code postal :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Code postal :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -236,7 +235,7 @@ export default class LogementActivity extends React.Component {
                             {this.state.codePostalError} </Text>
 
 
-                        <Text style={styles.text_neutral}> Surface du logement :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}> Surface du logement :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -249,7 +248,7 @@ export default class LogementActivity extends React.Component {
                             {this.state.surfaceError} </Text>
 
 
-                        <Text style={styles.text_neutral}> Veuillez renseigner une description :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}> Veuillez renseigner une description :</Text>
                         <TextInput
                           style={styles.form_field_desc}
                           placeholder = "Proximité des transports, commerces à proximité, calme/bruyant, etc..."
@@ -263,7 +262,7 @@ export default class LogementActivity extends React.Component {
                             {this.state.descriptionError} </Text>
 
 
-                        <Text style={styles.text_neutral}>Indiquez le loyer mensuel</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Indiquez le loyer mensuel</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -275,9 +274,6 @@ export default class LogementActivity extends React.Component {
                         <Text style={[styles.text_neutral, styles.form_incomplete_error_regular]}> 
                             {this.state.loyerError} </Text>
 
-
-
-                        <Text style={styles.text_neutral}> </Text>
                         <TouchableOpacity
                           style={{justifyContent:'center'}}
                           onPress={() => { this.submitLogement();}}>

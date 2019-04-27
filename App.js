@@ -19,11 +19,13 @@ import StageActivity from './Activity/Bonplan/Stage/StageActivity';
 import MaterielActivity from './Activity/Bonplan/Materiel/MaterielActivity';
 import CarteActivity from './Activity/CVA/CarteActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
+import MesOffresActivity from './Activity/Bonplan/Logement/MesOffresActivity';
+import FormulaireCovoitActivity from './Activity/Bonplan/Covoit/FormulaireCovoitActivity';
 
 const App = StackNavigator({
     MainActivity: {screen: MainActivity},
     CvaConnect: {screen: CvaConnect},
-		TestActivity: {screen: TestActivity},
+    TestActivity: {screen: TestActivity},
     CVAActivity: {screen:CVAActivity},
     AuthentificationActivity: {screen:AuthentificationActivity},
     Authentificated: {screen:Authentificated},
@@ -38,7 +40,10 @@ const App = StackNavigator({
     LogementActivity: {screen:LogementActivity},
     StageActivity: {screen:StageActivity},
     MaterielActivity: {screen:MaterielActivity},
-    FormulaireLogementActivity: {screen:FormulaireLogementActivity}
+    FormulaireLogementActivity: {screen:FormulaireLogementActivity},
+    MesOffresActivity: {screen:MesOffresActivity},
+    FormulaireCovoitActivity: {screen:FormulaireCovoitActivity},
+    //MesTrajetsActivity: {screen:MesTrajetsActivity},
 },
 {
     initialRouteName: 'MainActivity',
