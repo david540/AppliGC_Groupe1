@@ -461,7 +461,7 @@ export const styles = StyleSheet.create({
     form_incomplete_error_half: {
         color: '#ff0000',
         width: 115,
-        marginLeft: 15,
+        marginHorizontal: 15,
         marginBottom: 4,
     },
     form_text_field_covoit: {
@@ -474,6 +474,12 @@ export const styles = StyleSheet.create({
     form_text_field: {
         width: 130,
         marginLeft: 15,
+        marginTop: wheight/80,
+    },
+    form_text_field_half: {
+        width: 130,
+        marginLeft: 15,
+        marginRight: 15,
         marginTop: wheight/80,
     },
     form_incomplete_error_medium: {

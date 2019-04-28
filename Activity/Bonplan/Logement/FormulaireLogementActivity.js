@@ -150,7 +150,7 @@ export default class FormulaireLogementActivity extends React.Component {
 
                       <ScrollView>
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Type de logement :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Type de logement :</Text>
                         <View style={styles.picker_form_regular}>
                             <Picker prompt={"Choisissez le type de logement"}
                               selectedValue={this.state.category_type}
@@ -160,7 +160,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Nombre de place(s) disponible(s) :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Nombre de place(s) disponible(s) :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -173,7 +173,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             {this.state.nb_placesError} </Text>
 
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Quartier</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Quartier</Text>
                         <View style={styles.picker_form_regular}>
                             <Picker prompt={"Sélectionnez le quartier"}
                               selectedValue={this.state.category_locate}
@@ -186,7 +186,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             </Picker>
                         </View>
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Adresse :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Adresse :</Text>
                         <View style={{flexDirection: 'row'}}>
                             <TextInput
                               style={styles.form_field_short}
@@ -210,7 +210,7 @@ export default class FormulaireLogementActivity extends React.Component {
                                 {this.state.adresseRueError} </Text>
                         </View>
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Ville :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Ville :</Text>
                         <TextInput
                           style={styles.form_field_regular}
                           placeholder = "Ville"
@@ -222,7 +222,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             {this.state.villeError} </Text>
 
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Code postal :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Code postal :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -235,7 +235,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             {this.state.codePostalError} </Text>
 
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}> Surface du logement :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}> Surface du logement :</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}
@@ -248,7 +248,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             {this.state.surfaceError} </Text>
 
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}> Veuillez renseigner une description :</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}> Veuillez renseigner une description :</Text>
                         <TextInput
                           style={styles.form_field_desc}
                           placeholder = "Proximité des transports, commerces à proximité, calme/bruyant, etc..."
@@ -262,7 +262,7 @@ export default class FormulaireLogementActivity extends React.Component {
                             {this.state.descriptionError} </Text>
 
 
-                        <Text style={[styles.text_neutral, styles.form_text_field_log]}>Indiquez le loyer mensuel</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field]}>Indiquez le loyer mensuel</Text>
                         <TextInput
                           keyboardType = 'numeric'
                           style={styles.form_field_regular}

@@ -37,7 +37,7 @@ export default class CovoitActivity extends React.Component {
                             <Text style={[styles.text_neutral, styles.page_title_left]}> COVOITURAGES </Text>
                         </View>
                         <View style = {styles.top_right_banner}>
-                            <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "FormulaireCovoitActivity") }}>
+                            <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "BonplanActivity") }}>
                                 <Text style = {[styles.text_neutral, styles.top_right_text]}>Consulter mes propositions ou demandes</Text>
                             </TouchableOpacity>
                         </View>
@@ -58,19 +58,19 @@ export default class CovoitActivity extends React.Component {
                     <View style={styles.thin_yellow_strip}/>
 
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={[styles.text_neutral, styles.form_text_field_covoit]}>Ville de départ</Text>
+                        <Text style={[styles.text_neutral, styles.form_text_field_half, styles.form_text_field_covoit]}>Ville de départ</Text>
                         <Text style={[styles.text_neutral, styles.form_text_field_covoit]}>{"Ville d'arrivée"}</Text>
                     </View>
                     <View style={{flexDirection: 'row'}}>
                         <TextInput
                           style={styles.form_field_half}
                           placeholder = "Ville de départ"
-                          onChangeText={(text) => this.setState({adresseNum: text.trim()})}
+                          onChangeText={(text) => this.setState({departure: text.trim()})}
                           />
                         <TextInput
                           style={styles.form_field_half}
                           placeholder = "Ville d'arrivée"
-                          onChangeText={(text) => this.setState({adresseRue: text.trim()})}
+                          onChangeText={(text) => this.setState({arrival: text.trim()})}
                           />
                     </View>      
                     <View style={{flexDirection: 'row'}}>
@@ -190,7 +190,7 @@ export default class CovoitActivity extends React.Component {
                     <View style={styles.covoit_list_box}>
                     </View>
                     <View style = {styles.bottom_button}>
-                        <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "FormulaireLogementActivity") }}>
+                        <TouchableOpacity onPress={() => { goToScreen(this.state.navigation, "FormulaireCovoitActivity") }}>
                             <Text style={[styles.text_neutral, styles.bottomContainerText]}>Proposer ou demander un covoiturage</Text>
                         </TouchableOpacity>
                     </View>
