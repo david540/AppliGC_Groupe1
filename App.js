@@ -19,6 +19,7 @@ import StageActivity from './Activity/Bonplan/Stage/StageActivity';
 import MaterielActivity from './Activity/Bonplan/Materiel/MaterielActivity';
 import CarteActivity from './Activity/CVA/CarteActivity';
 import ActualitesActivity from './Activity/Actualites/ActualitesActivity';
+import AddEvent from './Activity/Actualites/AddEvent';
 
 const App = StackNavigator({
     MainActivity: {screen: MainActivity},
@@ -38,7 +39,8 @@ const App = StackNavigator({
     LogementActivity: {screen:LogementActivity},
     StageActivity: {screen:StageActivity},
     MaterielActivity: {screen:MaterielActivity},
-    FormulaireLogementActivity: {screen:FormulaireLogementActivity}
+    FormulaireLogementActivity: {screen:FormulaireLogementActivity},
+    AddEvent: {screen:AddEvent}
 },
 {
     initialRouteName: 'MainActivity',
