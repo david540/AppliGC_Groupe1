@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Alert, TouchableOpacity, ActivityIndicator, AsyncStorage, Image } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getPartenariats, partenairesAreLoaded } from './Partenariats/DataLoader';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -27,7 +27,8 @@ export default class MainActivity extends React.Component {
     		    navigation: props.navigation,
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height - getStatusBarHeight(),
-            loadisnotdone: !this.checkIfInfosAreLoaded()
+            //loadisnotdone: !this.checkIfInfosAreLoaded()
+            loadisnotdone : false
         }
   	}
 
@@ -42,6 +43,27 @@ export default class MainActivity extends React.Component {
     ori_change = () => {
         this.setState({
           width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
+        });
+    }
+
+    isConnected(){
+        AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole']).then((data)=> {
+            console.log("salut");
+            let email = data[0][1];
+            let password = data [1][1];
+            if(email !== null && password !== null && data[2][1] !== null && data[3][1] !== null && data[4][1] !== null && data[5][1] !== null){
+                console.log("oucou");
+                this.props.navigation.navigate('Authentificated', {
+                    num_cva: data[2][1],
+                    nom: data[3][1],
+                    prenom: data[4][1],
+                  ecole: data[5][1],
+                });
+            }
+            else{
+                console.log("anasssss");
+                goToScreen(this.state.navigation, "AuthentificationActivity");
+            }
         });
     }
 
@@ -140,7 +162,7 @@ export default class MainActivity extends React.Component {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
-                    onPress= {() => { goToScreen(navigation, "AuthentificationActivity")}}
+                    onPress= {() => {this.isConnected()}}
                     delayLongPress={180}
                     onLongPress={this._onLongPressAuthentification}>
                 <View style={[styles.main_button, {backgroundColor:"#f68712"}]}>
@@ -152,7 +174,7 @@ export default class MainActivity extends React.Component {
 
             <View style={styles.button_row}>
               <TouchableOpacity
-                    onPress={() => { goToScreen(navigation, "ActualitesActivity")}}
+                    onPress={() => { this.goToCalendar()}}
                     delayLongPress={180}
                     onLongPress={this._onLongPressCalendrier}>
                 <View style={[styles.main_button, {backgroundColor:"#bf202b"}]}>
