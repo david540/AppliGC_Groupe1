@@ -14,25 +14,28 @@ export class LogementObject {
 
     static CATEGORIES_NAME = ["Tous", "Ouest", "Centre", "Est", "Hypercentre", "Presqu'île", "Gare", "Ile Verte", "Saint-Martin-d'Hères"];
 
-    constructor(id, numAd, rueAd, type, places, quartier, nom=null, description, photo="./photo.jpg", longitude = 0, latitude = 0, prix=0){
+    constructor(id, email, numAd, rueAd, codePostalAd, villeAd, type, places, quartier, description, photo="http://192.168.1.35/GC/photo.jpg", longitude, latitude, prix, surface){
+        this.email = email;
         this.id = parseInt(id);
-        this.type;
+        this.type = type;
         this.places = parseInt(places);
-        this.quartier = quartier;
+        this.category = quartier;
         this.numAd = numAd;
         this.rueAd = rueAd;
-        this.nom = nom;
+        this.codePostalAd = codePostalAd;
+        this.villeAd = villeAd;
         this.description = description;
         this.readMore = false;
         this.photo = photo;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.prix = prix;
+        this.longitude = parseFloat(longitude);
+        this.latitude = parseFloat(latitude);
+        this.prix = parseInt(prix);
+        this.surface = parseInt(surface);
         
     }
     
     is_in_category(category){
-        return this.quartier == category;
+        return this.category == category;
     }
 
     readMoreOrLess(){
@@ -41,7 +44,7 @@ export class LogementObject {
 
   toString(){
     if(this.readMore){
-      return "Adresse -> "+ this.numAd + " " + this.rueAd + "\n" +
+      return "Adresse -> "+ this.numAd + " " + this.rueAd + " " + this.villeAd + "\n" +
       "type -> "+ this.type +"\n" +
       "Description -> " + this.description + "\n" +
       "Prix -> " + this.prix;
@@ -52,7 +55,7 @@ export class LogementObject {
     return this.id;
   }
   getAdresse(){
-    return this.adresse;
+    return this.numAd + " " + this.rueAd + " " + this.villeAd;
   }
   getDescription(){
     return this.description;
@@ -63,6 +66,10 @@ export class LogementObject {
   getLongitude(){
     return this.longitude;
   }
+
+  getTitre(){
+    return this.type + "     " + this.prix + "€/mois";
+    }
 
 }
 

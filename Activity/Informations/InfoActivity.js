@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Alert, ScrollView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+//import styles from '../Styles';
 
 export default class InfoActivity extends React.Component {
 
@@ -35,8 +36,8 @@ export default class InfoActivity extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18}}>+ d'Infos</Text>
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#263238', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 22}}>Informations</Text>
           <View style = {{marginLeft: 140}}>
             <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
               <Text style = {{color:'white'}}>Retour</Text>
@@ -45,7 +46,7 @@ export default class InfoActivity extends React.Component {
         </View>
         <View style={[styles.colorLimit,{height: this.state.height*1/80, width: this.state.width}]}>
         </View>
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1, backgroundColor: '#263238'}}>
             <Text>
             {"\n"}
             </Text>
@@ -66,7 +67,7 @@ export default class InfoActivity extends React.Component {
             </Text>
             <View style={[styles.partBox, { height: this.state.height/15, width: this.state.width}]}>
                   <Text style={styles.partText}>
-                    ... le but de l'application...
+                    Le but de l'application
                   </Text>
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
@@ -79,7 +80,7 @@ export default class InfoActivity extends React.Component {
             </Text>
             <View style={[styles.partBox, { height: this.state.height/15, width: this.state.width}]}>
                   <Text style={styles.partText}>
-                    ... les différents pôles...
+                    Les différents pôles
                   </Text>
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
@@ -98,7 +99,7 @@ export default class InfoActivity extends React.Component {
             </Text>
             <View style={[styles.partBox, { height: this.state.height/15 , width: this.state.width}]}>
                   <Text style={styles.partText}>
-                    ... le recrutement...
+                    Le recrutement
                   </Text>
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
@@ -111,7 +112,7 @@ export default class InfoActivity extends React.Component {
             </Text>
             <View style={[styles.partBox, { height: this.state.height/15, width: this.state.width}]}>
                   <Text style={styles.partText}>
-                    ... nous contacter...
+                    Nous contacter
                   </Text>
             </View>
             <View style={[styles.descriptionBox,{width: this.state.width}]}>
@@ -124,12 +125,13 @@ export default class InfoActivity extends React.Component {
             </Text>
             <View style={[styles.partBox, { height: this.state.height/15, width: this.state.width}]}>
                   <Text style={styles.partText}>
-                    ... crédits pour l'application.
+                    Crédits pour l'application
                   </Text>
             </View>
             <View style={styles.descriptionBox}>
                   <Text style={[styles.descriptionText, {marginBottom: 20}]}>
                     Un grand merci à David Desobry, listé BDS Storm à l'Ensimag sans qui cette application n'aurait pas vu le jour.
+                    Merci à Alexandre Frances, Sarah Tulliez et Guilhaume Dauriac qui ont implémenté la partie Bons plans de l'application, et qui se sont occupé du design de l'application.
                   </Text>
             </View>
         </ScrollView>

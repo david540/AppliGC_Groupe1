@@ -4,6 +4,8 @@ import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {List, ListItem} from 'react-native-elements';
+import { styles } from '../Styles'
+
 
 /*
  * Exemple de 2ème activité
@@ -223,39 +225,3 @@ render() {
   }
 }
 
-const primaryColor = "#1abc9c";
-const lightGrey = "#ecf0f1";
-const darkGrey = "#bdc3c7";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  searchContainer: {
-    flex: 1,
-    padding: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ecf0f1'
-  },
-  modalButtons: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  modalTitleBox: {
-    backgroundColor: "#f7bd13",
-  },
-  modalTitleText: {
-    fontSize:30,
-    fontWeight: '400',
-    color:'white',
-    textAlign: 'center',
-  },
-  colorLimitModal: { //limitation black
-    backgroundColor: '#0f0f0f',
-  },
-  modalButtons: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-});

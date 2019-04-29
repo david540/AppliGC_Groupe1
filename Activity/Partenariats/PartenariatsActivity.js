@@ -76,16 +76,16 @@ export default class PartenariatsActivity extends React.Component {
       )
       : (
       <View style={styles.container}>
-        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>PARTENARIATS CVA</Text>
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#263238', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 24}}>PARTENARIATS CVA</Text>
           <View style = {{marginLeft: 80}}>
             <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
-              <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
+              <Text style = {{color:'white'}}>Retour</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
-        <View style={{height: this.state.height*1/9}}>
+        <View style={{height: this.state.height*1/18}}>
           <Picker
             selectedValue={this.state.category}
             onValueChange={(itemValue) => {this.setState({category: itemValue, partenaires: getPartenariats(() => {}, itemValue)})}}>
@@ -98,7 +98,7 @@ export default class PartenariatsActivity extends React.Component {
             <Picker.Item label={PartenariatObject.CATEGORIES_NAME[PartenariatObject.AUTRES]} value={PartenariatObject.AUTRES} />
           </Picker>
         </View>
-        <View style={{height:this.state.height*(1 - 2/9 - 1/80)}}>
+        <View style={{height:this.state.height*(1 - 1/9 - 1/18 - 1/80)}}>
           <List>
             <FlatList
             data={this.state.partenaires}

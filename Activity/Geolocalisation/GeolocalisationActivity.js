@@ -74,11 +74,11 @@ export default class GeolocalisationActivity extends React.Component {
 	render() {
     return (
       <View style={[styles.container, {marginTop: this.state.varMarginTop}]}>
-        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color:'white', fontWeight: 'bold', fontSize: 18, marginTop: this.state.height/50}}>MAPS</Text>
-          <View style = {{marginLeft: 80}}>
+        <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#263238', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color:'white', fontWeight: 'bold', fontSize: 24}}>MAPS</Text>
+          <View style = {{marginLeft: 140}}>
             <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
-              <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
+              <Text style = {{color:'white'}}>Retour</Text>
             </TouchableOpacity>
           </View>
         </View>
