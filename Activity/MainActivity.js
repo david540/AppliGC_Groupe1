@@ -84,6 +84,27 @@ export default class MainActivity extends React.Component {
   	_onPressLearnMore(){
   		Alert.alert('TODO')
   	}
+
+    goToCalendar(){
+      AsyncStorage.getItem('email').then((email) => {
+        fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/checkAsso.php', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              email: email
+          })
+      }).then((response) => {
+          console.log("check : " +response._bodyText);
+          asso = response._bodyText;
+          AsyncStorage.setItem('asso', asso);
+          this.props.navigation.navigate('ActualitesActivity', {asso: asso});
+      });
+    });
+  }
+
 	/*
 	 * C'est le retour de cette fonction qui gere l'affichage
 	 * C'est une syntaxe de XML
@@ -121,7 +142,7 @@ export default class MainActivity extends React.Component {
             </View>
 
             <View style={[styles.rowContainer, {width:this.state.width, height:this.state.height*9/30}]}>
-              <TouchableOpacity onPress={() => { goToScreen(navigation, "ActualitesActivity")}}>
+              <TouchableOpacity onPress={() => {this.goToCalendar()}}>
                 <View style={[styles.categoryContainer,{width:this.state.width/2, height:this.state.height*9/30, backgroundColor:"#C7EFCF"}]}>
                           <Text style={{color:'grey', fontWeight:'100'}}> CALENDRIER COMMUN </Text>
                           <Text style={[{color:'#cccccc'}, styles.centered_text]}>Suivez les évènements autour de vous</Text>

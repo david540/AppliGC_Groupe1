@@ -40,8 +40,9 @@ export function setEvents(responseJson){
 }
 
 export function getEvents(stringOfChoixAssos, fonctionThen = () => {}, reload = false){
-  if(arrayOfEvents.length === 0 || reload){
-    fetch('http://inprod.grandcercle.org/appli/get_event_info.php?assos='+stringOfChoixAssos, { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+  /*if(arrayOfEvents.length === 0 || reload){
+    fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/loadEvents.php, {
+    //fetch('http://inprod.grandcercle.org/appli/get_event_info.php?assos='+stringOfChoixAssos, { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',
@@ -55,5 +56,6 @@ export function getEvents(stringOfChoixAssos, fonctionThen = () => {}, reload = 
        console.error(error);
      });
    }
-   return arrayOfEvents;
+   return arrayOfEvents;*/
+   return [];
 }

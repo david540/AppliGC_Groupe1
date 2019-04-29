@@ -10,7 +10,6 @@
       #$mycode = mysql_real_escape_string($db, $obj['code']);
       $myemail = $obj['email'];
       $mypassword = $obj['password'];
-      $mycode = $obj['code'];
       if(_test_mdp($mypassword) && _test_username($myemail)){
 
         //$sql = "SELECT num_cva, nom, prenom, ecole, code, timestmp FROM cva_account WHERE num_cva = '$myusername' and password = '$mypassword'";
@@ -18,7 +17,7 @@
         //$result = mysqli_query($db,$sql);
         //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         //$count = mysqli_num_rows($result);
-        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password FROM All_Users WHERE email = :email");
+        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password, asso FROM All_Users WHERE email = :email");
         $result->execute(array('email' => $myemail));
         $count = 0;
         while($current_row = $result->fetch()){

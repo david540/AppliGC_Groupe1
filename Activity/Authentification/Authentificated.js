@@ -40,7 +40,7 @@ export default class Authentificated extends React.Component {
 
 
     componentDidMount() {
-
+      AsyncStorage.setItem('ecole', this.props.navigation.state.params.ecole);
     }
 
     deconnect() {
@@ -61,7 +61,6 @@ export default class Authentificated extends React.Component {
     renderCVA(){
         if(this.props.navigation.state.params.num_cva === '0'){
             return(
-
                 <View style={[styles.categoryContainer,{width:this.state.width, height:this.state.height*6/31, backgroundColor:"#FFFFFF"}]}>
                     <Text style={{color:'grey'}}> {"\n"} </Text>
                     <Button

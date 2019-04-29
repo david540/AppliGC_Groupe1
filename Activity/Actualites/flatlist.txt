@@ -1,0 +1,18 @@
+<FlatList
+  data={this.arrayOfEvents}
+  renderItem= {
+    ({item}) => (
+      <EventRenderInList
+        nomEvent = {item.nomEvent}
+        intDate = {item.intDate}
+        dateStylee = {item.dateStylee}
+        heureD = {item.heureD}
+        minuteD = {item.minuteD < 10 ? "0" + item.minuteD : item.minuteD}
+        heureF = {item.heureF}
+        minuteF = {item.minuteF < 10 ? "0" + item.minuteF : item.minuteF}
+        description = {item.description}
+      />
+    )
+  }
+  keyExtractor= {item => item.id}
+/>

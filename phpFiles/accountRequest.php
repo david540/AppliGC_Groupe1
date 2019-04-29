@@ -22,6 +22,9 @@ function parseMail($email) {
 
   $pieces = explode(".", $email);
   $nom = explode("@", $pieces[1]);
+  if($nom[0] == "org"){
+    $nom[0]= "";
+  }
   $nom = preg_replace('/[0-9]+/', '', $nom[0]);
   $prenom = preg_replace('/[0-9]+/', '', $pieces[0]);
   return [$prenom, $nom];
@@ -51,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         'passhash' => $passhash,
                         ));
 
-  //echo $pass;
+  echo $pass;
 
   /*$to_email = 'louteranas@gmail.com';
   $subject = 'Testing PHP Mail';

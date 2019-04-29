@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button, Alert, ScrollView, TextInput, Picker, TouchableOpacity, AsyncStorage, ActivityIndicator } from 'react-native';
 import Dialog from "react-native-dialog";
 import { NavigationActions } from 'react-navigation';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -43,8 +43,8 @@ export default class AuthentificationActivity extends React.Component {
       //var infos = responseJson.split("&&&");
       console.log("coucou");
       console.log(responseJson);
-      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole){
-          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole);
+      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso){
+          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso);
       }
       else{
           Alert.alert("erreur, pas de données");
@@ -110,11 +110,12 @@ export default class AuthentificationActivity extends React.Component {
           this._connexion(1);
       }
   }
-  _goToAuthentificated(numCVA, nom, prenom, ecole){
+  _goToAuthentificated(numCVA, nom, prenom, ecole, asso){
       AsyncStorage.setItem('numCVA', numCVA);
       AsyncStorage.setItem('nom', nom);
       AsyncStorage.setItem('prenom', prenom);
       AsyncStorage.setItem('ecole', ecole);
+      AsyncStorage.setItem('asso', asso);
         this.props.navigation.navigate('Authentificated', {
         num_cva: numCVA,
         nom: nom,

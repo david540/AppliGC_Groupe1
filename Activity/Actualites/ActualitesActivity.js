@@ -1,5 +1,3 @@
-/* @flow */
-
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Dimensions, AsyncStorage, Alert, FlatList, ActivityIndicator, TouchableOpacity, Modal } from 'react-native';
 import { NavigationActions } from 'react-navigation';
@@ -29,7 +27,7 @@ export default class ActualitesActivity extends React.Component {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
         modalVisible: false,
-        loadisnotdone: true
+        loadisnotdone: false,
     }
   }
 
@@ -60,7 +58,7 @@ export default class ActualitesActivity extends React.Component {
   }
 
   componentDidMount(){
-    getOnlyEvents(()=>{this.arrayOfEvents = getEvents();this.setState({loadisnotdone : false})})
+    getOnlyEvents(()=>{this.setState({loadisnotdone : false})})
   }
 
   ori_change = () => {
@@ -99,6 +97,29 @@ export default class ActualitesActivity extends React.Component {
   }
 
 	render() {
+    let button = <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
+      <TouchableOpacity onPress={() => { this.openModal() }}>
+        <Text style = {{color:'white'}}>FILTRES</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getOnlyEvents(()=>{this.setState({loadisnotdone : false})}) }}>
+        <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RECHARGER</Text>
+      </TouchableOpacity>
+    </View>;
+    if(this.props.navigation.state.params.asso === '1'){
+      button =   <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
+          <TouchableOpacity onPress={() => { this.openModal() }}>
+            <Text style = {{color:'white'}}>FILTRES</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate('AddEvent', {});}}>
+            <Text style = {{color:'white', marginLeft: this.state.width / 7}}>AJOUTER</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getOnlyEvents(()=>{this.setState({loadisnotdone : false})}) }}>
+            <Text style = {{color:'white', marginLeft: this.state.width / 7}}>RECHARGER</Text>
+          </TouchableOpacity>
+        </View>;}
+
+
+
 
     return (
       this.state.loadisnotdone
@@ -120,34 +141,11 @@ export default class ActualitesActivity extends React.Component {
             </View>
           </View>
           <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
-          <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
-            <TouchableOpacity onPress={() => { this.openModal() }}>
-              <Text style = {{color:'white'}}>FILTRES</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getOnlyEvents(()=>{this.arrayOfEvents = getEvents();this.setState({loadisnotdone : false})}) }}>
-              <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RELOAD</Text>
-            </TouchableOpacity>
-          </View>
+
+          {button}
           <View style={{backgroundColor: '#0f0f0f', width: this.state.width, height: this.state.height * (1 - 1/9 - 1/9 - 1/80)}}>
             <View style={{backgroundColor: '#fcfcfc'}}>
-              <FlatList
-                data={this.arrayOfEvents}
-                renderItem= {
-                  ({item}) => (
-                    <EventRenderInList
-                      nomEvent = {item.nomEvent}
-                      intDate = {item.intDate}
-                      dateStylee = {item.dateStylee}
-                      heureD = {item.heureD}
-                      minuteD = {item.minuteD < 10 ? "0" + item.minuteD : item.minuteD}
-                      heureF = {item.heureF}
-                      minuteF = {item.minuteF < 10 ? "0" + item.minuteF : item.minuteF}
-                      description = {item.description}
-                    />
-                  )
-                }
-                keyExtractor= {item => item.id}
-              />
+
               <View style={{height: 1, backgroundColor: '#808080'}}/>
             </View>
           </View>
@@ -171,6 +169,7 @@ export default class ActualitesActivity extends React.Component {
         </View>
       )
     );
+
 	}
 }
 
