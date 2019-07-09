@@ -99,8 +99,8 @@ export default class Authentificated extends React.Component {
         return (
             <View style={styles.container}>
                 <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Mon compte</Text>
-                    <View style = {{marginLeft: 150}}>
+                    <Text style={{color:'white', fontWeight: 'bold', fontSize: 20, marginTop: this.state.height/50}}>MON COMPTE</Text>
+                    <View style = {{marginLeft: 105}}>
                         <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                             <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
                         </TouchableOpacity>
@@ -212,6 +212,5 @@ function goToScreen(navigation,screen,params=null){
 }
 
 export function isConnected(){
-    console.log('lo');
     return connected;
 }

@@ -77,8 +77,8 @@ export default class AccountRequestActivity extends React.Component {
             AsyncStorage.getItem('email').then((email) => {
               var emailUser = email;
 
-              fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
-              //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+              //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
+              fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
                   method: 'POST',
                   headers: {
                       'Accept': 'application/json',
@@ -91,6 +91,7 @@ export default class AccountRequestActivity extends React.Component {
                       email: emailUser
                   })
         }).then((response) => {
+          console.log(response._bodyText);
             var body = JSON.parse(response._bodyText);
             console.log("body : " + body);
             console.log("state : "  + this.state.cva);
@@ -102,10 +103,6 @@ export default class AccountRequestActivity extends React.Component {
             } else if(body == 0) {
               Alert.alert("Informations erronées.");
             }
-            /*console.log("anas");
-            var body = JSON.parse(response._bodyText);
-            console.log(body);
-            this._setInfos(body);*/
         }).catch((error) => {
                 console.error(error);
           });
@@ -132,8 +129,8 @@ export default class AccountRequestActivity extends React.Component {
        return (
          <View style={styles.container}>
            <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Demande de CVA</Text>
-             <View style = {{marginLeft: 150}}>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 20, marginTop: this.state.height/50}}>DEMANDE DE CVA</Text>
+             <View style = {{marginLeft: 65}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
                </TouchableOpacity>
@@ -157,7 +154,6 @@ export default class AccountRequestActivity extends React.Component {
              <View style={{margin:10}} />
              <Button
                onPress={() => {
-                 console.log("tchoin");
                  this._handleCVA();
                }}
                title="envoyer"

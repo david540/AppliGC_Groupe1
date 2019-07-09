@@ -76,7 +76,9 @@ export default class AddEvent extends React.Component {
           if(this.state.cible != 0) {
             maCible = "Inp";
           }
-          fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/addEvent.php', {
+
+          //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/addEvent.php', {
+          fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/addEvent.php', {
         //fetch('http://172.20.10.10/phpFiles/logincva.php', {
             method: 'POST',
             headers: {

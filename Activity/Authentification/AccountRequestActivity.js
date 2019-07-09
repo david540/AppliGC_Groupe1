@@ -77,7 +77,9 @@ export default class AccountRequestActivity extends React.Component {
     };
 
     _handleEmail = () =>{
-        fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/accountRequest.php', {
+
+        //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/accountRequest.php', {
+        fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/accountRequest.php', {
         //fetch('http://172.20.10.10/phpFiles/logincva.php', {
             method: 'POST',
             headers: {
@@ -90,10 +92,6 @@ export default class AccountRequestActivity extends React.Component {
             })
         }).then((response) => {
             console.log(response);
-            /*console.log("anas");
-            var body = JSON.parse(response._bodyText);
-            console.log(body);
-            this._setInfos(body);*/
         }).catch((error) => {
                 console.error(error);
           });
@@ -117,8 +115,8 @@ export default class AccountRequestActivity extends React.Component {
        return (
          <View style={styles.container}>
            <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Authentification</Text>
-             <View style = {{marginLeft: 150}}>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 20, marginTop: this.state.height/50}}>INSCRIPTION</Text>
+             <View style = {{marginLeft: 105}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
                </TouchableOpacity>
@@ -168,9 +166,7 @@ export default class AccountRequestActivity extends React.Component {
              <View style={{margin:10}} />
              <Button
                onPress={() => {
-                 console.log("tchoin");
                  if(this.state.email === ""){
-                   console.log("tchoin");
                  }
                  else{this._onPressSubmit()}
                }}

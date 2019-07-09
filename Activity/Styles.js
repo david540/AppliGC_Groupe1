@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     //*****************//
     //** VIEW STYLES **//
     //*****************//
-    
+
     // Loading screen
     loading_screen: {
         justifyContent: 'center',
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     empty: {
         width: wwidth,
         backgroundColor: background,
-        
+
     },
 
     // Container principal de la page d'accueil
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center'
     },
-    
+
     // Bandeau supérieur de la page d'accueil
     // [LARGEUR : écran/2 - HAUTEUR : écran/10]
     main_banner: {
@@ -130,7 +130,7 @@ export const styles = StyleSheet.create({
         width: wwidth/2,
         height: wheight*9/30,
 	},
-    
+
 	titleContainerBox: {
         backgroundColor: background,
         justifyContent: 'center',
@@ -200,13 +200,13 @@ export const styles = StyleSheet.create({
     modalContainer: {
         backgroundColor:'white',
         alignItems: 'center',
-        height: wheight*8/9, 
+        height: wheight*8/9,
         width: wwidth*8/9,
     },
     scrollViewModalContainer: {
         alignItems: 'center',
     },
-    colorLimitModal: { 
+    colorLimitModal: {
         backgroundColor: '#0f0f0f',
         height: wheight * 1/200,
         width: wwidth* 8/9,
@@ -219,7 +219,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#f7bd13",
         width: wwidth*8/9,
     },
-    
+
 
       //*****************//
       //** TEXT STYLES **//
@@ -255,7 +255,7 @@ export const styles = StyleSheet.create({
         textAlignVertical: 'center',
         fontWeight: 'bold',
         color: 'white',
-        fontSize: 25,
+        fontSize: 17,
     },
     bubbleDescText: {
         textAlign: 'center',
@@ -281,8 +281,8 @@ export const styles = StyleSheet.create({
     },
 
     // MODAL SECTION
-    
-    
+
+
     modalTitleText: {
         fontSize:30,
         fontWeight: '400',

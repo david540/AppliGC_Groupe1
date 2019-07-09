@@ -111,8 +111,10 @@ export default class MainActivity extends React.Component {
   	}
 
     goToCalendar(){
+
       AsyncStorage.getItem('email').then((email) => {
-        fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/checkAsso.php', {
+        //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/checkAsso.php', {
+        fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/checkAsso.php', {
           method: 'POST',
           headers: {
               'Accept': 'application/json',

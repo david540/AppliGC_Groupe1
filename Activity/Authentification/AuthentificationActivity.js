@@ -41,7 +41,6 @@ export default class AuthentificationActivity extends React.Component {
 
   _setInfos(responseJson){
       //var infos = responseJson.split("&&&");
-      console.log("coucou");
       console.log(responseJson);
       if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso){
           this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso);
@@ -54,7 +53,9 @@ export default class AuthentificationActivity extends React.Component {
 
 
   _connexion = (_code) =>{
-      fetch('http://192.168.0.11/AppliGC_Groupe1/phpFiles/logincva.php', {
+
+      //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/logincva.php', {
+      fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/logincva.php', {
       //fetch('http://172.20.10.10/phpFiles/logincva.php', {
           method: 'POST',
           headers: {
@@ -152,8 +153,8 @@ export default class AuthentificationActivity extends React.Component {
        return (
          <View style={styles.container}>
            <View style = {{width: this.state.width, height: this.state.height/9, flexDirection: 'row', backgroundColor: '#333745', justifyContent: 'center', alignItems: 'center'}}>
-             <Text style={{color:'white', fontWeight: 'bold', fontSize: 16, marginTop: this.state.height/50}}>Authentification</Text>
-             <View style = {{marginLeft: 150}}>
+             <Text style={{color:'white', fontWeight: 'bold', fontSize: 20, marginTop: this.state.height/50}}>AUTHENTIFICATION</Text>
+             <View style = {{marginLeft: 55}}>
                <TouchableOpacity onPress={() => { resetToScreen(this.state.navigation, "MainActivity") }}>
                  <Text style = {{color:'white', marginTop: this.state.height/50}}>Retour</Text>
                </TouchableOpacity>

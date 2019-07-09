@@ -1,18 +1,6 @@
 [
     {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/xml/preferences.xml"
-    },
-    {
-        "merged": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCAPPTEST/GCAppIOS/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/xml/preferences.xml"
-    },
-    {
-        "merged": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/ananas/Documents/ProjetImag/ProjetGC/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/xml/preferences.xml"
-    },
-    {
-        "merged": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/desobryd/Bureau/GCproject/GCApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/xml/preferences.xml"
+        "merged": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.50.4/res/xml/preferences.xml"
     }
 ]
