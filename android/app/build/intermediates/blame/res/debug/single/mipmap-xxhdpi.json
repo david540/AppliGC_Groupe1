@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     }

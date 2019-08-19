@@ -107,7 +107,7 @@ export default class LogementActivity extends React.Component {
     }
 
     _request(){
-    fetch('http://192.168.43.152/GC/set_logements_info.php', {
+    fetch('http://inprod.grandcercle.org/appli2019/set_logements_info.php', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

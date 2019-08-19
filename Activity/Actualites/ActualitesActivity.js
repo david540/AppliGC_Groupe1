@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, AsyncStorage, Alert, FlatList, ActivityIndicator, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, Text, Picker, TextInput, View, ScrollView, Dimensions, AsyncStorage, SectionList, Alert, FlatList, ActivityIndicator, TouchableOpacity, Modal } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { EventObject } from './EventObject';
-//import { getEvents, getEventsDev } from './EventLoader';
+import { getEvents, getEventsDev, getArrayOfEvents, getArrayOfSectionData } from './EventLoader';
 import { List, ListItem } from 'react-native-elements'; // Version can be specified in package.json
 import EventRenderInList from './EventRenderInList'; // Version can be specified in package.json
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -20,22 +20,28 @@ export default class ActualitesActivity extends React.Component {
     super(props);
     this.listeAssos = []
     this.listeEcoles = []
-    this.arrayOfChoixAssos = []
-    this.arrayOfEvents = []
+    this.superAdmin = false;
+    this.arrayOfChoixAssos = [];
+    this.nomAsso = this.capitalizeFirstLetter(this.props.navigation.state.params.nomasso);
+    //Alert.alert(this.props.navigation.state.params.nomasso + " " + this.nomAsso);
     //this.getListeEcolesAndListeAssos();
     //this.getChoixAssosFromFile()
     this.state = {
         navigation: props.navigation,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
+        idEcole: this.props.navigation.state.params.idEcole? this.props.navigation.state.params.idEcole: 0,
         modalVisible: false,
+        modalAdminVisible: false,
         loadisnotdone: true,
+        numAssoAdmin: '0',
         itemModal: "",
         titleModal: "",
         descriptionModal: "",
         dateFin : "",
         dateDebut : "",
         cible : "",
+        asso: "",
     }
   }
 
@@ -66,13 +72,16 @@ export default class ActualitesActivity extends React.Component {
   // }
 
   componentDidMount(){
-    this.getEventsDev();
+    //this.getEventsDev();
+    getEvents(this.props.navigation.state.params.code == 10 ? 0: this.state.idEcole, () => this.setState({loadisnotdone : false}));
+    //this.arrayOfEvents = ;
+    //Alert.alert(JSON.stringify(this.arrayOfEvents));
     //getOnlyEvents(()=>{this.setState({loadisnotdone : false})})
   }
-
+/*
   getEventsDev() {
-    //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/loadEvents.php', {
-      fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/loadEvents.php', {
+    //fetch('http://inprod.grandcercle.org/appli2019/loadEvents.php', {
+      fetch('http://inprod.grandcercle.org/appli2019/loadEvents.php', {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
@@ -83,7 +92,7 @@ export default class ActualitesActivity extends React.Component {
         this.setState({loadisnotdone: false});
     })
   }
-
+*/
   ori_change = () => {
       this.setState({
         width: Dimensions.get('window').width, height: Dimensions.get('window').height - getStatusBarHeight()
@@ -101,13 +110,62 @@ export default class ActualitesActivity extends React.Component {
   }
 
   openModal(item){
-    this.setState({itemModal: item, descriptionModal: item[1], titleModal: item[0], modalVisible: true, dateDebut: item[2], dateFin: item[3], cible: item[5]});
+    this.setState({itemModal: item, descriptionModal: item.description, titleModal: item.nom, modalVisible: true, dateDebut: item.getDateDebut(), dateFin: item.getDateFin(), cible: item.ecole, asso: item.asso});
   }
   closeModal = () => {
     //this.setChoixAssosInFile();
-    this.setState({modalVisible: false});
-    this.setState({loadisnotdone:true});
-    this.getEventsDev();
+    this.setState({modalVisible: false, loadisnotdone:true});
+    getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}));
+    //this.getEventsDev();
+  }
+
+  _goToAdmin(){
+    this.setState({modalAdminVisible: true});
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  demandeAssoAdmin(){
+    fetch('http://inprod.grandcercle.org/appli2019/changeAssoAdmin.php', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: this.props.navigation.state.params.email,
+          password: this.props.navigation.state.params.password,
+          asso: this.state.numAssoAdmin
+      })}).then((response) => {
+      this.nomAsso = this.capitalizeFirstLetter(response._bodyText);
+      AsyncStorage.setItem('asso', this.state.numAssoAdmin).then(() => {
+        Alert.alert("Changement d'asso vers " + this.nomAsso + " effectué");
+      })
+      //this.props.navigation.navigate('MainActivity');
+      }).catch((error) => {
+              console.error(error);
+        });
+  }
+
+  deleteEvent(item){
+    fetch('http://inprod.grandcercle.org/appli2019/deleteEvent.php', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: this.props.navigation.state.params.email,
+          password: this.props.navigation.state.params.password,
+          asso: this.state.asso,
+          nom: this.state.titleModal,
+      })}).then((response) => {
+        //Alert.alert(response._bodyText);
+      //this.props.navigation.navigate('MainActivity');
+  }).catch((error) => {
+          console.error(error);
+    });
   }
   // setChoixAssosInFile(){
   //   var chaine = "";
@@ -118,25 +176,58 @@ export default class ActualitesActivity extends React.Component {
   //     chaine = chaine.concat(this.arrayOfChoixAssos[this.arrayOfChoixAssos.length - 1]);
   //   AsyncStorage.setItem('choixassos', chaine);
   // }
+  dateInCorrectOrder(dateInYYYYmmdd){
+    return dateInYYYYmmdd.split("/").reverse().join("/");
+  }
+
+  reload(){
+    this.setState({loadisnotdone:true});
+    getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), true);
+  }
 
 	render() {
+    let picker= <View/>;
+    if(!this.props.navigation.state.params.email){
+     picker = <View style={{height: this.state.height*1/18}}>
+      <Picker
+        selectedValue={this.state.idEcole}
+        onValueChange={(itemValue) => {{AsyncStorage.setItem('idEcole', itemValue); this.setState({idEcole: itemValue}); this.reload();}}}>
+        <Picker.Item label="TOUTE ECOLE" value="0" />
+        <Picker.Item label="ENSIMAG" value="1" />
+        <Picker.Item label="PHELMA" value="2" />
+        <Picker.Item label="ENSE3" value="3" />
+        <Picker.Item label="PAGORA" value="4" />
+        <Picker.Item label="GI" value="5" />
+        <Picker.Item label="CPP" value="6" />
+        <Picker.Item label="ESISAR" value="7" />
+      </Picker>
+      </View>;
+    }
     let button = <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
-      <TouchableOpacity onPress={() => { this.openModal() }}>
-        <Text style = {{color:'white'}}>FILTRES</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true});this.getEventsDev();}}>
+      <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), true)}}>
         <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RECHARGER</Text>
       </TouchableOpacity>
     </View>;
-    if(this.props.navigation.state.params.asso === '1'){
+    if(!this.state.idEcole){
+      button = <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
+        <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), true)}}>
+          <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RECHARGER</Text>
+        </TouchableOpacity>
+      </View>;
+    }
+    if(parseInt(this.props.navigation.state.params.asso) > 0){
       button =   <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
-          <TouchableOpacity onPress={() => { this.openModal() }}>
-            <Text style = {{color:'white'}}>FILTRES</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.props.navigation.navigate('AddEvent', {});}}>
+          {(this.props.navigation.state.params.code > 0)?
+            (<TouchableOpacity onPress={() => { this._goToAdmin() }}>
+              <Text style = {{color:'white', marginLeft: this.state.width / 7}}>Admin</Text>
+            </TouchableOpacity>):(<Text></Text>)}
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate('AddEvent', {asso: this.props.navigation.state.params.asso,
+            nomasso: this.nomAsso,
+            idEcole: this.state.idEcole,
+            droitInp: this.props.navigation.state.params.droitInp});}}>
             <Text style = {{color:'white', marginLeft: this.state.width / 7}}>AJOUTER</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); this.getEventsDev();}}>
+          <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), 1) }}>
             <Text style = {{color:'white', marginLeft: this.state.width / 7}}>RECHARGER</Text>
           </TouchableOpacity>
         </View>;}
@@ -166,23 +257,52 @@ export default class ActualitesActivity extends React.Component {
           <View style={[styles.colorLimit, { height: this.state.height*1/80, width: this.state.width }]}/>
 
           {button}
-          <View style={{backgroundColor: '#0f0f0f', width: this.state.width, height: this.state.height * (1 - 1/9 - 1/9 - 1/80)}}>
-          <List>
-            <FlatList
-            data={this.arrayOfEvents}
+
+          {picker}
+          <View style={{backgroundColor: '#FFFFFF', width: this.state.width, height: this.state.height * (1 - 1/9 - 1/9 - 1/80)}}>
+
+          <SectionList
+
+            renderSectionHeader={({ section }) => (
+              <View style={{ padding: 8, backgroundColor: "#4fc3c8" }}>
+                <Text style={{ color: "white" }}>{this.dateInCorrectOrder(section.key)}</Text>
+              </View>)
+            }
             renderItem={({item}) => (
               <ListItem
                 button onPress={() => {
                   this.openModal(item);
                 }}
-                title={item[0]}
-                subtitle={item[1]}
+                title={item.nom}
+                subtitle={item.getDateDebut() + " -> " + item.getDateFin()}
               />
             )}
-            />
-          </List>
+
+            sections={getArrayOfSectionData()}
+
+            keyExtractor= {item => item}
+          />
 
           </View>
+          <Modal
+              visible={this.state.modalAdminVisible}
+              animationType={'fade'}
+              onRequestClose={() => this.setState({modalAdminVisible: false})}
+              transparent={false}
+          >
+            <View style={styles.modalBackgroundContainer}>
+              <TextInput
+                 onChangeText={(text) => this.setState({numAssoAdmin: text})}
+                 value={this.state.numAssoAdmin}
+               />
+               <TouchableOpacity onPress={() => {
+                 this.demandeAssoAdmin();
+                 this.setState({modalAdminVisible: false});}}>
+                 <Text style={{color:'grey'}}> Valider </Text>
+               </TouchableOpacity>
+            </View>
+
+          </Modal>
           <Modal
               visible={this.state.modalVisible}
               animationType={'fade'}
@@ -205,6 +325,26 @@ export default class ActualitesActivity extends React.Component {
                     <Text style= {styles.modalDescriptionTitleText}>{"\n"}Cible :</Text>
                     <Text style= {styles.modalDescriptionReductionText}>{this.state.cible}{"\n \n"}</Text>
                   <View style = {styles.modalButtons}>
+                    {(this.state.asso == this.props.navigation.state.params.asso || this.props.navigation.state.params.code > 0)?
+                    (
+                      <TouchableOpacity onPress={() => {
+                        this.deleteEvent();
+                        this.props.navigation.navigate('AddEvent', {asso: this.props.navigation.state.params.asso,
+                          nomasso: this.props.navigation.state.params.nomasso,
+                          idEcole: this.state.idEcole,
+                          droitInp: this.props.navigation.state.params.droitInp,
+                          nom: this.state.titleModal,
+                          description: this.state.descriptionModal,
+                          dateDebut: this.state.dateDebut,
+                          dateFin: this.state.dateFin
+                          });
+                        this.closeModal();
+                        }}>
+                          <Text style={{color:'grey'}}> DELETE </Text>
+                      </TouchableOpacity>
+                    )
+                    :(<Text></Text>)}
+
                     <TouchableOpacity onPress={() => this.closeModal()}>
                         <Text style={{color:'grey'}}> RETOUR </Text>
                     </TouchableOpacity>
@@ -237,3 +377,7 @@ function resetToScreen(navigation,screen,params=null){
 
 	navigation.dispatch(resetAction);
 }
+
+const _renderSeparator = () => (
+  <View style={{ height: 1, backgroundColor: 'grey', marginLeft: 80 }} />
+)

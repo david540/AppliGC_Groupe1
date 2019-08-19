@@ -17,8 +17,8 @@
         //$result = mysqli_query($db,$sql);
         //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         //$count = mysqli_num_rows($result);
-        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password, asso FROM All_Users WHERE email = :email");
-        $result->execute(array('email' => $myemail));
+        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password, asso, code FROM All_Users WHERE email = :email AND password = :password");
+        $result->execute(array('email' => $myemail, 'password' => $mypassword));
         $count = 0;
         while($current_row = $result->fetch()){
           $row = $current_row;
@@ -27,15 +27,10 @@
         //echo $row;
         // If result matched $myusername and $mypassword, table row must be 1 row
         if($count == 1) {
-          if(password_verify($mypassword, $row["password"])) {
-            $json = json_encode($row);
-            echo $json;
-          }
-          else {
-            echo 0;
-          }
+          $json = json_encode($row);
+          echo $json;
         }else {
-          echo 1;
+          echo 0;
         }
       }else{
         echo "Invalides";

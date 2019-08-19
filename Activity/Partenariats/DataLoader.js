@@ -22,7 +22,7 @@ export function setPartenariats(responseJson){
 
 export function getPartenariats(fonctionThen, categoryid = PartenariatObject.ALL){
   if(arrayOfPartenaires.length == 0){
-    fetch('http://inprod.grandcercle.org/appli/get_partenariats_info.php', { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+    fetch('http://inprod.grandcercle.org/appli/get_partenariats_info.php', { //http://inprod.grandcercle.org/appli2019/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',

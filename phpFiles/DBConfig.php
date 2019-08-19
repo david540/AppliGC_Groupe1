@@ -1,15 +1,15 @@
 <?php
 
 //Define your host here.
-//$HostName = "192.168.0.13";
-$HostName = "172.20.10.10";
+$HostName = "mysql51-152.bdb";
+
 //Define your database name here.
-$DatabaseName = "cercle";
+$DatabaseName = "grandcerinpl";
 
 //Define your database username here.
-$HostUser = "root";
+$HostUser = "grandcerinpl";
 
 //Define your database password here.
-$HostPass = "";
+$HostPass = "App18InP";
 
 ?>

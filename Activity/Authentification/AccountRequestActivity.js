@@ -78,9 +78,9 @@ export default class AccountRequestActivity extends React.Component {
 
     _handleEmail = () =>{
 
-        //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/accountRequest.php', {
-        fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/accountRequest.php', {
-        //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+        //fetch('http://inprod.grandcercle.org/appli2019/accountRequest.php', {
+        fetch('http://inprod.grandcercle.org/appli2019/accountRequest.php', {
+        //fetch('http://inprod.grandcercle.org/appli2019//phpFiles/logincva.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

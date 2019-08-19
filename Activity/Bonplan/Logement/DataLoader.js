@@ -6,10 +6,10 @@ var arrayOfLogements = [];
 export function setLogements(responseJson){
     var logements = responseJson.split("|||");
     var compteurLogements = 0;
-    
+
     for(var i=1; i < logements.length; i++){
         var infos = logements[i].split("&&&");
-        
+
         if(infos.length >= 14){
             arrayOfLogements[compteurLogements++] = new LogementObject(infos[0], infos[1], infos[3], infos[4], infos[5], infos[6], infos[7], infos[8], infos[2], infos[9], infos[10], infos[11], infos[12], infos[13], infos[14]);
 
@@ -18,9 +18,10 @@ export function setLogements(responseJson){
 }
 
 export function getLogements(fonctionThen, categoryid = LogementObject.ALL){
+  return arrayOfLogements;
     if(arrayOfLogements.length == 0){
-    
-    fetch('http://192.168.43.152/GC/get_logements_info.php', { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+
+    fetch('http://inprod.grandcercle.org/appli2019/get_logements_info.php', { //http://inprod.grandcercle.org/appli2019/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',

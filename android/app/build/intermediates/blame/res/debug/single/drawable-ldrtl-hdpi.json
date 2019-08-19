@@ -4,6 +4,10 @@
         "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_ic_ab_back_mtrl_am_alpha.png"
     },
     {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
         "merged": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_ic_menu_cut_mtrl_alpha.png",
         "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_ic_menu_cut_mtrl_alpha.png"
     },
@@ -14,5 +18,17 @@
     {
         "merged": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_spinner_mtrl_am_alpha.9.png",
         "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi/abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-ldrtl-hdpi/abc_ic_ab_back_mtrl_am_alpha.png"
     }
 ]

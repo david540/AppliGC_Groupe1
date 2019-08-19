@@ -37,7 +37,7 @@ export default class MainActivity extends React.Component {
     }
 
     loadInfos(){
-      getPartenariats(() => {getAssosAndEvents(() => {getLogements(() => {this.setState({loadisnotdone: false})})})});
+      getPartenariats(() => {getAssosAndEvents(() => {/*getLogements(() => {this.setState({loadisnotdone: false})})*/})});
     }
 
     ori_change = () => {
@@ -47,21 +47,20 @@ export default class MainActivity extends React.Component {
     }
 
     isConnected(){
-        AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole']).then((data)=> {
-            console.log("salut");
+        AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole', 'asso', 'code']).then((data)=> {
             let email = data[0][1];
             let password = data [1][1];
             if(email !== null && password !== null && data[2][1] !== null && data[3][1] !== null && data[4][1] !== null && data[5][1] !== null){
-                console.log("oucou");
                 this.props.navigation.navigate('Authentificated', {
                     num_cva: data[2][1],
                     nom: data[3][1],
                     prenom: data[4][1],
-                  ecole: data[5][1],
+                    ecole: data[5][1],
+                    asso: data[6][1],
+                    code: data[7][1]
                 });
             }
             else{
-                console.log("anasssss");
                 goToScreen(this.state.navigation, "AuthentificationActivity");
             }
         });
@@ -112,22 +111,55 @@ export default class MainActivity extends React.Component {
 
     goToCalendar(){
 
-      AsyncStorage.getItem('email').then((email) => {
-        //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/checkAsso.php', {
-        fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/checkAsso.php', {
+      AsyncStorage.getItem('asso').then((asso) => {
+
+        //this.props.navigation.navigate('ActualitesActivity', {asso: 0});
+        //fetch('http://inprod.grandcercle.org/appli2019/checkAsso.php', {
+        fetch('http://inprod.grandcercle.org/appli2019/checkAsso.php', {
           method: 'POST',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              email: email
+              asso: asso
           })
       }).then((response) => {
+
           console.log("check : " +response._bodyText);
-          asso = response._bodyText;
-          AsyncStorage.setItem('asso', asso);
-          this.props.navigation.navigate('ActualitesActivity', {asso: asso});
+          infos = response._bodyText.split("|");
+          AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole', 'asso', 'code']).then((data)=> {
+              let email = data[0][1];
+              let password = data [1][1];
+              if(email !== null && password !== null && data[2][1] !== null && data[3][1] !== null && data[4][1] !== null && data[5][1] !== null && data[6][1] !== null && data[7][1] !== null){
+                  this.props.navigation.navigate('ActualitesActivity', {
+                    nomasso: infos[0],
+                    idEcole: infos[1],
+                    droitInp: infos[2],
+                    email: email,
+                    password: password,
+                    num_cva: data[2][1],
+                    nom: data[3][1],
+                    prenom: data[4][1],
+                    ecole: data[5][1],
+                    asso: data[6][1],
+                    code: data[7][1]
+                  });
+              }
+              else{
+                AsyncStorage.getItem('idEcole').then((idEcole) => {
+                  if(idEcole){
+                    this.props.navigation.navigate("ActualitesActivity", {
+                      nomasso: "",
+                      idEcole: idEcole
+                    });
+                  }else{
+                    this.props.navigation.navigate("ActualitesActivity", {
+                      nomasso: ""
+                    });
+                  }
+              })}
+        });
       });
     });
   }

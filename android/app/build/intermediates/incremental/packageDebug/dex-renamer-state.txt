@@ -1,4 +1,4 @@
-#Fri May 24 14:12:04 GMT 2019
-base.0=/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Sun Jul 21 23:31:07 CEST 2019
+base.0=/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

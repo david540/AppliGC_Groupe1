@@ -36,14 +36,13 @@ export default class AuthentificationActivity extends React.Component {
 
   _nbCharLim = 10;
   _authFailed = () => { Alert.alert("Echec", "Nom de compte ou mot de passe incorrect");
-                        //this.setState({newAccount: true});
+                        this.setState({newAccount: true});
       };
 
   _setInfos(responseJson){
       //var infos = responseJson.split("&&&");
-      console.log(responseJson);
-      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso){
-          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso);
+      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso && responseJson.code){
+          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso, responseJson.code);
       }
       else{
           Alert.alert("erreur, pas de données");
@@ -52,11 +51,11 @@ export default class AuthentificationActivity extends React.Component {
   }
 
 
-  _connexion = (_code) =>{
+  _connexion = () =>{
 
-      //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/logincva.php', {
-      fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/logincva.php', {
-      //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+      //fetch('http://inprod.grandcercle.org/appli2019/logincva.php', {
+      fetch('http://inprod.grandcercle.org/appli2019/logincva.php', {
+      //fetch('http://inprod.grandcercle.org/appli2019//phpFiles/logincva.php', {
           method: 'POST',
           headers: {
               'Accept': 'application/json',
@@ -64,13 +63,13 @@ export default class AuthentificationActivity extends React.Component {
           },
           body: JSON.stringify({
               email: this.state.email,
-              password: this.state.password,
-              code: _code,
+              password: this.state.password
           })
       }).then((response) => {
           console.log(response);
           if(response._bodyText == 0) {
             Alert.alert("Mot de passe incorrect");
+            this.setState({newAccount: true});
           } else if(response._bodyText == 1) {
             Alert.alert("Mail inexistant");
           } else {
@@ -83,12 +82,12 @@ export default class AuthentificationActivity extends React.Component {
         });
   }
 
-    _connexion_automatique(_code){
+    _connexion_automatique(){
         AsyncStorage.getItem('email').then((email) => {this.state.email = email;
         AsyncStorage.getItem('password').then((password) => {this.state.password = password;
             //Alert.alert(password);
-            if(username != '' && password != ''){
-                this._connexion(_code)
+            if(email != null && email != '' && password != null && password != ''){
+                this._connexion()
             }else{
                 this.setState({newAccount: true});
             }
@@ -97,26 +96,24 @@ export default class AuthentificationActivity extends React.Component {
 
 
   _onPressSubmit = () => {
-      var code = 0;
       try {
           AsyncStorage.setItem('email', this.state.email);
           AsyncStorage.setItem('password', this.state.password);
-          AsyncStorage.multiGet(['email', 'password']).then((data)=> {
-              console.log("retour mail : " + data[0][1]);
-          });
-          AsyncStorage.getItem('code').then((code) => this._connexion(code));
+          AsyncStorage.multiGet(['email', 'password']);
+          this._connexion();
       } catch (error) {
           //Il faudrait une demande de validation du choix de lier ce compte à ce téléphone
           Alert.alert("Nouvelle connexion");
-          this._connexion(1);
+          this._connexion();
       }
   }
-  _goToAuthentificated(numCVA, nom, prenom, ecole, asso){
+  _goToAuthentificated(numCVA, nom, prenom, ecole, asso, code){
       AsyncStorage.setItem('numCVA', numCVA);
       AsyncStorage.setItem('nom', nom);
       AsyncStorage.setItem('prenom', prenom);
       AsyncStorage.setItem('ecole', ecole);
       AsyncStorage.setItem('asso', asso);
+      AsyncStorage.setItem('code', code);
         this.props.navigation.navigate('Authentificated', {
         num_cva: numCVA,
         nom: nom,
@@ -137,8 +134,8 @@ export default class AuthentificationActivity extends React.Component {
 
   componentDidMount() {
     AsyncStorage.getItem('code').then((code) => {
-      if(code){
-        this._connexion_automatique(code);
+      if(code != null){
+        this._connexion_automatique();
       }else{
         this.setState({newAccount : true});
       }

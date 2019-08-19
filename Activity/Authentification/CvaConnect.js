@@ -77,8 +77,8 @@ export default class AccountRequestActivity extends React.Component {
             AsyncStorage.getItem('email').then((email) => {
               var emailUser = email;
 
-              //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
-              fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/liaisoncva.php', {
+              //fetch('http://inprod.grandcercle.org/appli2019/liaisoncva.php', {
+              fetch('http://inprod.grandcercle.org/appli2019/liaisoncva.php', {
                   method: 'POST',
                   headers: {
                       'Accept': 'application/json',

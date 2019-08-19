@@ -18,7 +18,7 @@ export function setAssos(responseJson){
 
 export function getAssosAndEvents(fonctionThen){
   if(arrayOfAssos.length === 0){
-    fetch('http://inprod.grandcercle.org/appli/get_liste_assos.php', { //http://10.188.183.219/appligc/get_partenariats_info.php pour wifirst
+    fetch('http://inprod.grandcercle.org/appli/get_liste_assos.php', { //http://inprod.grandcercle.org/appli2019/get_partenariats_info.php pour wifirst
       method: 'GET',
       headers: {
          'Accept': 'application/json',
@@ -31,9 +31,9 @@ export function getAssosAndEvents(fonctionThen){
              AsyncStorage.getItem('choixassos').then((choixAssos) => {
                if(choixAssos){
                  arrayOfChoixAssos = choixAssos.split(";");
-                 getEvents("0;" + choixAssos);
+                 //getEvents();
                }else{
-                 getEvents("0");
+                 //getEvents();
                }
              });
            }catch(error){
@@ -41,7 +41,7 @@ export function getAssosAndEvents(fonctionThen){
              //Alert.alert("non");
              //le fichier n'existe pas, premiere utilisation ?
              arrayOfChoixAssos = [];
-             getEvents("0");
+            // getEvents();
            }
            fonctionThen();
 
@@ -58,16 +58,16 @@ export function getOnlyEvents(fonctionThen){
     AsyncStorage.getItem('choixassos').then((choixAssos) => {
       if(choixAssos){
         arrayOfChoixAssos = choixAssos.split(";");
-        arrayOfEvents = getEvents("0;" + choixAssos, fonctionThen, true);
+        arrayOfEvents = getEvents(fonctionThen, true);
       }else{
-        arrayOfEvents = getEvents("0", fonctionThen, true);
+        arrayOfEvents = getEvents(fonctionThen, true);
       }
     });
   }catch(error){
 
     //Alert.alert("non");
     //le fichier n'existe pas, premiere utilisation ?
-    arrayOfEvents = getEvents("0", fonctionThen, true);
+    arrayOfEvents = getEvents(fonctionThen, true);
   }
   return arrayOfEvents
 }

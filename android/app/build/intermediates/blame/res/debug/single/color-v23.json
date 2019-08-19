@@ -2,5 +2,9 @@
     {
         "merged": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
         "source": "/opt/lampp/htdocs/AppliGC_Groupe1/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/home/desobryd/Bureau/GCproject/V2App/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v23/abc_color_highlight_material.xml"
     }
 ]

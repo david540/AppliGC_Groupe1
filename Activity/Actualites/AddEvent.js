@@ -25,17 +25,33 @@ export default class AddEvent extends React.Component {
         height: Dimensions.get('window').height - getStatusBarHeight(),
         modalVisible: false,
         loadisnotdone: true,
-        nom :"",
-        description:"",
+        nom :this.props.navigation.state.params.nom,
+        description:this.props.navigation.state.params.description,
         cible: "0",
         prevente : "0",
-        dateD:new Date(),
-        dateF:"",
+        dateD:this.props.navigation.state.params.dateDebut?this.SQLDatetoDate(this.props.navigation.state.params.dateDebut): new Date(),
+        dateF:this.props.navigation.state.params.dateFin?this.SQLDatetoDate(this.props.navigation.state.params.dateFin): "",
         isDateTimePickerVisibleD: false,
         isDateTimePickerVisibleF: false,
     }
   }
 
+  dateToSQLDate(date){
+    var retour=  date.getFullYear() + '-' +
+        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+        ('00' + date.getDate()).slice(-2) + ' ' +
+        ('00' + date.getHours()).slice(-2) + ':' +
+        ('00' + date.getMinutes()).slice(-2) + ':' +
+        ('00' + date.getSeconds()).slice(-2);
+
+    return retour;
+  }
+
+  SQLDatetoDate(date){
+    infos = date.split(" ");
+    yyyymmdd = infos[0].split("-").reverse().join("/");
+    return new Date(yyyymmdd + " " + infos[1]);
+  }
 
   showDateTimePickerD = () => {
     this.setState({ isDateTimePickerVisibleD: true });
@@ -76,10 +92,11 @@ export default class AddEvent extends React.Component {
           if(this.state.cible != 0) {
             maCible = "Inp";
           }
+        //  Alert.alert(this.props.navigation.state.params.asso);
 
-          //fetch('http://192.168.0.13/AppliGC_Groupe1/phpFiles/addEvent.php', {
-          fetch('http://172.20.10.10/AppliGC_Groupe1/phpFiles/addEvent.php', {
-        //fetch('http://172.20.10.10/phpFiles/logincva.php', {
+          //fetch('http://inprod.grandcercle.org/appli2019/addEvent.php', {
+          fetch('http://inprod.grandcercle.org/appli2019/addEvent.php', {
+        //fetch('http://inprod.grandcercle.org/appli2019//phpFiles/logincva.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -87,15 +104,16 @@ export default class AddEvent extends React.Component {
             },
             body: JSON.stringify({
                 nom: this.state.nom,
-                description: this.state.description,
+                description: this.state.description + " (ajouté par "+ this.props.navigation.state.params.nomasso +")",
                 cible: maCible,
                 prevente: this.state.prevente,
-                dateD: this.state.dateD,
-                dateF: this.state.dateF,
+                dateD: this.dateToSQLDate(this.state.dateD),
+                dateF: this.dateToSQLDate(this.state.dateF),
+                asso: this.props.navigation.state.params.asso
             })})
         }).then((response) => {
-            console.log(response);
-            Alert.alert("Evenement crée avec succès");
+            //console.log(response);
+            Alert.alert("Evènement créé avec succès");
             this.props.navigation.navigate('MainActivity');
         }).catch((error) => {
                 console.error(error);
@@ -118,6 +136,7 @@ export default class AddEvent extends React.Component {
           <Text
               style={[{fontSize: 27 }, styles.centered_text]}>
               Ajouter un événement {"\n\n\n"}
+              pour {this.props.navigation.state.params.nomasso}
           </Text>
           <TextInput placeholder="   Nom de L'évenement"
           style = {{borderWidth:1, marginBottom: 5}}
@@ -209,7 +228,7 @@ export default class AddEvent extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffffg',
+    backgroundColor: '#ffffff',
   },
   colorLimit: {
     backgroundColor: '#f7bd13',

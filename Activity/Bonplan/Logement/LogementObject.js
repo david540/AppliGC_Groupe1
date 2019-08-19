@@ -14,7 +14,7 @@ export class LogementObject {
 
     static CATEGORIES_NAME = ["Tous", "Ouest", "Centre", "Est", "Hypercentre", "Presqu'île", "Gare", "Ile Verte", "Saint-Martin-d'Hères"];
 
-    constructor(id, email, numAd, rueAd, codePostalAd, villeAd, type, places, quartier, description, photo="http://192.168.1.35/GC/photo.jpg", longitude, latitude, prix, surface){
+    constructor(id, email, numAd, rueAd, codePostalAd, villeAd, type, places, quartier, description, photo="http://inprod.grandcercle.org/appli2019/images/photo.jpg", longitude, latitude, prix, surface){
         this.email = email;
         this.id = parseInt(id);
         this.type = type;

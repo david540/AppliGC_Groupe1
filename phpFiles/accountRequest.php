@@ -27,7 +27,7 @@ function parseMail($email) {
   }
   $nom = preg_replace('/[0-9]+/', '', $nom[0]);
   $prenom = preg_replace('/[0-9]+/', '', $pieces[0]);
-  return [$prenom, $nom];
+  return [ucfirst($prenom), ucfirst($nom)];
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,21 +40,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   // $nom = ;
 
   $pass = chaine_aleatoire(8);
-  $passhash = password_hash($pass, PASSWORD_DEFAULT);
+  //$passhash = password_hash($pass, PASSWORD_DEFAULT);
 
   $arr = parseMail($email);
   $prenom = $arr[0];
   $nom = $arr[1];
 
-  $result = $db->prepare("INSERT INTO All_Users(email, Nom, Prenom, Ecole, password, code, num_cva) VALUES(:email, :nom, :prenom, :ecole, :passhash, 1, 0)");
+  $result = $db->prepare("INSERT INTO All_Users(email, Nom, Prenom, Ecole, password, code, num_cva) VALUES(:email, :nom, :prenom, :ecole, :pass, 1, 0)");
   $result->execute(array('email' => $email,
                         'nom' => $nom,
                         'prenom' => $prenom,
                         'ecole' => $ecole,
-                        'passhash' => $passhash,
+                        'pass' => $pass,
                         ));
 
-  echo $pass;
+  //echo $pass;
 
   /*$to_email = 'louteranas@gmail.com';
   $subject = 'Testing PHP Mail';
