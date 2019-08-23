@@ -36,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $email = $obj["email"];
   $ecole = $obj["ecole"];
+  $idEcole = $obj["idEcole"];
   // $prenom = ;
   // $nom = ;
 
@@ -46,28 +47,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $prenom = $arr[0];
   $nom = $arr[1];
 
-  $result = $db->prepare("INSERT INTO All_Users(email, Nom, Prenom, Ecole, password, code, num_cva) VALUES(:email, :nom, :prenom, :ecole, :pass, 1, 0)");
-  $result->execute(array('email' => $email,
+  $result = $db->prepare("INSERT INTO All_Users(email, Nom, Prenom, Ecole, password, code, num_cva, idEcole) VALUES(:email, :nom, :prenom, :ecole, :pass, 0, 0, idEcole)");
+  if(!$result->execute(array('email' => $email,
                         'nom' => $nom,
                         'prenom' => $prenom,
                         'ecole' => $ecole,
                         'pass' => $pass,
-                        ));
+                        'idEcole' => $idEcole,
+                      ))){
+    echo 0;
+    exit();
+  }
 
-  //echo $pass;
+  $to_email = $email;
+  $subject = 'Authentification Appli GC';
+  $message = "Salut !\n\nTon compte a bien été créé et voilà le mot de passe généré: $pass
+Ce mot de passe ne doit être utilisé pour rien d'autre que pour cette appli car il est visible par Gean Claude (sur facebook), à qui tu peux le demander si tu rencontres un problème.
 
-  /*$to_email = 'louteranas@gmail.com';
-  $subject = 'Testing PHP Mail';
-  $message = 'This mail is sent using the PHP mail function';
-  $headers = 'From: noreply @ company . com';
+Bonne rentrée de la part de tous les membres du Grand Cercle !\n";
+  $headers = 'From: grandcercle@grandcercle.org';
   $test = mail($to_email,$subject,$message,$headers);
-  if($test==NULL) {
-    echo "blabla";
-  } elseif ($test == false) {
-    echo "sa mere";
-  } else {
-    echo "enfin sa mère";
-  }*/
+  echo 1;
   //==========
 //
 }

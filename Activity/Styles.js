@@ -112,8 +112,6 @@ export const styles = StyleSheet.create({
   	    justifyContent: 'center',
 	    alignItems: 'center',
         backgroundColor:'#68a0cf',
-        borderRadius:100,
-        borderWidth: 5,
         borderColor: background,
         width: wwidth/2,
         height: wheight*9/30,

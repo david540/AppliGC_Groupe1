@@ -80,7 +80,8 @@ export default class MainActivity extends React.Component {
         this.loadInfos();
     }
     _onLongPressBonplan(){
-        Alert.alert("Accéder aux offres de logements, de covoiturage, de stages ou d'échange de matériel")
+      //  Alert.alert("Accéder aux offres de logements, de covoiturage, de stages ou d'échange de matériel")
+      Alert.alert("Coming soon", "Vous y trouverez offre de covoiturage, logement, stage et de vente de matériel quand nous l'aurons mis en place");
     }
 
     _onLongPressAuthentification(){
@@ -126,15 +127,14 @@ export default class MainActivity extends React.Component {
           })
       }).then((response) => {
 
-          console.log("check : " +response._bodyText);
           infos = response._bodyText.split("|");
-          AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole', 'asso', 'code']).then((data)=> {
+          AsyncStorage.multiGet(['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole', 'asso', 'code', 'idEcole']).then((data)=> {
               let email = data[0][1];
               let password = data [1][1];
               if(email !== null && password !== null && data[2][1] !== null && data[3][1] !== null && data[4][1] !== null && data[5][1] !== null && data[6][1] !== null && data[7][1] !== null){
                   this.props.navigation.navigate('ActualitesActivity', {
                     nomasso: infos[0],
-                    idEcole: infos[1],
+                    idEcole: data[8][1],
                     droitInp: infos[2],
                     email: email,
                     password: password,
@@ -187,7 +187,7 @@ export default class MainActivity extends React.Component {
 
             <View style={styles.button_row}>
               <TouchableOpacity
-                    onPress={() => { goToScreen(navigation, "BonplanActivity")}}
+                    onPress={() => { Alert.alert("Coming soon", "Vous y trouverez offre de covoiturage, logement, stage et de vente de matériel quand nous l'aurons mis en place")/*goToScreen(navigation, "BonplanActivity")*/}}
                     delayLongPress={180}
                     onLongPress={this._onLongPressBonplan}>
                 <View style={[styles.main_button, {backgroundColor:"#8d188f"}]}>

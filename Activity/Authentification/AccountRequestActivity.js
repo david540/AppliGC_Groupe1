@@ -16,7 +16,7 @@ export default class AccountRequestActivity extends React.Component {
         ecole: 'Ensimag',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
-        newAccount: false,
+        newAccount: true,
     }
   }
   ori_change = () => {
@@ -70,9 +70,7 @@ export default class AccountRequestActivity extends React.Component {
   }
 
     _onPressSubmit = () => {
-          console.log("notre email est : " + this.state.email);
           this._handleEmail();
-          Alert.alert("Succès", "Votre demande a été envoyée, consultez vos mails.");
           this.props.navigation.navigate('MainActivity');
     };
 
@@ -91,20 +89,26 @@ export default class AccountRequestActivity extends React.Component {
                 ecole: this.state.ecole,
             })
         }).then((response) => {
-            console.log(response);
+            Alert.alert(response._bodyText);
+            if(response._bodyText == 1){
+              Alert.alert("Succès", "Votre demande a été envoyée, consultez vos mails.");
+            }else{
+              Alert.alert("Erreur", "Un compte est déjà créé avec cet email, regardez sur votre boite mail Grenoble INP un mail provenant de grandcercle@grandcercle.org ou demandez votre mot de passe à Gean Claude sur facebook");
+
+            }
         }).catch((error) => {
                 console.error(error);
           });
     }
 
   componentDidMount() {
-    AsyncStorage.getItem('code').then((code) => {
+    /*AsyncStorage.getItem('code').then((code) => {
       if(code){
         this._connexion_automatique(code);
       }else{
         this.setState({newAccount : true});
       }
-    });
+    });*/
   }
 
   render() {
@@ -153,12 +157,29 @@ export default class AccountRequestActivity extends React.Component {
             <View style={{height: this.state.height*1/9}}>
                 <Picker
                   selectedValue={this.state.ecole}
-                  onValueChange={(itemValue) => {this.setState({ecole: itemValue})}}>
+                  onValueChange={(itemValue) => {
+                    idEcole = 0;
+                    if(itemValue == "Ensimag"){
+                      idEcole = 1;
+                    }else if (itemValue == "Phelma"){
+                      idEcole = 2;
+                    }else if (itemValue == "Ense3"){
+                      idEcole = 3;
+                    }else if (itemValue == "Pagora"){
+                      idEcole = 4;
+                    }else if (itemValue == "GI"){
+                      idEcole = 5;
+                    }else if (itemValue == "CPP"){
+                      idEcole = 6;
+                    }else if (itemValue == "Esisar"){
+                      idEcole = 7;
+                    }
+                    this.setState({ecole: itemValue, idEcole: idEcole})}}>
                   <Picker.Item label={"1. Ensimag"} value={"Ensimag"} />
                   <Picker.Item label={"2. Phelma"} value={"Phelma"} />
                   <Picker.Item label={"3. Ense3"} value={"Ense3"} />
                   <Picker.Item label={"4. Pagora"} value={"Pagora"} />
-                  <Picker.Item label={"5. Génie Ind"} value={"Génie Ind"} />
+                  <Picker.Item label={"5. GI"} value={"GI"} />
                   <Picker.Item label={"6. CPP"} value={"CPP"} />
                   <Picker.Item label={"7. Esisar"} value={"Esisar"} />
                 </Picker>

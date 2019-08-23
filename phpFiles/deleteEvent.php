@@ -8,7 +8,7 @@
       $email = $obj['email'];
       $password = $obj['password'];
       $assoEvent =  $obj['asso'];
-      $nomEvent = $obj['nom'];
+      $idEvent = $obj['id'];
 
       $result = $db->prepare("SELECT asso FROM All_Users WHERE email = :email AND password = :password");
       $result->execute(array('email' => $email, 'password' => $password));
@@ -17,11 +17,13 @@
         $row = $current_row;
         $count += 1;
       }
+      echo $row['asso'];
+      echo $assoEvent;
       if($count == 1 && $row['asso'] == $assoEvent) {
         //  $json = json_encode($row);
 
-        $result = $db->prepare("DELETE FROM Events WHERE Nom = :nomEvent AND asso = :assoEvent");
-        $result->execute(array('nomEvent' => $nomEvent,
+        $result = $db->prepare("DELETE FROM Events WHERE id = :id AND asso = :assoEvent");
+        $result->execute(array('id' => $idEvent,
                               'assoEvent' => $assoEvent
                               ));
         echo "1";

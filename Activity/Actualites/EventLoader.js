@@ -37,7 +37,7 @@ export function setEvents(responseJson){
        //Alert.alert(intDate.toString() +" " + currentIntDate.toString())
 
         //arrayOfEvents[compteur++] = new EventObject(infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6], infos[7], infos[8], infos[9]);
-      candidat = new NewEventObject(infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6]);
+      candidat = new NewEventObject(infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6], infos[7]);
       if(candidat.getIntDate() - currentIntDate > - 24 * 3600 * 1000)
         arrayOfEvents[compteur++] = candidat;
     //  }

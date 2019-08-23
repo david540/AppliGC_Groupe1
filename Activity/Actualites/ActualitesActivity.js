@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Picker, TextInput, View, ScrollView, Dimensions, AsyncStorage, SectionList, Alert, FlatList, ActivityIndicator, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, Text, ListView, Picker, TextInput, View, ScrollView, Dimensions, AsyncStorage, SectionList, Alert, FlatList, ActivityIndicator, TouchableOpacity, Modal } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { EventObject } from './EventObject';
 import { getEvents, getEventsDev, getArrayOfEvents, getArrayOfSectionData } from './EventLoader';
@@ -7,7 +7,7 @@ import { List, ListItem } from 'react-native-elements'; // Version can be specif
 import EventRenderInList from './EventRenderInList'; // Version can be specified in package.json
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import ChoixFiltresActivity from './ChoixFiltresActivity'
-import { getAssosAndEvents, eventsAreLoaded, getOnlyEvents } from './AssoLoader'
+import { getAssos, eventsAreLoaded, getOnlyEvents } from './AssoLoader'
 import { styles } from '../Styles'
 
 /*
@@ -23,6 +23,9 @@ export default class ActualitesActivity extends React.Component {
     this.superAdmin = false;
     this.arrayOfChoixAssos = [];
     this.nomAsso = this.capitalizeFirstLetter(this.props.navigation.state.params.nomasso);
+    if(!this.props.navigation.state.params.idEcole){
+    //  Alert.alert("n");
+    }
     //Alert.alert(this.props.navigation.state.params.nomasso + " " + this.nomAsso);
     //this.getListeEcolesAndListeAssos();
     //this.getChoixAssosFromFile()
@@ -35,11 +38,12 @@ export default class ActualitesActivity extends React.Component {
         modalAdminVisible: false,
         loadisnotdone: true,
         numAssoAdmin: '0',
+        idEvent: 0,
         itemModal: "",
         titleModal: "",
         descriptionModal: "",
-        dateFin : "",
-        dateDebut : "",
+        dateFin : "01-01-01 00:00:00",
+        dateDebut : "01-01-01 00:00:00",
         cible : "",
         asso: "",
     }
@@ -110,7 +114,7 @@ export default class ActualitesActivity extends React.Component {
   }
 
   openModal(item){
-    this.setState({itemModal: item, descriptionModal: item.description, titleModal: item.nom, modalVisible: true, dateDebut: item.getDateDebut(), dateFin: item.getDateFin(), cible: item.ecole, asso: item.asso});
+    this.setState({idEvent: item.id, itemModal: item, descriptionModal: item.description, titleModal: item.nom, modalVisible: true, dateDebut: item.getDateDebut(), dateFin: item.getDateFin(), cible: item.ecole, asso: item.asso});
   }
   closeModal = () => {
     //this.setChoixAssosInFile();
@@ -140,6 +144,7 @@ export default class ActualitesActivity extends React.Component {
       })}).then((response) => {
       this.nomAsso = this.capitalizeFirstLetter(response._bodyText);
       AsyncStorage.setItem('asso', this.state.numAssoAdmin).then(() => {
+        this.setState({asso:this.state.numAssoAdmin});
         Alert.alert("Changement d'asso vers " + this.nomAsso + " effectué");
       })
       //this.props.navigation.navigate('MainActivity');
@@ -159,7 +164,7 @@ export default class ActualitesActivity extends React.Component {
           email: this.props.navigation.state.params.email,
           password: this.props.navigation.state.params.password,
           asso: this.state.asso,
-          nom: this.state.titleModal,
+          id: this.state.idEvent,
       })}).then((response) => {
         //Alert.alert(response._bodyText);
       //this.props.navigation.navigate('MainActivity');
@@ -180,18 +185,19 @@ export default class ActualitesActivity extends React.Component {
     return dateInYYYYmmdd.split("/").reverse().join("/");
   }
 
-  reload(){
+  reload() {
     this.setState({loadisnotdone:true});
     getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), true);
   }
 
 	render() {
+    var dataSourceAdmin = null;
     let picker= <View/>;
     if(!this.props.navigation.state.params.email){
      picker = <View style={{height: this.state.height*1/18}}>
       <Picker
         selectedValue={this.state.idEcole}
-        onValueChange={(itemValue) => {{AsyncStorage.setItem('idEcole', itemValue); this.setState({idEcole: itemValue}); this.reload();}}}>
+        onValueChange={(itemValue) => {{AsyncStorage.setItem('idEcole', itemValue); this.setState({idEcole: itemValue}, () => {this.reload();});}}}>
         <Picker.Item label="TOUTE ECOLE" value="0" />
         <Picker.Item label="ENSIMAG" value="1" />
         <Picker.Item label="PHELMA" value="2" />
@@ -208,13 +214,6 @@ export default class ActualitesActivity extends React.Component {
         <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RECHARGER</Text>
       </TouchableOpacity>
     </View>;
-    if(!this.state.idEcole){
-      button = <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
-        <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), true)}}>
-          <Text style = {{color:'white', marginLeft: this.state.width / 3}}>RECHARGER</Text>
-        </TouchableOpacity>
-      </View>;
-    }
     if(parseInt(this.props.navigation.state.params.asso) > 0){
       button =   <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
           {(this.props.navigation.state.params.code > 0)?
@@ -231,7 +230,16 @@ export default class ActualitesActivity extends React.Component {
             <Text style = {{color:'white', marginLeft: this.state.width / 7}}>RECHARGER</Text>
           </TouchableOpacity>
         </View>;}
-
+    else if(this.props.navigation.state.params.code > 0){
+      button = <View style = {{flexDirection: 'row', backgroundColor: '#0f0f0f', justifyContent: 'center', alignItems: 'center', height: this.state.height/9}}>
+        <TouchableOpacity onPress={() => { this._goToAdmin() }}>
+          <Text style = {{color:'white', marginLeft: this.state.width / 7}}>Admin</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => { this.setState({loadisnotdone:true}); getEvents(this.props.navigation.state.params.code == 10 ? 0 : this.state.idEcole, () => this.setState({loadisnotdone : false}), 1) }}>
+          <Text style = {{color:'white', marginLeft: this.state.width / 7}}>RECHARGER</Text>
+        </TouchableOpacity>
+      </View>;
+    }
 
 
 
@@ -274,7 +282,7 @@ export default class ActualitesActivity extends React.Component {
                   this.openModal(item);
                 }}
                 title={item.nom}
-                subtitle={item.getDateDebut() + " -> " + item.getDateFin()}
+                subtitle={item.getDateDebut().split(" ")[1].split(":")[0] + "h" + item.getDateDebut().split(" ")[1].split(":")[1] }
               />
             )}
 
@@ -311,46 +319,54 @@ export default class ActualitesActivity extends React.Component {
           >
             <View style={styles.modalBackgroundContainer}>
               <View style= {[styles.modalContainer, {height: this.state.height*8/9, width: this.state.width*8/9}]}>
-                <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
-                  <View style={[styles.modalTitleBox, {width: this.state.width*8/9}]}>
-                    <Text style={styles.modalTitleText}>{this.state.titleModal}</Text>
-                  </View>
-                    <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}/>
-                    <Text style= {styles.modalDescriptionTitleText}>{"\n"}Description</Text>
-                    <Text style= {styles.modalDescriptionReductionText}>{this.state.descriptionModal}{"\n \n"}</Text>
-                    <Text style= {styles.modalDescriptionTitleText}>{"\n"}Date début :</Text>
-                    <Text style= {styles.modalDescriptionReductionText}>{this.state.dateDebut}{"\n \n"}</Text>
-                    <Text style= {styles.modalDescriptionTitleText}>{"\n"}Date Fin :</Text>
-                    <Text style= {styles.modalDescriptionReductionText}>{this.state.dateFin}{"\n \n"}</Text>
-                    <Text style= {styles.modalDescriptionTitleText}>{"\n"}Cible :</Text>
-                    <Text style= {styles.modalDescriptionReductionText}>{this.state.cible}{"\n \n"}</Text>
-                  <View style = {styles.modalButtons}>
-                    {(this.state.asso == this.props.navigation.state.params.asso || this.props.navigation.state.params.code > 0)?
-                    (
-                      <TouchableOpacity onPress={() => {
-                        this.deleteEvent();
-                        this.props.navigation.navigate('AddEvent', {asso: this.props.navigation.state.params.asso,
-                          nomasso: this.props.navigation.state.params.nomasso,
-                          idEcole: this.state.idEcole,
-                          droitInp: this.props.navigation.state.params.droitInp,
-                          nom: this.state.titleModal,
-                          description: this.state.descriptionModal,
-                          dateDebut: this.state.dateDebut,
-                          dateFin: this.state.dateFin
-                          });
-                        this.closeModal();
-                        }}>
-                          <Text style={{color:'grey'}}> DELETE </Text>
-                      </TouchableOpacity>
-                    )
-                    :(<Text></Text>)}
+                <View style= {{height: this.state.height*7/9}}>
+                  <ScrollView contentContainerStyle={styles.scrollViewModalContainer}>
+                    <View style={[styles.modalTitleBox, {width: this.state.width*8/9}]}>
+                      <Text style={styles.modalTitleText}>{this.state.titleModal}</Text>
+                    </View>
+                      <View style={[styles.colorLimitModal, { height: this.state.height * 1/200, width: this.state.width * 8/9 }]}/>
+                      <Text style= {styles.modalDescriptionTitleText}>{"\n"}Description</Text>
 
-                    <TouchableOpacity onPress={() => this.closeModal()}>
-                        <Text style={{color:'grey'}}> RETOUR </Text>
+                      <View style={{margin:10}} />
+                      <Text style= {styles.modalDescriptionReductionText}>{this.state.descriptionModal}{"\n \n"}</Text>
+                      <Text style= {styles.modalDescriptionTitleText}>{"\nDate :"}</Text>
+
+                      <View style={{margin:10}} />
+                      <Text style= {styles.modalDescriptionReductionText}>{"Début: Le " + this.state.dateDebut.split(" ")[0].split("-").join("/") +
+                      " à " + this.state.dateDebut.split(" ")[1].split(":")[0] + "h" + this.state.dateDebut.split(" ")[1].split(":")[1] +
+                      "\nFin:  Le " + this.state.dateFin.split(" ")[0].split("-").join("/") +
+                      " à " + this.state.dateFin.split(" ")[1].split(":")[0] + "h" + this.state.dateFin.split(" ")[1].split(":")[1]}
+                      </Text>
+                    <View style={{margin:10}} />
+
+                  </ScrollView>
+                </View>
+                <View style = {styles.modalButtons}>
+                  {(this.state.asso == this.props.navigation.state.params.asso)?
+                  (
+                    <TouchableOpacity onPress={() => {
+                      this.deleteEvent();
+                      this.props.navigation.navigate('AddEvent', {asso: this.props.navigation.state.params.asso,
+                        nomasso: this.props.navigation.state.params.nomasso,
+                        idEcole: this.state.idEcole,
+                        droitInp: this.props.navigation.state.params.droitInp,
+                        nom: this.state.titleModal,
+                        description: this.state.descriptionModal,
+                        dateDebut: this.state.dateDebut,
+                        dateFin: this.state.dateFin
+                        });
+                      this.closeModal();
+                      }}>
+                        <Text style={{color:'grey'}}> DELETE </Text>
                     </TouchableOpacity>
-                  </View>
-                  <Text></Text>
-                </ScrollView>
+                  )
+                  :(<Text></Text>)}
+
+                  <TouchableOpacity onPress={() => this.closeModal()}>
+                      <Text style={{color:'grey'}}> RETOUR </Text>
+                  </TouchableOpacity>
+                </View>
+                <Text></Text>
               </View>
             </View>
           </Modal>

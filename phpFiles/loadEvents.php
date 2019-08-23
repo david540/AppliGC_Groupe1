@@ -38,7 +38,7 @@ try {
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $string = "";
     foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-      if ($k === "Nom")
+      if ($k === "id")
         $string.="|||";
       $string.=$v;
     }

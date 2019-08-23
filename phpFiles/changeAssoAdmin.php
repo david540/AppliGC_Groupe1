@@ -30,8 +30,8 @@
         if($count == 1 && intval($row['IdEcole']) == intval($code) || $code == 10) {
           //  $json = json_encode($row);
 
-          $result = $db->prepare("UPDATE All_Users SET asso = :asso WHERE email = :email AND password = :password");
-          $result->execute(array('asso' => $asso, 'email' => $email, 'password' => $password));
+          $result = $db->prepare("UPDATE All_Users SET asso = :asso, IdEcole = :IdEcole WHERE email = :email AND password = :password");
+          $result->execute(array('asso' => $asso,'IdEcole' => intval($row['IdEcole']), 'email' => $email, 'password' => $password));
           echo $row['nomassoc'];
         }else{
           echo "0";

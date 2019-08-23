@@ -3,13 +3,14 @@ import { Alert } from 'react-native';
 
 export class NewEventObject {
 
-  constructor(nom, description, dateDebut, dateFin, preventeSurAppli, ecole, asso) {
+  constructor(id, nom, description, dateDebut, dateFin, preventeSurAppli, asso, idEcole) {
+    this.id = id;
     this.nom = nom;
     this.description = description;
     this.dateDebut = new Date(dateDebut.replace(/-/g,"/"));
     this.dateFin = new Date(dateFin.replace(/-/g,"/"));
     this.preventeSurAppli = preventeSurAppli;
-    this.ecole = ecole;
+    this.ecole = idEcole;
     this.asso = asso;
     this.intDate = this.dateDebut.getTime();
   }

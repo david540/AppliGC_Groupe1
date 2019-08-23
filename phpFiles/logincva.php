@@ -17,7 +17,7 @@
         //$result = mysqli_query($db,$sql);
         //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         //$count = mysqli_num_rows($result);
-        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password, asso, code FROM All_Users WHERE email = :email AND password = :password");
+        $result = $db->prepare("SELECT email, num_cva, Nom, Prenom, Ecole, password, asso, code, IdEcole FROM All_Users WHERE email = :email AND password = :password");
         $result->execute(array('email' => $myemail, 'password' => $mypassword));
         $count = 0;
         while($current_row = $result->fetch()){

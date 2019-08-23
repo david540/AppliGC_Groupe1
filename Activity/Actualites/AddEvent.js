@@ -86,11 +86,10 @@ export default class AddEvent extends React.Component {
   _validationFailed= () => { Alert.alert("Echec", "Vous n'avez pas rempli tous les champs");
                         };
   _onPressSubmit= () => {
-          AsyncStorage.getItem('ecole').then((ecole) => {
-          console.log(ecole);
-          var maCible = ecole;
+          AsyncStorage.getItem('idEcole').then((idEcole) => {
+          var maCible = idEcole;
           if(this.state.cible != 0) {
-            maCible = "Inp";
+            maCible = 0;
           }
         //  Alert.alert(this.props.navigation.state.params.asso);
 
@@ -104,7 +103,7 @@ export default class AddEvent extends React.Component {
             },
             body: JSON.stringify({
                 nom: this.state.nom,
-                description: this.state.description + " (ajouté par "+ this.props.navigation.state.params.nomasso +")",
+                description: this.state.description + "\n\nÉvènement ajouté par "+ this.props.navigation.state.params.nomasso ,
                 cible: maCible,
                 prevente: this.state.prevente,
                 dateD: this.dateToSQLDate(this.state.dateD),
@@ -166,21 +165,6 @@ export default class AddEvent extends React.Component {
                 onValueChange={(itemValue) => {this.setState({cible: itemValue})}}>
                 <Picker.Item label={"1. Ecole"} value={"0"} />
                 <Picker.Item label={"2. INP"} value={"1"} />
-              </Picker>
-          </View>
-          <View style={{margin:5}} />
-          <Text
-              style={[{fontSize: 14 }]}>
-              Type de prévente
-          </Text>
-
-          <View style={{height: this.state.height*1/9}}>
-              <Picker
-                selectedValue={this.state.prevente}
-                onValueChange={(itemValue) => {this.setState({prevente: itemValue})}}>
-                <Picker.Item label={"1. Sur l'application"} value={"0"} />
-                <Picker.Item label={"2. En école"} value={"1"} />
-                <Picker.Item label={"3. Les deux "} value={"2"} />
               </Picker>
           </View>
           <View style={{margin:5}} />

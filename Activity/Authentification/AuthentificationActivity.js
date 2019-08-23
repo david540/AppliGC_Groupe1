@@ -41,8 +41,8 @@ export default class AuthentificationActivity extends React.Component {
 
   _setInfos(responseJson){
       //var infos = responseJson.split("&&&");
-      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso && responseJson.code){
-          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso, responseJson.code);
+      if(responseJson.num_cva && responseJson.Prenom && responseJson.Nom && responseJson.Ecole && responseJson.asso && responseJson.code && responseJson.IdEcole){
+          this._goToAuthentificated(responseJson.num_cva, responseJson.Nom, responseJson.Prenom, responseJson.Ecole, responseJson.asso, responseJson.code, responseJson.IdEcole);
       }
       else{
           Alert.alert("erreur, pas de données");
@@ -107,13 +107,14 @@ export default class AuthentificationActivity extends React.Component {
           this._connexion();
       }
   }
-  _goToAuthentificated(numCVA, nom, prenom, ecole, asso, code){
+  _goToAuthentificated(numCVA, nom, prenom, ecole, asso, code, idEcole){
       AsyncStorage.setItem('numCVA', numCVA);
       AsyncStorage.setItem('nom', nom);
       AsyncStorage.setItem('prenom', prenom);
       AsyncStorage.setItem('ecole', ecole);
       AsyncStorage.setItem('asso', asso);
       AsyncStorage.setItem('code', code);
+      AsyncStorage.setItem('idEcole', idEcole);
         this.props.navigation.navigate('Authentificated', {
         num_cva: numCVA,
         nom: nom,

@@ -20,10 +20,17 @@ class TableRows extends RecursiveIteratorIterator {
 }
 // Creating connection.
 try {
+
+    $idEcole = $_GET["idEcole"];
+    if($idEcole == NULL){
+      exit();
+    }
     $conn = new PDO("mysql:host=$HostName;dbname=$DatabaseName;charset=utf8", $HostUser, $HostPass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT id,nomassoc FROM users");
-    $stmt->execute();
+    $stmt = $conn->prepare("SELECT id,nomassoc FROM users WHERE IdEcole=:idEcole");
+
+    $stmt->execute(array('idEcole' => $idEcole
+                          ));
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $string = "";

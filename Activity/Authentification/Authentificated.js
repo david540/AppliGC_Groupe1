@@ -46,7 +46,7 @@ export default class Authentificated extends React.Component {
     }
 
     deconnect() {
-        let keys = ['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole'];
+        let keys = ['email', 'password', 'numCVA', 'nom', 'prenom', 'ecole', 'code'];
         AsyncStorage.multiRemove(keys, (err) => {
             console.log('Déconnecté !');
         });

@@ -15,7 +15,7 @@ export default class AccountRequestActivity extends React.Component {
         cva: '',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - getStatusBarHeight(),
-        newAccount: false,
+        newAccount: true,
     }
   }
   ori_change = () => {
@@ -112,13 +112,6 @@ export default class AccountRequestActivity extends React.Component {
   }
 
   componentDidMount() {
-    AsyncStorage.getItem('code').then((code) => {
-      if(code){
-        this._connexion_automatique(code);
-      }else{
-        this.setState({newAccount : true});
-      }
-    });
   }
 
   render() {

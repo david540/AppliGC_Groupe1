@@ -13,14 +13,14 @@
       $dateF = $obj['dateF'];
       $asso = $obj['asso'];
 
-      $result = $db->prepare("INSERT INTO Events(Nom, description, dateDebut, dateFin, preventesSurAppli, cible, asso) VALUES(:nom, :description, :dateD, :dateF, :prevente, :cible, :asso)");
+      $result = $db->prepare("INSERT INTO Events(Nom, description, dateDebut, dateFin, preventesSurAppli, asso, idEcole) VALUES(:nom, :description, :dateD, :dateF, :prevente, :asso, :cible)");
       $result->execute(array('nom' => $nom,
                             'description' => $description,
                             'dateD' => $dateD,
                             'dateF' => $dateF,
                             'prevente' => $prevente,
-                            'cible' => $cible,
-                            'asso' => $asso
+                            'asso' => $asso,
+                            'cible' => $cible
                             ));
 
       echo($nom);

@@ -6,12 +6,13 @@ var arrayOfAssos = [];
 var arrayOfChoixAssos = [];
 
 export function setAssos(responseJson){
+   arrayOfAssos = [];
    var assos = responseJson.split("|||");
    var compteur = 0;
    for(var i=1; i< assos.length; i++){
      var infos = assos[i].split("&&&");
      if(infos.length >= 2){
-        arrayOfAssos[compteur++] = new AssoObject(infos[0], infos[1], false);
+        arrayOfAssos[compteur++] = infos[0] + " : " + infos[1];
       }
    }
 }
@@ -77,6 +78,28 @@ export function eventsAreLoaded(){
   return arrayOfAssos.length !== 0;
 }
 
-export function getArrayOfChoixAssos(){
-  return arrayOfChoixAssos;
+export function getAssos(idEcole, fonctionThen){
+  if(arrayOfAssos.length === 0){
+    fetch('http://inprod.grandcercle.org/appli/get_liste_assos.php?idEcole=' + idEcole.toString(), { //http://inprod.grandcercle.org/appli2019/get_partenariats_info.php pour wifirst
+      method: 'GET',
+      headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json())
+         .then((responseJson) => {
+           setAssos(decodeURIComponent(escape(responseJson)));
+
+           fonctionThen();
+
+           Alert.alert(arrayOfAssos.join("||"));
+
+           return arrayOfAssos;
+
+     }).catch((error) => {
+       console.error(error);
+     });
+   }else{
+     return arrayOfAssos;
+   }
 }
