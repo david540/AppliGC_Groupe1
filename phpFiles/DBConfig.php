@@ -1,15 +1,15 @@
 <?php
 
 //Define your host here.
-$HostName = "mysql51-152.bdb";
+$HostName = "hostname";
 
 //Define your database name here.
-$DatabaseName = "grandcerinpl";
+$DatabaseName = "databasename";
 
 //Define your database username here.
-$HostUser = "grandcerinpl";
+$HostUser = "hostuser";
 
 //Define your database password here.
-$HostPass = "App18InP";
+$HostPass = "hostpass";
 
 ?>
