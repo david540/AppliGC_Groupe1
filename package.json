@@ -19,7 +19,7 @@
   "dependencies": {
     "picker": "^0.1.4",
     "react": "16.0.0",
-    "react-native": "^0.50.4",
+    "react-native": "^0.70.6",
     "react-native-datepicker": "^1.7.2",
     "react-native-dialog": "^5.5.0",
     "react-native-dialog-input": "^1.0.7",
